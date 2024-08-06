@@ -1,7 +1,7 @@
 from typing import overload, TYPE_CHECKING
 
-if TYPE_CHECKING:
-    from mcpe.mp_math.point import Point3
+if TYPE_CHECKING:  # type: ignore
+    from .point import Point3
 
 
 class Vector3:
@@ -47,6 +47,12 @@ class Vector3:
         ...
 
     def __sub__(self, other):
+        """
+        V - P -> P
+        V - V -> V
+        :param other:
+        :return:
+        """
         if isinstance(other, Vector3):
             return Vector3(self.x - other.x, self.y - other.y, self.z - other.z)
         elif isinstance(other, Point3):
@@ -55,9 +61,13 @@ class Vector3:
             raise TypeError(f"unsupported operand type(s) for -: 'Vector3' and '{type(other)}'")
 
     def __rsub__(self, other: Point3):
+        """
+        P - V -> P
+        :param other:
+        :return:
+        """
+
         if isinstance(other, Point3):
             return Point3(other.x - self.x, other.y - self.y, other.z - self.z)
-        elif isinstance(other, Vector3):
-            return Vector3(other.x - self.x, other.y - self.y, other.z - self.z)
         else:
             raise TypeError(f"unsupported operand type(s) for -: '{type(other)}' and 'Vector3'")

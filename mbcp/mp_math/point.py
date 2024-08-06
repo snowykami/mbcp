@@ -1,7 +1,7 @@
 from typing import overload, TYPE_CHECKING
 
-if TYPE_CHECKING:
-    from mcpe.mp_math.vector import Vector3
+if TYPE_CHECKING:     # type: ignore
+    from .vector import Vector3
 
 
 class Point3:
