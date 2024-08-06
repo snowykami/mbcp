@@ -8,10 +8,10 @@ Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved
 @File    : line.py
 @Software: PyCharm
 """
-from typing import overload, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from .point import Point3
+    from .point import Point3   # type: ignore
 
 
 class Line3:
@@ -49,8 +49,6 @@ class Line3:
         :param line:
         :return:
         """
-        normal1 = (self.b, -self.a, 0)
-        normal2 = (-line.b, line.a, 0)
 
         if self.is_parallel(line):
             raise ValueError("Lines are parallel and do not intersect.")
