@@ -82,7 +82,7 @@ class Vector3:
 
     def __add__(self, other):
         if isinstance(other, Vector3):
-            return Vector3(self._x + other._x, self._y + other._y, self._z + other._z)
+            return Vector3(self._x + other.x, self._y + other.y, self._z + other.z)
         elif isinstance(other, Point3):
             return Point3(self._x + other.x, self._y + other.y, self._z + other.z)
         else:
@@ -107,7 +107,7 @@ class Vector3:
         :return:
         """
         if isinstance(other, Vector3):
-            return Vector3(self._x - other._x, self._y - other._y, self._z - other._z)
+            return Vector3(self._x - other.x, self._y - other.y, self._z - other.z)
         elif isinstance(other, Point3):
             return Point3(self._x - other.x, self._y - other.y, self._z - other.z)
         else:
@@ -142,7 +142,7 @@ class Vector3:
         if isinstance(other, (int, float)):
             return Vector3(self._x * other, self._y * other, self._z * other)
         elif isinstance(other, Vector3):
-            return self._x * other._x + self._y * other._y + self._z * other._z
+            return self._x * other.x + self._y * other.y + self._z * other.z
         else:
             raise TypeError(f"unsupported operand type(s) for *: 'Vector3' and '{type(other)}'")
 
@@ -160,9 +160,9 @@ class Vector3:
         :param other: 另一个向量
         :return: 叉乘结果向量
         """
-        return Vector3(self._y * other._z - self._z * other._y,
-                       self._z * other._x - self._x * other._z,
-                       self._x * other._y - self._y * other._x)
+        return Vector3(self._y * other.z - self._z * other.y,
+                       self._z * other.x - self._x * other.z,
+                       self._x * other.y - self._y * other.x)
 
     def __truediv__(self, other: float) -> 'Vector3':
         return Vector3(self._x / other, self._y / other, self._z / other)
