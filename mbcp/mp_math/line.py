@@ -73,15 +73,30 @@ class Line3:
         return Point3(x, y, z)
 
     def is_parallel(self, line: "Line3") -> bool:
-        # 直线平行的条件是它们的法向量成比例
+        """
+        判断两条直线是否平行。
+        直线平行的条件是它们的法向量成比例
+        :param line:
+        :return:
+        """
         return self.a * line.b == self.b * line.a and self.c * line.b == self.d * line.a
 
     def is_collinear(self, line: "Line3") -> bool:
-        # 直线共线的条件是它们的法向量成比例且常数项也成比例
+        """
+        判断两条直线是否共线。
+        直线共线的条件是它们的法向量成比例且常数项也成比例
+        :param line:
+        :return:
+        """
         return self.is_parallel(line) and (self.d * line.b - self.b * line.d) / (self.a * line.b - self.b * line.a) == 0
 
     def is_coplanar(self, line: "Line3") -> bool:
-        # 两条直线共面的条件是它们的方向向量和法向量的叉乘为零向量
+        """
+        判断两条直线是否共面。
+        两条直线共面的条件是它们的方向向量和法向量的叉乘为零向量
+        :param line:
+        :return:
+        """
         direction1 = (-self.c, 0, self.a)
         direction2 = (line.c, -line.b, 0)
         cross_product = direction1[0] * direction2[1] - direction1[1] * direction2[0]
