@@ -1,11 +1,13 @@
 from typing import overload, TYPE_CHECKING
 
+import numpy as np
+
 if TYPE_CHECKING:
     from .point import Point3  # type: ignore
 
 
 class Vector3:
-    def __init__(self, x, y, z):
+    def __init__(self, x: float, y: float, z: float):
         """
         笛卡尔坐标系中的向量。
         :param x:
@@ -72,6 +74,16 @@ class Vector3:
             self._normalized = self / self.length
         return self._normalized
 
+    def normalize(self):
+        """
+        自体归一化。
+        """
+        self._x /= self.length
+        self._y /= self.length
+        self._z /= self.length
+        self._length = 1
+        self._normalized = self
+
     @overload
     def __add__(self, other: 'Vector3') -> 'Vector3':
         ...
@@ -81,6 +93,12 @@ class Vector3:
         ...
 
     def __add__(self, other):
+        """
+        V + P -> P\n
+        V + V -> V
+        :param other:
+        :return:
+        """
         if isinstance(other, Vector3):
             return Vector3(self._x + other.x, self._y + other.y, self._z + other.z)
         elif isinstance(other, Point3):
@@ -89,6 +107,12 @@ class Vector3:
             raise TypeError(f"unsupported operand type(s) for +: 'Vector3' and '{type(other)}'")
 
     def __radd__(self, other: 'Point3') -> 'Point3':
+        """
+        P + V -> P\n
+        别去点那边实现了。
+        :param other:
+        :return:
+        """
         return Point3(self._x + other.x, self._y + other.y, self._z + other.z)
 
     @overload
@@ -101,7 +125,7 @@ class Vector3:
 
     def __sub__(self, other):
         """
-        V - P -> P
+        V - P -> P\n
         V - V -> V
         :param other:
         :return:

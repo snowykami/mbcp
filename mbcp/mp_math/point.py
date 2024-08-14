@@ -5,7 +5,7 @@ if TYPE_CHECKING:
 
 
 class Point3:
-    def __init__(self, x, y, z):
+    def __init__(self, x: float, y: float, z: float):
         """
         笛卡尔坐标系中的点。
         :param x:

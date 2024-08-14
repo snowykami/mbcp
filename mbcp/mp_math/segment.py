@@ -17,14 +17,14 @@ if TYPE_CHECKING:
 
 
 class Segment3:
-    def __init__(self, start: "Point3", end: "Point3"):
+    def __init__(self, p1: "Point3", p2: "Point3"):
         """
         三维空间中的线段。
-        :param start:
-        :param end:
+        :param p1:
+        :param p2:
         """
-        self._start = start
-        self._end = end
+        self._start = p1
+        self._end = p2
 
         """方向向量"""
         self._direction = self._end - self._start
