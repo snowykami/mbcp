@@ -8,11 +8,26 @@ Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved
 @File    : mp_math_typing.py
 @Software: PyCharm
 """
-from typing import Callable, Iterable, TypeAlias
+from typing import Callable, Iterable, TypeAlias, TypeVar
 
-"""自变量"""
-VAR: TypeAlias = float | Iterable[float]  # 为后期支持多维矢量化做准备
+RealNumber: TypeAlias = int | float
+Number: TypeAlias = RealNumber | complex
+SingleVar = TypeVar("SingleVar", bound=Number)
+ArrayVar = TypeVar("ArrayVar", bound=Iterable[Number])
+Var: TypeAlias = SingleVar | ArrayVar
 
-ONE_VARIABLE_FUNC: TypeAlias = Callable[[VAR], float]
-TWO_VARIABLES_FUNC: TypeAlias = Callable[[VAR, VAR], float]
-THREE_VARIABLES_FUNC: TypeAlias = Callable[[VAR, VAR, VAR], float]
+OneSingleVarFunc: TypeAlias = Callable[[SingleVar], SingleVar]
+OneArrayFunc: TypeAlias = Callable[[ArrayVar], ArrayVar]
+OneVarFunc: TypeAlias = OneSingleVarFunc | OneArrayFunc
+
+TwoSingleVarFunc: TypeAlias = Callable[[SingleVar, SingleVar], SingleVar]
+TwoArrayFunc: TypeAlias = Callable[[ArrayVar, ArrayVar], ArrayVar]
+TwoVarFunc: TypeAlias = TwoSingleVarFunc | TwoArrayFunc
+
+ThreeSingleVarFunc: TypeAlias = Callable[[SingleVar, SingleVar, SingleVar], SingleVar]
+ThreeArrayFunc: TypeAlias = Callable[[ArrayVar, ArrayVar, ArrayVar], ArrayVar]
+ThreeVarFunc: TypeAlias = ThreeSingleVarFunc | ThreeArrayFunc
+
+MultiSingleVarFunc: TypeAlias = Callable[..., SingleVar]
+MultiArrayFunc: TypeAlias = Callable[..., ArrayVar]
+MultiVarFunc: TypeAlias = MultiSingleVarFunc | MultiArrayFunc
