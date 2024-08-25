@@ -63,10 +63,11 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
             return (func(*args_list_plus) - func(*args_list_minus)) / (2 * epsilon)
         return partial_derivative_func
     elif isinstance(var, tuple):
-        for i in var:
-            print("测试第i个变量：", i)
-            func = get_partial_derivative_func(func, i, epsilon)
-            print("测试第i个变量的偏导：", func(1, 2))
-        return func
+        def high_order_partial_derivative_func(*args: Var) -> Var:
+            result_func = func
+            for v in var:
+                result_func = get_partial_derivative_func(result_func, v, epsilon)
+            return result_func(*args)
+        return high_order_partial_derivative_func
     else:
         raise ValueError("Invalid var type")
