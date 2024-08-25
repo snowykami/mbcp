@@ -9,7 +9,7 @@ Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved
 @Software: PyCharm
 """
 
-from mbcp.mp_math.mp_math_typing import OneVarFunc, Var, MultiVarFunc, Number
+from mbcp.mp_math.mp_math_typing import OneVarFunc, Var, MultiVarsFunc, Number
 from mbcp.mp_math.point import Point3
 from mbcp.mp_math.const import EPSILON
 
@@ -44,9 +44,9 @@ class CurveEquation:
         return "CurveEquation()"
 
 
-def get_partial_derivative_func(func: MultiVarFunc, var: int | tuple[int, ...], epsilon: Number = EPSILON) -> MultiVarFunc:
+def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...], epsilon: Number = EPSILON) -> MultiVarsFunc:
     """
-    求N元函数偏导函数。
+    求N元函数一阶偏导函数。
     Args:
         func: 函数
         var: 变量位置，可为整数(一阶偏导)或整数元组(高阶偏导)
@@ -64,7 +64,9 @@ def get_partial_derivative_func(func: MultiVarFunc, var: int | tuple[int, ...], 
         return partial_derivative_func
     elif isinstance(var, tuple):
         for i in var:
+            print("测试第i个变量：", i)
             func = get_partial_derivative_func(func, i, epsilon)
+            print("测试第i个变量的偏导：", func(1, 2))
         return func
     else:
         raise ValueError("Invalid var type")

@@ -20,7 +20,7 @@ class TestPartialDerivative:
         from mbcp.mp_math.utils import Approx
         from mbcp.mp_math.equation import get_partial_derivative_func
 
-        partial_derivative_func = get_partial_derivative_func(three_var_func, (0,))
+        partial_derivative_func = get_partial_derivative_func(three_var_func, 0)
 
         # assert partial_derivative_func(1, 2, 3) == 4.0
         def df_dx(x, y):

@@ -20,14 +20,14 @@ OneSingleVarFunc: TypeAlias = Callable[[SingleVar], SingleVar]
 OneArrayFunc: TypeAlias = Callable[[ArrayVar], ArrayVar]
 OneVarFunc: TypeAlias = OneSingleVarFunc | OneArrayFunc
 
-TwoSingleVarFunc: TypeAlias = Callable[[SingleVar, SingleVar], SingleVar]
-TwoArrayFunc: TypeAlias = Callable[[ArrayVar, ArrayVar], ArrayVar]
-TwoVarFunc: TypeAlias = TwoSingleVarFunc | TwoArrayFunc
+TwoSingleVarsFunc: TypeAlias = Callable[[SingleVar, SingleVar], SingleVar]
+TwoArraysFunc: TypeAlias = Callable[[ArrayVar, ArrayVar], ArrayVar]
+TwoVarsFunc: TypeAlias = TwoSingleVarsFunc | TwoArraysFunc
 
-ThreeSingleVarFunc: TypeAlias = Callable[[SingleVar, SingleVar, SingleVar], SingleVar]
-ThreeArrayFunc: TypeAlias = Callable[[ArrayVar, ArrayVar, ArrayVar], ArrayVar]
-ThreeVarFunc: TypeAlias = ThreeSingleVarFunc | ThreeArrayFunc
+ThreeSingleVarsFunc: TypeAlias = Callable[[SingleVar, SingleVar, SingleVar], SingleVar]
+ThreeArraysFunc: TypeAlias = Callable[[ArrayVar, ArrayVar, ArrayVar], ArrayVar]
+ThreeVarsFunc: TypeAlias = ThreeSingleVarsFunc | ThreeArraysFunc
 
-MultiSingleVarFunc: TypeAlias = Callable[..., SingleVar]
-MultiArrayFunc: TypeAlias = Callable[..., ArrayVar]
-MultiVarFunc: TypeAlias = MultiSingleVarFunc | MultiArrayFunc
+MultiSingleVarsFunc: TypeAlias = Callable[..., SingleVar]
+MultiArraysFunc: TypeAlias = Callable[..., ArrayVar]
+MultiVarsFunc: TypeAlias = MultiSingleVarsFunc | MultiArraysFunc
