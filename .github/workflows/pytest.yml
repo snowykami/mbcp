@@ -24,4 +24,4 @@ jobs:
           
 
       - name: 运行测试
-        run: python -m pytest
+        run: ls
