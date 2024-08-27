@@ -1,6 +1,7 @@
 import math
 from typing import overload, TYPE_CHECKING
 
+from .mp_math_typing import RealNumber
 from .point import Point3
 
 if TYPE_CHECKING:
@@ -10,10 +11,11 @@ if TYPE_CHECKING:
 class Vector3:
     def __init__(self, x: float, y: float, z: float):
         """
-        笛卡尔坐标系中的向量。
-        :param x:
-        :param y:
-        :param z:
+        3维向量
+        Args:
+            x: x轴分量
+            y: y轴分量
+            z: z轴分量
         """
         self.x = x
         self.y = y
@@ -27,7 +29,7 @@ class Vector3:
         Returns:
             夹角
         """
-        return AnyAngle(math.acos(self * other / (self.length * other.length)), is_radian=True)
+        return AnyAngle(math.acos(self @ other / (self.length * other.length)), is_radian=True)
 
     def is_parallel(self, other: 'Vector3') -> bool:
         """
@@ -37,19 +39,38 @@ class Vector3:
         Returns:
             是否平行
         """
-        return self @ other == Vector3(0, 0, 0)
+        return self.cross(other) == Vector3(0, 0, 0)
 
     def cross(self, other: 'Vector3') -> 'Vector3':
         """
-        向量积 叉乘：V1 @ V2 -> V3
+        向量积 叉乘：v1 cross v2 -> v3
+        返回如下行列式的结果：
+
+        ``i  j  k``
+
+        ``x1 y1 z1``
+
+        ``x2 y2 z2``
+
         Args:
             other:
         Returns:
-            叉乘结果，为0向量则两向量平行，否则垂直于两向量
+            行列式的结果
         """
         return Vector3(self.y * other.z - self.z * other.y,
                        self.z * other.x - self.x * other.z,
                        self.x * other.y - self.y * other.x)
+
+    def normalize(self):
+        """
+        将向量归一化。
+
+        自体归一化，不返回值。
+        """
+        length = self.length
+        self.x /= length
+        self.y /= length
+        self.z /= length
 
     @property
     def length(self) -> float:
@@ -117,7 +138,7 @@ class Vector3:
         ...
 
     @overload
-    def __sub__(self, other: 'Point3') -> 'Point3':
+    def __sub__(self, other: 'Point3') -> "Point3":
         ...
 
     def __sub__(self, other):
@@ -133,9 +154,9 @@ class Vector3:
         elif isinstance(other, Point3):
             return Point3(self.x - other.x, self.y - other.y, self.z - other.z)
         else:
-            raise TypeError(f"unsupported operand type(s) for -: 'Vector3' and '{type(other)}'")
+            raise TypeError(f"unsupported operand type(s) for -: \"Vector3\" and \"{type(other)}\"")
 
-    def __rsub__(self, other: Point3):
+    def __rsub__(self, other: 'Point3'):
         """
         P - V -> P
         Args:
@@ -150,54 +171,41 @@ class Vector3:
             raise TypeError(f"unsupported operand type(s) for -: '{type(other)}' and 'Vector3'")
 
     @overload
-    def __mul__(self, other: float) -> 'Vector3':
+    def __mul__(self, other: RealNumber) -> 'Vector3':
         ...
 
     @overload
-    def __mul__(self, other: 'Vector3') -> float:
+    def __mul__(self, other: 'Vector3') -> 'Vector3':
         ...
 
-    def __mul__(self, other):
+    def __mul__(self, other: 'RealNumber | Vector3') -> 'Vector3':
         """
-        点乘法。包括点乘和数乘。
-        V * V -> float\n
+        数组运算 非点乘。点乘使用@，叉乘使用cross。
         Args:
             other:
+
         Returns:
-            float
-        Raises:
-            TypeError: 不支持的类型
         """
-        if isinstance(other, (int, float)):
+        if isinstance(other, RealNumber):
             return Vector3(self.x * other, self.y * other, self.z * other)
         elif isinstance(other, Vector3):
-            return self.x * other.x + self.y * other.y + self.z * other.z
+            return Vector3(self.x * other.x, self.y * other.y, self.z * other.z)
         else:
             raise TypeError(f"unsupported operand type(s) for *: 'Vector3' and '{type(other)}'")
 
-    def __rmul__(self, other: float) -> 'Vector3':
-        """
-        右乘。
-        Args:
-            other:
-        Returns:
-            乘积
-        """
+    def __rmul__(self, other: RealNumber) -> 'Vector3':
         return Vector3(self.x * other, self.y * other, self.z * other)
 
-    def __matmul__(self, other: 'Vector3') -> 'Vector3':
+    def __matmul__(self, other: 'Vector3') -> float:
         """
-        向量积 叉乘：V1 @ V2 -> V3
+        点乘。
         Args:
             other:
         Returns:
-            叉乘结果，为0向量则两向量平行，否则垂直于两向量
         """
-        return Vector3(self.y * other.z - self.z * other.y,
-                       self.z * other.x - self.x * other.z,
-                       self.x * other.y - self.y * other.x)
+        return self.x * other.x + self.y * other.y + self.z * other.z
 
-    def __truediv__(self, other: float) -> 'Vector3':
+    def __truediv__(self, other: RealNumber) -> 'Vector3':
         return Vector3(self.x / other, self.y / other, self.z / other)
 
     def __neg__(self):
@@ -208,3 +216,16 @@ class Vector3:
 
     def __str__(self):
         return f"Vector3({self.x}, {self.y}, {self.z})"
+
+
+zero_vector3 = Vector3(0, 0, 0)
+"""零向量"""
+x_axis = Vector3(1, 0, 0)
+"""x轴单位向量"""
+y_axis = Vector3(0, 1, 0)
+"""y轴单位向量"""
+z_axis = Vector3(0, 0, 1)
+"""z轴单位向量"""
+
+v1: Vector3 = Vector3(1, 2, 3) * 3.0
+v2: Vector3 = 3.0 * Vector3(1, 2, 3)

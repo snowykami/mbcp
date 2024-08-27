@@ -56,3 +56,38 @@ def approx(x: float, y: float = 0.0, epsilon: float = 0.0001) -> bool:
         是否近似相等
     """
     return abs(x - y) < epsilon
+
+
+def sign(x: float, only_neg: bool = False) -> str:
+    """获取数的符号。
+    Args:
+        x: 数
+        only_neg: 是否只返回负数的符号
+    Returns:
+        符号 + - ""
+    """
+    if x > 0:
+        return "+" if not only_neg else ""
+    elif x < 0:
+        return "-"
+    else:
+        return ""
+
+
+def sign_format(x: float, only_neg: bool = False) -> str:
+    """格式化符号数
+    -1 -> -1
+    1 -> +1
+    0 -> ""
+    Args:
+        x: 数
+        only_neg: 是否只返回负数的符号
+    Returns:
+        符号 + - ""
+    """
+    if x > 0:
+        return f"+{x}" if not only_neg else f"{x}"
+    elif x < 0:
+        return f"-{abs(x)}"
+    else:
+        return ""

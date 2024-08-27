@@ -10,7 +10,7 @@ Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved
 """
 from typing import overload
 
-from .const import PI
+from .const import PI  # type: ignore
 
 
 class AnyAngle:
@@ -27,7 +27,7 @@ class AnyAngle:
             self.radian = value * PI / 180
 
     @property
-    def complementary(self) -> "AnyAngle":
+    def complementary(self) -> 'AnyAngle':
         """
         余角：两角的和为90°。
         Returns:
@@ -36,7 +36,7 @@ class AnyAngle:
         return AnyAngle(PI / 2 - self.minimum_positive.radian, is_radian=True)
 
     @property
-    def supplementary(self) -> "AnyAngle":
+    def supplementary(self) -> 'AnyAngle':
         """
         补角：两角的和为180°。
         Returns:
@@ -54,7 +54,7 @@ class AnyAngle:
         return self.radian * 180 / PI
 
     @property
-    def minimum_positive(self) -> "AnyAngle":
+    def minimum_positive(self) -> 'AnyAngle':
         """
         最小正角。
         Returns:
@@ -63,7 +63,7 @@ class AnyAngle:
         return AnyAngle(self.radian % (2 * PI))
 
     @property
-    def maximum_negative(self) -> "AnyAngle":
+    def maximum_negative(self) -> 'AnyAngle':
         """
         最大负角。
         Returns:
@@ -71,21 +71,21 @@ class AnyAngle:
         """
         return AnyAngle(-self.radian % (2 * PI), is_radian=True)
 
-    def __add__(self, other: "AnyAngle") -> "AnyAngle":
+    def __add__(self, other: 'AnyAngle') -> 'AnyAngle':
         return AnyAngle(self.radian + other.radian, is_radian=True)
 
-    def __sub__(self, other: "AnyAngle") -> "AnyAngle":
+    def __sub__(self, other: 'AnyAngle') -> 'AnyAngle':
         return AnyAngle(self.radian - other.radian, is_radian=True)
 
-    def __mul__(self, other: float) -> "AnyAngle":
+    def __mul__(self, other: float) -> 'AnyAngle':
         return AnyAngle(self.radian * other, is_radian=True)
 
     @overload
-    def __truediv__(self, other: float) -> "AnyAngle":
+    def __truediv__(self, other: float) -> 'AnyAngle':
         ...
 
     @overload
-    def __truediv__(self, other: "AnyAngle") -> float:
+    def __truediv__(self, other: 'AnyAngle') -> float:
         ...
 
     def __truediv__(self, other):

@@ -13,21 +13,8 @@ import logging
 from mbcp.mp_math.point import Point3
 from mbcp.mp_math.vector import Vector3
 from mbcp.mp_math.line import Line3
+from tests.answer import output_answer
 
 
-class TestLine3:
-
-    def test_point_and_normal_factory(self):
-        """
-        测试通过点和法向量构造直线
-        """
-        correct_ans = Line3(1, -2, 3, -8)
-
-        p = Point3(2, -3, 0)
-        n = Vector3(1, -2, 3)
-
-        actual_ans = Line3.from_point_and_direction(p, n)
-        logging.info(f"正确答案：{correct_ans}    实际答案：{actual_ans}")
-        assert actual_ans == correct_ans
 
 

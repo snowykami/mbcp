@@ -8,9 +8,10 @@ class Point3:
     def __init__(self, x: float, y: float, z: float):
         """
         笛卡尔坐标系中的点。
-        :param x:
-        :param y:
-        :param z:
+        Args:
+            x: x 坐标
+            y: y 坐标
+            z: z 坐标
         """
         self.x = x
         self.y = y
@@ -31,26 +32,30 @@ class Point3:
         """
         P + V -> P
         P + P -> P
-        :param other:
-        :return:
+        Args:
+            other:
+        Returns:
         """
         return Point3(self.x + other.x, self.y + other.y, self.z + other.z)
+
+    def __eq__(self, other):
+        """
+        判断两个点是否相等。
+        Args:
+            other:
+        Returns:
+        """
+        return self.x == other.x and self.y == other.y and self.z == other.z
 
     def __sub__(self, other: "Point3") -> "Vector3":
         """
         P - P -> V
 
         P - V -> P  已在 :class:`Vector3` 中实现
-        :param other:
-        :return:
+        Args:
+            other:
+        Returns:
+
         """
         from .vector import Vector3
         return Vector3(self.x - other.x, self.y - other.y, self.z - other.z)
-
-    def __truediv__(self, other: float) -> "Point3":
-        """
-        P / n -> P
-        :param other:
-        :return:
-        """
-        return Point3(self.x / other, self.y / other, self.z / other)

@@ -8,87 +8,55 @@ Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved
 @File    : other.py
 @Software: PyCharm
 """
-import math
-from typing import TYPE_CHECKING, overload
+from typing import TYPE_CHECKING
+
+from .mp_math_typing import OneSingleVarFunc, RealNumber
+from .utils import sign_format
 from .vector import Vector3
 
 if TYPE_CHECKING:
     from .angle import AnyAngle
-    from .plane import Plane3
     from .point import Point3
 
 
 class Line3:
-    def __init__(self, a: float, b: float, c: float, d: float):
+    def __init__(self, point: 'Point3', direction: 'Vector3'):
         """
-        三维空间中的直线。
+        三维空间中的直线。由一个点和一个方向向量确定。
         Args:
-            a: 直线方程的系数a
-            b: 直线方程的系数b
-            c: 直线方程的系数c
-            d: 直线方程的常数项d
+            point: 直线上的一点
+            direction: 直线的方向向量
         """
-        self.a = a
-        self.b = b
-        self.c = c
-        self.d = d
+        self.point = point
+        self.direction = direction
 
-    def cal_angle(self, other: "Line3") -> "AnyAngle":
+    def cal_angle(self, other: 'Line3') -> 'AnyAngle':
         """
-        计算直线和直线或面之间的夹角。
+        计算直线和直线之间的夹角。
         Args:
-            other: 另一条直线或面
+            other: 另一条直线
         Returns:
             夹角弧度
         Raises:
             TypeError: 不支持的类型
         """
-        if isinstance(other, Line3):
-            return self.direction.cal_angle(other.direction)
-        elif isinstance(other, Plane3):
-            return self.direction.cal_angle(other.normal).complementary  # 方向向量和法向量的夹角的余角
-        else:
-            raise TypeError(f"Unsupported type: {type(other)}")
+        return self.direction.cal_angle(other.direction)
 
-    @property
-    def direction(self) -> "Vector3":
-        """
-        直线的方向向量。
-        Returns:
-            方向向量
-        """
-        return Vector3(self.a, self.b, self.c)
-
-    def cal_intersection(self, line: "Line3") -> "Point3":
+    def cal_intersection(self, other: 'Line3') -> 'Point3':
         """
         计算两条直线的交点。
         Args:
-            line: 另一条直线
+            other: 另一条直线
         Returns:
             交点
         """
-
-        if self.is_parallel(line):
+        if self.is_parallel(other):
             raise ValueError("Lines are parallel and do not intersect.")
-
-        if self.is_collinear(line):
-            raise ValueError("Lines are collinear and do not have a single intersection point.")
-
-        if not self.is_coplanar(line):
+        if not self.is_coplanar(other):
             raise ValueError("Lines are not coplanar and do not intersect.")
+        return self.point + self.direction.cross(other.direction)
 
-        a1, b1, c1, d1 = self.a, self.b, self.c, self.d
-        a2, b2, c2, d2 = line.a, line.b, line.c, line.d
-
-        t = (b1 * (c2 * d1 - c1 * d2) - b2 * (c1 * d1 - c2 * d2)) / (b1 * c2 - b2 * c1)
-
-        x = self.a * t + self.b * (-d1 / self.b)
-        y = -self.b * t + self.a * (d1 / self.a)
-        z = 0
-
-        return Point3(x, y, z)
-
-    def cal_perpendicular(self, point: "Point3") -> "Line3":
+    def cal_perpendicular(self, point: 'Point3') -> 'Line3':
         """
         计算直线经过指定点p的垂线。
         Args:
@@ -96,64 +64,78 @@ class Line3:
         Returns:
             垂线
         """
-        a = -self.b
-        b = self.a
-        c = 0
-        d = -(a * point.x + b * point.y + self.c * point.z)
-        return Line3(a, b, c, d)
+        return Line3(point, self.direction.cross(point - self.point))
 
-    def is_parallel(self, line: "Line3") -> bool:
+    def get_point(self, t: RealNumber) -> 'Point3':
+        """
+        获取直线上的点。同一条直线，但起始点和方向向量不同，则同一个t对应的点不同。
+        Args:
+            t: 参数t
+        Returns:
+            点
+        """
+        return self.point + t * self.direction
+
+    def get_parametric_equations(self) -> tuple[OneSingleVarFunc, OneSingleVarFunc, OneSingleVarFunc]:
+        """
+        获取直线的参数方程。
+        Returns:
+            x(t), y(t), z(t)
+        """
+        return (lambda t: self.point.x + self.direction.x * t,
+                lambda t: self.point.y + self.direction.y * t,
+                lambda t: self.point.z + self.direction.z * t)
+
+    def is_parallel(self, other: 'Line3') -> bool:
         """
         判断两条直线是否平行。
-        直线平行的条件是它们的法向量成比例
         Args:
-            line: 另一条直线
+            other: 另一条直线
         Returns:
             是否平行
         """
-        return self.direction.is_parallel(line.direction)
+        return self.direction.is_parallel(other.direction)
 
-    def is_collinear(self, line: "Line3") -> bool:
+    def is_collinear(self, other: 'Line3') -> bool:
         """
         判断两条直线是否共线。
-        直线共线的条件是它们的法向量成比例且常数项也成比例
         Args:
-            line: 另一条直线
+            other: 另一条直线
         Returns:
             是否共线
         """
-        return self.is_parallel(line) and (self.d * line.b - self.b * line.d) / (self.a * line.b - self.b * line.a) == 0
+        return self.is_parallel(other) and (self.point - other.point).is_parallel(self.direction)
 
-    def is_coplanar(self, line: "Line3") -> bool:
+    def is_coplanar(self, other: 'Line3') -> bool:
         """
         判断两条直线是否共面。
-        两条直线共面的条件是它们的方向向量和法向量的叉乘为零向量
         Args:
-            line: 另一条直线
+            other: 另一条直线
         Returns:
             是否共面
         """
-        direction1 = (-self.c, 0, self.a)
-        direction2 = (line.c, -line.b, 0)
-        cross_product = direction1[0] * direction2[1] - direction1[1] * direction2[0]
-        return cross_product == 0
+        return self.direction.cross(other.direction).is_parallel(self.direction)
+
+    def simplify(self):
+        """
+        简化直线方程，等价相等。
+        自体简化，不返回值。
+
+        按照可行性一次对x y z 化 0 处理，并对向量单位化
+        """
+        self.direction.normalize()
+        # 平行与zy平面，x始终为0
+        if self.direction.x == 0:
+            self.point.x = 0
+        # 平行与xz平面，y始终为0
+        if self.direction.y == 0:
+            self.point.y = 0
+        # 平行与xy平面，z始终为0
+        if self.direction.z == 0:
+            self.point.z = 0
 
     @classmethod
-    def from_point_and_direction(cls, point: "Point3", direction: "Vector3") -> "Line3":
-        """
-        工厂函数 由点和方向向量构造直线(点向式构造)。
-        Args:
-            point: 点
-            direction: 方向向量
-        Returns:
-            直线
-        """
-        a, b, c = direction.x, direction.y, direction.z
-        d = -(a * point.x + b * point.y + c * point.z)
-        return cls(a, b, c, d)
-
-    @classmethod
-    def from_two_points(cls, p1: "Point3", p2: "Point3") -> "Line3":
+    def from_two_points(cls, p1: 'Point3', p2: 'Point3') -> 'Line3':
         """
         工厂函数 由两点构造直线。
         Args:
@@ -163,21 +145,45 @@ class Line3:
             直线
         """
         direction = p2 - p1
-        return cls.from_point_and_direction(p1, direction)
+        return cls(p1, direction)
+
+    def __and__(self, other: 'Line3') -> 'Point3':
+        """
+        计算两条直线点集合的交集。交点
+        Args:
+            other: 另一条直线
+        Returns:
+            交点
+        """
+        return self.cal_intersection(other)
 
     def __eq__(self, other) -> bool:
         """
         判断两条直线是否等价。
+
+        v1 // v2 ∧ (p1 - p2) // v1
         Args:
             other:
 
         Returns:
 
         """
-        return self.a / other.a == self.b / other.b == self.c / other.c == self.d / other.d
-
-    def __repr__(self):
-        return f"Line3({self.a}, {self.b}, {self.c}, {self.d})"
+        return self.direction.is_parallel(other.direction) and (self.point - other.point).is_parallel(self.direction)
 
     def __str__(self):
-        return f"Line3({self.a}, {self.b}, {self.c}, {self.d})"
+        """
+        返回点向式（x-x0）
+        Returns:
+
+        """
+        s = "Line3: "
+        if self.direction.x != 0:
+            s += f"(x{sign_format(-self.point.x)})/{self.direction.x}"
+        if self.direction.y != 0:
+            s += f" = (y{sign_format(-self.point.y)})/{self.direction.y}"
+        if self.direction.z != 0:
+            s += f" = (z{sign_format(-self.point.z)})/{self.direction.z}"
+        return s
+
+    def __repr__(self):
+        return f"Line3({self.point}, {self.direction})"

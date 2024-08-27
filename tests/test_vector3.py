@@ -12,6 +12,8 @@ import logging
 
 from mbcp.mp_math.vector import Vector3
 
+from tests.answer import output_answer
+
 
 class TestVector3:
 
@@ -23,7 +25,7 @@ class TestVector3:
         """
         v1 = Vector3(1, 2, 3)
         v2 = Vector3(3, 4, 5)
-        actual_ans = v1 @ v2
+        actual_ans = v1.cross(v2)
         correct_ans = Vector3(-2, 4, -2)
         logging.info(f"正确答案{correct_ans}    实际答案{v1 @ v2}")
 
@@ -34,18 +36,20 @@ class TestVector3:
         测试判断向量是否平行
         Returns:
         """
+        """小题1"""
+        correct_ans = True
         v1 = Vector3(1, 2, 3)
         v2 = Vector3(3, 6, 9)
         actual_ans = v1.is_parallel(v2)
-        correct_ans = True
-        logging.info("v1和v2是否平行：%s", v1.is_parallel(v2))
+        output_answer(correct_ans, actual_ans)
         assert correct_ans == actual_ans
 
+        """小题2"""
+        correct_ans = False
         v1 = Vector3(1, 2, 3)
         v2 = Vector3(3, 6, 8)
         actual_ans = v1.is_parallel(v2)
-        correct_ans = False
-        logging.info("v1和v2是否平行：%s", v1.is_parallel(v2))
+        output_answer(correct_ans, actual_ans)
         assert correct_ans == actual_ans
 
 

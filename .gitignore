@@ -1,2 +1,8 @@
 *script*
 .idea*
+
+# pdm toolchain
+.pdm-build
+.pdm-python
+pdm.lock
+.pdm-build/
