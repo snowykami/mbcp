@@ -18,8 +18,10 @@ jobs:
       - name: 安装依赖
         run: |-
           python -m pip install pdm
+          pytho -m pip install pytest==8.3.2
+          pdm init
           pdm install
-          pip install pytest==8.3.2
+          
 
       - name: 运行测试
         run: pytest
