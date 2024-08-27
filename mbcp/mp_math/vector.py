@@ -194,7 +194,7 @@ class Vector3:
         else:
             raise TypeError(f"unsupported operand type(s) for *: 'Vector3' and '{type(other)}'")
 
-    def __rmul__(self, other: float | int) -> 'Vector3':
+    def __rmul__(self, other: 'RealNumber') -> 'Vector3':
         return self.__mul__(other)
 
     def __matmul__(self, other: 'Vector3') -> float:
