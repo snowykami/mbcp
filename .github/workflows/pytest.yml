@@ -18,16 +18,15 @@ jobs:
       - name: 安装依赖
         run: |-
           python -m pip install pdm
-          pdm install --no-verbose
+          pdm install
+          pip install pytest==8.3.2
 
       - name: 运行测试
-        run: |-
-          pdm run pytest
+        run: pytest
 
       - name: 生成测试报告
         run: |-
-          pdm run pytest --cov-report=xml
-          pdm run coverage xml
+          pytest --cov-report=xml
 
       - name: 上传测试报告
         uses: actions/upload-artifact@v2
