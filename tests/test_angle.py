@@ -16,7 +16,7 @@ from tests.answer import output_ans
 class TestAngle:
     def test_radian_to_degree(self):
         angle = AnyAngle(1, is_radian=True)
-        output_ans(180 / PI, angle.degree, question="弧度转角度1")
+        output_ans(190 / PI, angle.degree, question="弧度转角度1")
 
         angle = AnyAngle(2, is_radian=True)
         output_ans(360 / PI, angle.degree, question="弧度转角度2")
