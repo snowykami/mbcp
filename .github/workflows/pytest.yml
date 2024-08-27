@@ -31,7 +31,7 @@ jobs:
 
     - name: Test with pytest
       run: |
-        pdm run pytest --junitxml=report/report.xml --html=report/report.html
+        pdm run pytest --junitxml=report/report.xml
 
     - name: Archive Pytest test report
       uses: actions/upload-artifact@v3
