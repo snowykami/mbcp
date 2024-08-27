@@ -7,15 +7,18 @@ on:
 
 jobs:
   RunTest:
-    name: Run pytest
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    uses: pavelzw/pytest-action@v2
-    with:
-      verbose: true
-      emoji: true
-      job-summary: true
-      custom-arguments: '-q'
-      click-to-expand: true
-      report-title: 'Test Report'
+    name: Unit tests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11.4' # Define your project python version
+      - id: run-tests
+        uses: dima-engineer/pytest-reporter@v3
+        with:
+          cov-omit-list: tests/*
+          cov-threshold-single: 85
+          cov-threshold-total: 90
+          async-tests: true
+          poetry-version: 1.4.2
