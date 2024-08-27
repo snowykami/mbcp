@@ -171,14 +171,14 @@ class Vector3:
             raise TypeError(f"unsupported operand type(s) for -: '{type(other)}' and 'Vector3'")
 
     @overload
-    def __mul__(self, other: RealNumber) -> 'Vector3':
-        ...
-
-    @overload
     def __mul__(self, other: 'Vector3') -> 'Vector3':
         ...
 
-    def __mul__(self, other: 'RealNumber | Vector3') -> 'Vector3':
+    @overload
+    def __mul__(self, other: RealNumber) -> 'Vector3':
+        ...
+
+    def __mul__(self, other: 'int | float | Vector3') -> 'Vector3':
         """
         数组运算 非点乘。点乘使用@，叉乘使用cross。
         Args:
@@ -186,15 +186,16 @@ class Vector3:
 
         Returns:
         """
-        if isinstance(other, RealNumber):
-            return Vector3(self.x * other, self.y * other, self.z * other)
-        elif isinstance(other, Vector3):
+
+        if isinstance(other, Vector3):
             return Vector3(self.x * other.x, self.y * other.y, self.z * other.z)
+        elif isinstance(other, (float, int)):
+            return Vector3(self.x * other, self.y * other, self.z * other)
         else:
             raise TypeError(f"unsupported operand type(s) for *: 'Vector3' and '{type(other)}'")
 
-    def __rmul__(self, other: RealNumber) -> 'Vector3':
-        return Vector3(self.x * other, self.y * other, self.z * other)
+    def __rmul__(self, other: float | int) -> 'Vector3':
+        return self.__mul__(other)
 
     def __matmul__(self, other: 'Vector3') -> float:
         """
@@ -226,6 +227,3 @@ y_axis = Vector3(0, 1, 0)
 """y轴单位向量"""
 z_axis = Vector3(0, 0, 1)
 """z轴单位向量"""
-
-v1: Vector3 = Vector3(1, 2, 3) * 3.0
-v2: Vector3 = 3.0 * Vector3(1, 2, 3)
