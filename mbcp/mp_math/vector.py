@@ -1,9 +1,10 @@
+import math
 from typing import overload, TYPE_CHECKING
 
-import numpy as np
+from .point import Point3
 
 if TYPE_CHECKING:
-    from .point import Point3  # type: ignore
+    from .angle import AnyAngle
 
 
 class Vector3:
@@ -14,75 +15,59 @@ class Vector3:
         :param y:
         :param z:
         """
-        self._x = x
-        self._y = y
-        self._z = z
-        self._length = (x ** 2 + y ** 2 + z ** 2) ** 0.5
-        self._normalized = self / self._length
+        self.x = x
+        self.y = y
+        self.z = z
 
-    def __str__(self):
-        return f"Vector3({self._x}, {self._y}, {self._z})"
+    def cal_angle(self, other: 'Vector3') -> 'AnyAngle':
+        """
+        计算两个向量之间的夹角。
+        Args:
+            other: 另一个向量
+        Returns:
+            夹角
+        """
+        return AnyAngle(math.acos(self * other / (self.length * other.length)), is_radian=True)
 
-    def _unset_properties(self):
-        self._length = None
-        self._normalized = None
+    def is_parallel(self, other: 'Vector3') -> bool:
+        """
+        判断两个向量是否平行。
+        Args:
+            other: 另一个向量
+        Returns:
+            是否平行
+        """
+        return self @ other == Vector3(0, 0, 0)
 
-    @property
-    def x(self):
-        return self._x
-
-    @x.setter
-    def x(self, value):
-        self._x = value
-        self._unset_properties()
-
-    @property
-    def y(self):
-        return self._y
-
-    @y.setter
-    def y(self, value):
-        self._y = value
-        self._unset_properties()
-
-    @property
-    def z(self):
-        return self._z
-
-    @z.setter
-    def z(self, value):
-        self._z = value
-        self._unset_properties()
+    def cross(self, other: 'Vector3') -> 'Vector3':
+        """
+        向量积 叉乘：V1 @ V2 -> V3
+        Args:
+            other:
+        Returns:
+            叉乘结果，为0向量则两向量平行，否则垂直于两向量
+        """
+        return Vector3(self.y * other.z - self.z * other.y,
+                       self.z * other.x - self.x * other.z,
+                       self.x * other.y - self.y * other.x)
 
     @property
     def length(self) -> float:
         """
         向量的模。
-        :return:
+        Returns:
+            模
         """
-        if self._length is None:
-            self._length = (self._x ** 2 + self._y ** 2 + self._z ** 2) ** 0.5
-        return self._length
+        return math.sqrt(self.x ** 2 + self.y ** 2 + self.z ** 2)
 
     @property
-    def normalized(self) -> 'Vector3':
+    def unit(self) -> 'Vector3':
         """
-        返回该向量的单位向量。
-        :return:
+        获取该向量的单位向量。
+        Returns:
+            单位向量
         """
-        if self._normalized is None:
-            self._normalized = self / self.length
-        return self._normalized
-
-    def normalize(self):
-        """
-        自体归一化。
-        """
-        self._x /= self.length
-        self._y /= self.length
-        self._z /= self.length
-        self._length = 1
-        self._normalized = self
+        return self / self.length
 
     @overload
     def __add__(self, other: 'Vector3') -> 'Vector3':
@@ -96,15 +81,27 @@ class Vector3:
         """
         V + P -> P\n
         V + V -> V
-        :param other:
-        :return:
+        Args:
+            other:
+        Returns:
+
         """
         if isinstance(other, Vector3):
-            return Vector3(self._x + other.x, self._y + other.y, self._z + other.z)
+            return Vector3(self.x + other.x, self.y + other.y, self.z + other.z)
         elif isinstance(other, Point3):
-            return Point3(self._x + other.x, self._y + other.y, self._z + other.z)
+            return Point3(self.x + other.x, self.y + other.y, self.z + other.z)
         else:
             raise TypeError(f"unsupported operand type(s) for +: 'Vector3' and '{type(other)}'")
+
+    def __eq__(self, other):
+        """
+        判断两个向量是否相等。
+        Args:
+            other:
+        Returns:
+            是否相等
+        """
+        return self.x == other.x and self.y == other.y and self.z == other.z
 
     def __radd__(self, other: 'Point3') -> 'Point3':
         """
@@ -113,7 +110,7 @@ class Vector3:
         :param other:
         :return:
         """
-        return Point3(self._x + other.x, self._y + other.y, self._z + other.z)
+        return Point3(self.x + other.x, self.y + other.y, self.z + other.z)
 
     @overload
     def __sub__(self, other: 'Vector3') -> 'Vector3':
@@ -127,25 +124,28 @@ class Vector3:
         """
         V - P -> P\n
         V - V -> V
-        :param other:
-        :return:
+        Args:
+            other:
+        Returns:
         """
         if isinstance(other, Vector3):
-            return Vector3(self._x - other.x, self._y - other.y, self._z - other.z)
+            return Vector3(self.x - other.x, self.y - other.y, self.z - other.z)
         elif isinstance(other, Point3):
-            return Point3(self._x - other.x, self._y - other.y, self._z - other.z)
+            return Point3(self.x - other.x, self.y - other.y, self.z - other.z)
         else:
             raise TypeError(f"unsupported operand type(s) for -: 'Vector3' and '{type(other)}'")
 
     def __rsub__(self, other: Point3):
         """
         P - V -> P
-        :param other:
-        :return:
+        Args:
+            other:
+        Returns:
+
         """
 
         if isinstance(other, Point3):
-            return Point3(other.x - self._x, other.y - self._y, other.z - self._z)
+            return Point3(other.x - self.x, other.y - self.y, other.z - self.z)
         else:
             raise TypeError(f"unsupported operand type(s) for -: '{type(other)}' and 'Vector3'")
 
@@ -159,34 +159,52 @@ class Vector3:
 
     def __mul__(self, other):
         """
-        乘法。包括点乘和数乘。
-        :param other:
-        :return:
+        点乘法。包括点乘和数乘。
+        V * V -> float\n
+        Args:
+            other:
+        Returns:
+            float
+        Raises:
+            TypeError: 不支持的类型
         """
         if isinstance(other, (int, float)):
-            return Vector3(self._x * other, self._y * other, self._z * other)
+            return Vector3(self.x * other, self.y * other, self.z * other)
         elif isinstance(other, Vector3):
-            return self._x * other.x + self._y * other.y + self._z * other.z
+            return self.x * other.x + self.y * other.y + self.z * other.z
         else:
             raise TypeError(f"unsupported operand type(s) for *: 'Vector3' and '{type(other)}'")
 
     def __rmul__(self, other: float) -> 'Vector3':
         """
         右乘。
-        :param other:
-        :return:
+        Args:
+            other:
+        Returns:
+            乘积
         """
-        return Vector3(self._x * other, self._y * other, self._z * other)
+        return Vector3(self.x * other, self.y * other, self.z * other)
 
     def __matmul__(self, other: 'Vector3') -> 'Vector3':
         """
-        叉乘。
-        :param other: 另一个向量
-        :return: 叉乘结果向量
+        向量积 叉乘：V1 @ V2 -> V3
+        Args:
+            other:
+        Returns:
+            叉乘结果，为0向量则两向量平行，否则垂直于两向量
         """
-        return Vector3(self._y * other.z - self._z * other.y,
-                       self._z * other.x - self._x * other.z,
-                       self._x * other.y - self._y * other.x)
+        return Vector3(self.y * other.z - self.z * other.y,
+                       self.z * other.x - self.x * other.z,
+                       self.x * other.y - self.y * other.x)
 
     def __truediv__(self, other: float) -> 'Vector3':
-        return Vector3(self._x / other, self._y / other, self._z / other)
+        return Vector3(self.x / other, self.y / other, self.z / other)
+
+    def __neg__(self):
+        return Vector3(-self.x, -self.y, -self.z)
+
+    def __repr__(self):
+        return f"Vector3({self.x}, {self.y}, {self.z})"
+
+    def __str__(self):
+        return f"Vector3({self.x}, {self.y}, {self.z})"

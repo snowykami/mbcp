@@ -44,6 +44,7 @@ class Point3:
         :param other:
         :return:
         """
+        from .vector import Vector3
         return Vector3(self.x - other.x, self.y - other.y, self.z - other.z)
 
     def __truediv__(self, other: float) -> "Point3":

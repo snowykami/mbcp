@@ -46,13 +46,15 @@ class CurveEquation:
 
 def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...], epsilon: Number = EPSILON) -> MultiVarsFunc:
     """
-    求N元函数一阶偏导函数。
+    求N元函数一阶偏导函数。这玩意不太稳定，慎用。
     Args:
         func: 函数
         var: 变量位置，可为整数(一阶偏导)或整数元组(高阶偏导)
         epsilon: 偏移量
     Returns:
         偏导函数
+    Raises:
+        ValueError: 无效变量类型
     """
     if isinstance(var, int):
         def partial_derivative_func(*args: Var) -> Var:
