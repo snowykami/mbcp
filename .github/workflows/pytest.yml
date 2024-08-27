@@ -24,14 +24,4 @@ jobs:
           
 
       - name: 运行测试
-        run: pytest
-
-      - name: 生成测试报告
-        run: |-
-          pytest --cov-report=xml
-
-      - name: 上传测试报告
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage
-
+        run: python -m pytest
