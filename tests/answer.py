@@ -8,16 +8,19 @@ Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved
 @File    : .answer.py
 @Software: PyCharm
 """
+from typing import Optional
+
 from liteyuki.log import logger  # type: ignore
 
 
-def output_answer(correct_ans, actual_ans, question: str = None):
+def output_ans(correct_ans, actual_ans, condition: Optional[bool] = None,question: Optional[str] = None):
     """
     输出答案
     Args:
         correct_ans:
         actual_ans:
-        question:
+        condition: 判对条件
+        question: 问题
 
     Returns:
 
@@ -25,8 +28,31 @@ def output_answer(correct_ans, actual_ans, question: str = None):
     print("")
     if question is not None:
         logger.info(f"问题：{question}")
-    r = correct_ans == actual_ans
+    r = (correct_ans == actual_ans) if condition is None else condition
     if r:
         logger.success(f"测试正确    正确答案：{correct_ans}    实际答案：{actual_ans}")
     else:
         logger.error(f"测试错误    正确答案：{correct_ans}    实际答案：{actual_ans}")
+        assert r
+
+
+def output_step_ans(correct_ans, actual_ans, condition: Optional[bool] = None, question: Optional[str] = None):
+    """
+    输出步骤答案
+    Args:
+        correct_ans: 正确答案
+        actual_ans: 实际答案
+        condition: 判对条件
+        question: 问题
+
+    Returns:
+
+    """
+    print("")
+    if question is not None:
+        logger.info(f"  步骤：{question}")
+    r = (correct_ans == actual_ans) if condition is None else condition
+    if r:
+        logger.success(f"  正确    正确：{correct_ans}    实际：{actual_ans}")
+    else:
+        logger.error(f"  错误    正确：{correct_ans}    实际：{actual_ans}")

@@ -7,10 +7,11 @@ from typing import TYPE_CHECKING, overload
 
 import numpy as np
 
+from .const import APPROX
 from .vector import Vector3, zero_vector3
 from .line import Line3
 from .point import Point3
-from .utils import sign
+from .utils import approx, sign
 
 if TYPE_CHECKING:
     from .angle import AnyAngle
@@ -30,6 +31,28 @@ class Plane3:
         self.b = b
         self.c = c
         self.d = d
+
+    def approx(self, other: 'Plane3', epsilon: float = APPROX) -> bool:
+        """
+        判断两个平面是否近似相等。
+        Args:
+            other:
+            epsilon:
+
+        Returns:
+            是否近似相等
+        """
+        if self.a != 0:
+            k = other.a / self.a
+            return approx(other.b, self.b * k) and approx(other.c, self.c * k) and approx(other.d, self.d * k)
+        elif self.b != 0:
+            k = other.b / self.b
+            return approx(other.a, self.a * k) and approx(other.c, self.c * k) and approx(other.d, self.d * k)
+        elif self.c != 0:
+            k = other.c / self.c
+            return approx(other.a, self.a * k) and approx(other.b, self.b * k) and approx(other.d, self.d * k)
+        else:
+            return False
 
     def cal_angle(self, other: 'Line3 | Plane3') -> 'AnyAngle':
         """
@@ -125,6 +148,16 @@ class Plane3:
             平面
         """
         return Plane3.from_point_and_normal(point, self.normal)
+
+    def is_parallel(self, other: 'Plane3') -> bool:
+        """
+        判断两个平面是否平行。
+        Args:
+            other: 另一个平面
+        Returns:
+            是否平行
+        """
+        return self.normal.is_parallel(other.normal)
 
     @property
     def normal(self) -> 'Vector3':
@@ -237,5 +270,10 @@ class Plane3:
         else:
             raise TypeError(f"unsupported operand type(s) for &: 'Plane3' and '{type(other)}'")
 
+    def __eq__(self, other) -> bool:
+        return self.approx(other)
+
     def __rand__(self, other: 'Line3') -> 'Point3':
         return self.cal_intersection_point3(other)
+
+

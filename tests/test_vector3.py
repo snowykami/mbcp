@@ -12,7 +12,7 @@ import logging
 
 from mbcp.mp_math.vector import Vector3
 
-from tests.answer import output_answer
+from tests.answer import output_ans
 
 
 class TestVector3:
@@ -41,7 +41,7 @@ class TestVector3:
         v1 = Vector3(1, 2, 3)
         v2 = Vector3(3, 6, 9)
         actual_ans = v1.is_parallel(v2)
-        output_answer(correct_ans, actual_ans)
+        output_ans(correct_ans, actual_ans)
         assert correct_ans == actual_ans
 
         """小题2"""
@@ -49,7 +49,7 @@ class TestVector3:
         v1 = Vector3(1, 2, 3)
         v2 = Vector3(3, 6, 8)
         actual_ans = v1.is_parallel(v2)
-        output_answer(correct_ans, actual_ans)
+        output_ans(correct_ans, actual_ans)
         assert correct_ans == actual_ans
 
 

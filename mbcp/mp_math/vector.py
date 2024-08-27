@@ -1,8 +1,12 @@
 import math
 from typing import overload, TYPE_CHECKING
 
+import numpy as np
+
+from .const import APPROX
 from .mp_math_typing import RealNumber
 from .point import Point3
+from .utils import approx
 
 if TYPE_CHECKING:
     from .angle import AnyAngle
@@ -21,6 +25,18 @@ class Vector3:
         self.y = y
         self.z = z
 
+    def approx(self, other: 'Vector3', epsilon: float = APPROX) -> bool:
+        """
+        判断两个向量是否近似相等。
+        Args:
+            other:
+            epsilon:
+
+        Returns:
+            是否近似相等
+        """
+        return all([abs(self.x - other.x) < epsilon, abs(self.y - other.y) < epsilon, abs(self.z - other.z) < epsilon])
+
     def cal_angle(self, other: 'Vector3') -> 'AnyAngle':
         """
         计算两个向量之间的夹角。
@@ -30,16 +46,6 @@ class Vector3:
             夹角
         """
         return AnyAngle(math.acos(self @ other / (self.length * other.length)), is_radian=True)
-
-    def is_parallel(self, other: 'Vector3') -> bool:
-        """
-        判断两个向量是否平行。
-        Args:
-            other: 另一个向量
-        Returns:
-            是否平行
-        """
-        return self.cross(other) == Vector3(0, 0, 0)
 
     def cross(self, other: 'Vector3') -> 'Vector3':
         """
@@ -61,6 +67,27 @@ class Vector3:
                        self.z * other.x - self.x * other.z,
                        self.x * other.y - self.y * other.x)
 
+    def is_approx_parallel(self, other: 'Vector3', epsilon: float = APPROX) -> bool:
+        """
+        判断两个向量是否近似平行。
+        Args:
+            other: 另一个向量
+            epsilon: 允许的误差
+        Returns:
+            是否近似平行
+        """
+        return self.cross(other).length < epsilon
+
+    def is_parallel(self, other: 'Vector3') -> bool:
+        """
+        判断两个向量是否平行。
+        Args:
+            other: 另一个向量
+        Returns:
+            是否平行
+        """
+        return self.cross(other).approx(zero_vector3)
+
     def normalize(self):
         """
         将向量归一化。
@@ -71,6 +98,15 @@ class Vector3:
         self.x /= length
         self.y /= length
         self.z /= length
+
+    @property
+    def np_array(self) -> 'np.ndarray':
+        """
+        返回numpy数组
+        Returns:
+        """
+
+        return np.array([self.x, self.y, self.z])
 
     @property
     def length(self) -> float:
@@ -89,6 +125,9 @@ class Vector3:
             单位向量
         """
         return self / self.length
+
+    def __abs__(self):
+        return self.length
 
     @overload
     def __add__(self, other: 'Vector3') -> 'Vector3':
@@ -122,7 +161,7 @@ class Vector3:
         Returns:
             是否相等
         """
-        return self.x == other.x and self.y == other.y and self.z == other.z
+        return approx(self.x, other.x) and approx(self.y, other.y) and approx(self.z, other.z)
 
     def __radd__(self, other: 'Point3') -> 'Point3':
         """
@@ -197,7 +236,7 @@ class Vector3:
     def __rmul__(self, other: 'RealNumber') -> 'Vector3':
         return self.__mul__(other)
 
-    def __matmul__(self, other: 'Vector3') -> float:
+    def __matmul__(self, other: 'Vector3') -> 'RealNumber':
         """
         点乘。
         Args:

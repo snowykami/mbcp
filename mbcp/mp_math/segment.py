@@ -23,68 +23,18 @@ class Segment3:
         :param p1:
         :param p2:
         """
-        self._start = p1
-        self._end = p2
+        self.p1 = p1
+        self.p2 = p2
 
         """方向向量"""
-        self._direction = self._end - self._start
+        self.direction = self.p2 - self.p1
         """长度"""
-        self._length = self._direction.length
+        self.length = self.direction.length
         """中心点"""
-        self._midpoint = (self._start + self._end) / 2
+        self.midpoint = Point3((self.p1.x + self.p2.x) / 2, (self.p1.y + self.p2.y) / 2, (self.p1.z + self.p2.z) / 2)
+
+    def __repr__(self):
+        return f"Segment3({self.p1}, {self.p2})"
 
     def __str__(self):
-        return f"Segment3({self._start}, {self._end})"
-
-    def _unset_properties(self):
-        self._length = None
-        self._direction = None
-        self._midpoint = None
-
-    @property
-    def start(self) -> "Point3":
-        return self._start
-
-    @start.setter
-    def start(self, value: "Point3"):
-        self._start = value
-        self._unset_properties()
-
-    @property
-    def end(self) -> "Point3":
-        return self._end
-
-    @end.setter
-    def end(self, value: "Point3"):
-        self._end = value
-        self._unset_properties()
-
-    @property
-    def length(self) -> float:
-        """
-        线段的长度。
-        :return:
-        """
-        if self._length is None:
-            self._length = (self._end - self._start).length
-        return self._length
-
-    @property
-    def direction(self) -> "Vector3":
-        """
-        线段的方向向量。
-        :return:
-        """
-        if self._direction is None:
-            self._direction = self._end - self._start
-        return self._direction
-
-    @property
-    def midpoint(self) -> "Point3":
-        """
-        线段的中点。
-        :return:
-        """
-        if self._midpoint is None:
-            self._midpoint = (self._start + self._end) / 2
-        return self._midpoint
+        return f"Segment3({self.p1} -> {self.p2})"

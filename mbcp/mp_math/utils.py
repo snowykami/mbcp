@@ -8,9 +8,16 @@ Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved
 @File    : utils.py
 @Software: PyCharm
 """
-from typing import overload
+from typing import overload, TYPE_CHECKING
 
-from mbcp.mp_math.mp_math_typing import RealNumber
+from .mp_math_typing import RealNumber
+from .const import APPROX
+
+if TYPE_CHECKING:
+    from .vector import Vector3
+    from .point import Point3
+    from .plane import Plane3
+    from .line import Line3
 
 
 def clamp(x: float, min_: float, max_: float) -> float:
@@ -27,24 +34,36 @@ def clamp(x: float, min_: float, max_: float) -> float:
     return max(min(x, max_), min_)
 
 
-class Approx(float):
+class Approx:
     """
-    用于近似比较浮点数的类。
-    """
-    epsilon = 0.001
-    """全局近似值。"""
+    用于近似比较对象
 
-    def __new__(cls, x: RealNumber):
-        return super().__new__(cls, x)
+    已实现对象 实数 Vector3 Point3 Plane3 Line3
+    """
+
+    def __init__(self, value: RealNumber):
+        self.value = value
 
     def __eq__(self, other):
-        return abs(self - other) < Approx.epsilon
+        if isinstance(self.value, (float, int)):
+            if isinstance(other, (float, int)):
+                return abs(self.value - other) < APPROX
+            else:
+                self.raise_type_error(other)
+        elif isinstance(self.value, Vector3):
+            if isinstance(other, (Vector3, Point3, Plane3, Line3)):
+                return all([approx(self.value.x, other.x), approx(self.value.y, other.y), approx(self.value.z, other.z)])
+            else:
+                self.raise_type_error(other)
+
+    def raise_type_error(self, other):
+        raise TypeError(f"Unsupported type: {type(self.value)} and {type(other)}")
 
     def __ne__(self, other):
         return not self.__eq__(other)
 
 
-def approx(x: float, y: float = 0.0, epsilon: float = 0.0001) -> bool:
+def approx(x: float, y: float = 0.0, epsilon: float = APPROX) -> bool:
     """
     判断两个数是否近似相等。或包装一个实数，用于判断是否近似于0。
     Args:

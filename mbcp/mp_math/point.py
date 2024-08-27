@@ -1,5 +1,8 @@
 from typing import TYPE_CHECKING, overload
 
+from .const import APPROX
+from .utils import approx
+
 if TYPE_CHECKING:
     from .vector import Vector3  # type: ignore
 
@@ -16,6 +19,18 @@ class Point3:
         self.x = x
         self.y = y
         self.z = z
+
+    def approx(self, other: "Point3", epsilon: float = APPROX) -> bool:
+        """
+        判断两个点是否近似相等。
+        Args:
+            other:
+            epsilon:
+
+        Returns:
+            是否近似相等
+        """
+        return all([abs(self.x - other.x) < epsilon, abs(self.y - other.y) < epsilon, abs(self.z - other.z) < epsilon])
 
     def __str__(self):
         return f"Point3({self.x}, {self.y}, {self.z})"
@@ -45,7 +60,7 @@ class Point3:
             other:
         Returns:
         """
-        return self.x == other.x and self.y == other.y and self.z == other.z
+        return approx(self.x, other.x) and approx(self.y, other.y) and approx(self.z, other.z)
 
     def __sub__(self, other: "Point3") -> "Vector3":
         """

@@ -8,8 +8,10 @@ Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved
 @File    : other.py
 @Software: PyCharm
 """
+import math
 from typing import TYPE_CHECKING
 
+from .const import APPROX
 from .mp_math_typing import OneSingleVarFunc, RealNumber
 from .utils import sign_format
 from .vector import Vector3
@@ -30,6 +32,17 @@ class Line3:
         self.point = point
         self.direction = direction
 
+    def approx(self, other: 'Line3', epsilon: float = APPROX) -> bool:
+        """
+        判断两条直线是否近似相等。
+        Args:
+            other: 另一条直线
+            epsilon: 误差
+        Returns:
+            是否近似相等
+        """
+        return self.is_approx_parallel(other, epsilon) and (self.point - other.point).is_approx_parallel(self.direction, epsilon)
+
     def cal_angle(self, other: 'Line3') -> 'AnyAngle':
         """
         计算直线和直线之间的夹角。
@@ -42,6 +55,28 @@ class Line3:
         """
         return self.direction.cal_angle(other.direction)
 
+    def cal_distance(self, other: 'Line3 | Point3') -> float:
+        """
+        计算直线和直线或点之间的距离。
+        Args:
+            other: 平行直线或点
+
+        Returns:
+            距离
+        Raises:
+            ValueError: 直线不平行
+            TypeError: 不支持的类型
+        """
+        if isinstance(other, Line3):
+            if self.is_parallel(other):
+                return (self.point - other.point).cross(self.direction).length / self.direction.length
+            else:
+                raise ValueError("Lines are not parallel.")
+        elif isinstance(other, Point3):
+            return (other - self.point).cross(self.direction).length / self.direction.length
+        else:
+            raise TypeError("Unsupported type.")
+
     def cal_intersection(self, other: 'Line3') -> 'Point3':
         """
         计算两条直线的交点。
@@ -49,12 +84,16 @@ class Line3:
             other: 另一条直线
         Returns:
             交点
+        Raises:
+            ValueError: 直线平行
+            ValueError: 直线不共面
         """
         if self.is_parallel(other):
             raise ValueError("Lines are parallel and do not intersect.")
         if not self.is_coplanar(other):
             raise ValueError("Lines are not coplanar and do not intersect.")
-        return self.point + self.direction.cross(other.direction)
+        return (self.point + (self.direction.cross(other.direction) @ other.direction.cross(self.point - other.point)) /
+                self.direction.cross(other.direction).length ** 2 * self.direction)
 
     def cal_perpendicular(self, point: 'Point3') -> 'Line3':
         """
@@ -86,6 +125,17 @@ class Line3:
                 lambda t: self.point.y + self.direction.y * t,
                 lambda t: self.point.z + self.direction.z * t)
 
+    def is_approx_parallel(self, other: 'Line3', epsilon: float = 1e-6) -> bool:
+        """
+        判断两条直线是否近似平行。
+        Args:
+            other: 另一条直线
+            epsilon: 误差
+        Returns:
+            是否近似平行
+        """
+        return self.direction.is_approx_parallel(other.direction, epsilon)
+
     def is_parallel(self, other: 'Line3') -> bool:
         """
         判断两条直线是否平行。
@@ -106,15 +156,26 @@ class Line3:
         """
         return self.is_parallel(other) and (self.point - other.point).is_parallel(self.direction)
 
+    def is_point_on(self, point: 'Point3') -> bool:
+        """
+        判断点是否在直线上。
+        Args:
+            point: 点
+        Returns:
+            是否在直线上
+        """
+        return (point - self.point).is_parallel(self.direction)
+
     def is_coplanar(self, other: 'Line3') -> bool:
         """
         判断两条直线是否共面。
+        充要条件：两直线方向向量的叉乘与两直线上任意一点的向量的点积为0。
         Args:
             other: 另一条直线
         Returns:
             是否共面
         """
-        return self.direction.cross(other.direction).is_parallel(self.direction)
+        return self.direction.cross(other.direction) @ (self.point - other.point) == 0
 
     def simplify(self):
         """
@@ -147,15 +208,20 @@ class Line3:
         direction = p2 - p1
         return cls(p1, direction)
 
-    def __and__(self, other: 'Line3') -> 'Point3':
+    def __and__(self, other: 'Line3') -> 'Line3 | Point3 | None':
         """
-        计算两条直线点集合的交集。交点
+        计算两条直线点集合的交集。重合线返回自身，平行线返回None，交线返回交点。
         Args:
             other: 另一条直线
         Returns:
             交点
         """
-        return self.cal_intersection(other)
+        if self.is_collinear(other):
+            return self
+        elif self.is_parallel(other) or not self.is_coplanar(other):
+            return None
+        else:
+            return self.cal_intersection(other)
 
     def __eq__(self, other) -> bool:
         """

@@ -8,6 +8,7 @@ Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved
 @File    : angle.py
 @Software: PyCharm
 """
+import math
 from typing import overload
 
 from .const import PI  # type: ignore
@@ -70,6 +71,60 @@ class AnyAngle:
             最大负角度
         """
         return AnyAngle(-self.radian % (2 * PI), is_radian=True)
+
+    @property
+    def sin(self) -> float:
+        """
+        正弦值。
+        Returns:
+            正弦值
+        """
+        return math.sin(self.radian)
+
+    @property
+    def cos(self) -> float:
+        """
+        余弦值。
+        Returns:
+            余弦值
+        """
+        return math.cos(self.radian)
+
+    @property
+    def tan(self) -> float:
+        """
+        正切值。
+        Returns:
+            正切值
+        """
+        return math.tan(self.radian)
+
+    @property
+    def cot(self) -> float:
+        """
+        余切值。
+        Returns:
+            余切值
+        """
+        return 1 / math.tan(self.radian)
+
+    @property
+    def sec(self) -> float:
+        """
+        正割值。
+        Returns:
+            正割值
+        """
+        return 1 / math.cos(self.radian)
+
+    @property
+    def csc(self) -> float:
+        """
+        余割值。
+        Returns:
+            余割值
+        """
+        return 1 / math.sin(self.radian)
 
     def __add__(self, other: 'AnyAngle') -> 'AnyAngle':
         return AnyAngle(self.radian + other.radian, is_radian=True)
