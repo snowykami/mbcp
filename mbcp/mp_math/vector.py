@@ -6,10 +6,11 @@ import numpy as np
 from .const import APPROX
 from .mp_math_typing import RealNumber
 from .point import Point3
+from .angle import AnyAngle
 from .utils import approx
 
-if TYPE_CHECKING:
-    from .angle import AnyAngle
+# if TYPE_CHECKING:
+#
 
 
 class Vector3:
@@ -50,6 +51,10 @@ class Vector3:
     def cross(self, other: 'Vector3') -> 'Vector3':
         """
         向量积 叉乘：v1 cross v2 -> v3
+
+        叉乘为0，则两向量平行。
+        其余结果的模为平行四边形的面积。
+
         返回如下行列式的结果：
 
         ``i  j  k``

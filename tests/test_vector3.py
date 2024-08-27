@@ -10,6 +10,8 @@ Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved
 """
 import logging
 
+from mbcp.mp_math.angle import AnyAngle
+from mbcp.mp_math.const import PI
 from mbcp.mp_math.vector import Vector3
 
 from tests.answer import output_ans
@@ -18,6 +20,26 @@ from tests.answer import output_ans
 class TestVector3:
 
     """测试问题集"""
+    def test_cal_angle(self):
+        """
+        测试计算两个向量的夹角
+        Returns:
+        """
+        """小题1"""
+        v1 = Vector3(0 ,1, 0)
+        v2 = Vector3(0, 0, 1)
+        correct_ans = AnyAngle(90)
+        actual_ans = v1.cal_angle(v2)
+        output_ans(correct_ans, actual_ans)
+
+        """小题2"""
+        v1 = Vector3(0, 1, 0)
+        v2 = Vector3(1, 1, 0)
+        correct_ans = AnyAngle(45)
+        actual_ans = v1.cal_angle(v2)
+        output_ans(correct_ans, actual_ans)
+
+
     def test_vector_cross_product(self):
         """
         测试向量叉乘

@@ -64,14 +64,23 @@ class Line3:
         Returns:
             距离
         Raises:
-            ValueError: 直线不平行
             TypeError: 不支持的类型
         """
         if isinstance(other, Line3):
-            if self.is_parallel(other):
-                return (self.point - other.point).cross(self.direction).length / self.direction.length
+            # 相交/重合 = 0；平行和异面需要计算距离
+            if self == other:
+                # 重合
+                return 0
+            elif self.is_parallel(other):
+                # 平行
+                return (other.point - self.point).cross(self.direction).length / self.direction.length
+            elif not self.is_coplanar(other):
+                # 异面
+                return abs(self.direction.cross(other.direction) @ (self.point - other.point) / self.direction.cross(other.direction).length)
             else:
-                raise ValueError("Lines are not parallel.")
+                # 相交
+                return 0
+
         elif isinstance(other, Point3):
             return (other - self.point).cross(self.direction).length / self.direction.length
         else:

@@ -12,6 +12,7 @@ import math
 from typing import overload
 
 from .const import PI  # type: ignore
+from .utils import approx
 
 
 class AnyAngle:
@@ -129,11 +130,20 @@ class AnyAngle:
     def __add__(self, other: 'AnyAngle') -> 'AnyAngle':
         return AnyAngle(self.radian + other.radian, is_radian=True)
 
+    def __eq__(self, other):
+        return approx(self.radian, other.radian)
+
     def __sub__(self, other: 'AnyAngle') -> 'AnyAngle':
         return AnyAngle(self.radian - other.radian, is_radian=True)
 
     def __mul__(self, other: float) -> 'AnyAngle':
         return AnyAngle(self.radian * other, is_radian=True)
+
+    def __repr__(self):
+        return f"AnyAngle({self.radian}, is_radian=True)"
+
+    def __str__(self):
+        return f"AnyAngle({self.degree}° or {self.radian} rad)"
 
     @overload
     def __truediv__(self, other: float) -> 'AnyAngle':
