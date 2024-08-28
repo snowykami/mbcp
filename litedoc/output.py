@@ -10,8 +10,8 @@ Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved
 """
 import os.path
 
-from liteyuki_autodoc.style.markdown import generate
-from liteyuki_autodoc.syntax.astparser import AstParser
+from litedoc.style.markdown import generate
+from litedoc.syntax.astparser import AstParser
 
 
 def write_to_file(content: str, output: str) -> None:

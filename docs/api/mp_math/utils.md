@@ -1,32 +1,36 @@
 ---
 title: mbcp.mp_math.utils
 ---
-### *def* `clamp() -> float`
+### *func* `clamp() -> float`
 
 
-区间截断函数。
+区间限定函数
 
-参数:
+**参数**:
 
-- x:   
+- x: 待限定的值  
 
-- min_:   
+- min_: 最小值  
 
-- max_:   
+- max_: 最大值  
+
+**返回**:
+
+- 限制后的值
 
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def clamp(x: float, min_: float, max_: float) -> float:
     """
-    区间截断函数。
+    区间限定函数
     Args:
-        x:
-        min_:
-        max_:
+        x: 待限定的值
+        min_: 最小值
+        max_: 最大值
 
     Returns:
         限制后的值
@@ -35,33 +39,36 @@ def clamp(x: float, min_: float, max_: float) -> float:
 ```
 </details>
 
-### *def* `approx(x: float = 0.0, y: float = APPROX) -> bool`
+### *func* `approx(x: float = 0.0, y: float = APPROX) -> bool`
 
 
 判断两个数是否近似相等。或包装一个实数，用于判断是否近似于0。
 
-参数:
+**参数**:
 
-- x:   
+- x: 数1  
 
-- y:   
+- y: 数2  
 
-- epsilon:   
+- epsilon: 误差  
+
+**返回**:
+
+- 是否近似相等
 
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def approx(x: float, y: float=0.0, epsilon: float=APPROX) -> bool:
     """
     判断两个数是否近似相等。或包装一个实数，用于判断是否近似于0。
     Args:
-        x:
-        y:
-        epsilon:
-
+        x: 数1
+        y: 数2
+        epsilon: 误差
     Returns:
         是否近似相等
     """
@@ -69,21 +76,25 @@ def approx(x: float, y: float=0.0, epsilon: float=APPROX) -> bool:
 ```
 </details>
 
-### *def* `sign(x: float = False) -> str`
+### *func* `sign(x: float = False) -> str`
 
 
 获取数的符号。
 
-参数:
+**参数**:
 
 - x: 数  
 
 - only_neg: 是否只返回负数的符号  
 
+**返回**:
+
+- 符号 + - ""
+
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def sign(x: float, only_neg: bool=False) -> str:
@@ -103,7 +114,7 @@ def sign(x: float, only_neg: bool=False) -> str:
 ```
 </details>
 
-### *def* `sign_format(x: float = False) -> str`
+### *func* `sign_format(x: float = False) -> str`
 
 
 格式化符号数
@@ -111,16 +122,20 @@ def sign(x: float, only_neg: bool=False) -> str:
 1 -> +1
 0 -> ""
 
-参数:
+**参数**:
 
 - x: 数  
 
 - only_neg: 是否只返回负数的符号  
 
+**返回**:
+
+- 符号 + - ""
+
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def sign_format(x: float, only_neg: bool=False) -> str:
@@ -143,13 +158,12 @@ def sign_format(x: float, only_neg: bool=False) -> str:
 ```
 </details>
 
-### ***class*** `Approx`
-
-### *def* `__init__(self, value: RealNumber)`
+### **class** `Approx`
+### *method* `__init__(self, value: RealNumber)`
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def __init__(self, value: RealNumber):
@@ -157,11 +171,11 @@ def __init__(self, value: RealNumber):
 ```
 </details>
 
-### *def* `__eq__(self, other)`
+### *method* `__eq__(self, other)`
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def __eq__(self, other):
@@ -178,11 +192,11 @@ def __eq__(self, other):
 ```
 </details>
 
-### *def* `raise_type_error(self, other)`
+### *method* `raise_type_error(self, other)`
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def raise_type_error(self, other):
@@ -190,11 +204,11 @@ def raise_type_error(self, other):
 ```
 </details>
 
-### *def* `__ne__(self, other)`
+### *method* `__ne__(self, other)`
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def __ne__(self, other):

@@ -1,14 +1,13 @@
 ---
 title: mbcp.mp_math.point
 ---
-### ***class*** `Point3`
-
-### *def* `__init__(self, x: float, y: float, z: float)`
+### **class** `Point3`
+### *method* `__init__(self, x: float, y: float, z: float)`
 
 
 笛卡尔坐标系中的点。
 
-参数:
+**参数**:
 
 - x: x 坐标  
 
@@ -19,7 +18,7 @@ title: mbcp.mp_math.point
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def __init__(self, x: float, y: float, z: float):
@@ -36,21 +35,25 @@ def __init__(self, x: float, y: float, z: float):
 ```
 </details>
 
-### *def* `approx(self, other: 'Point3', epsilon: float = APPROX) -> bool`
+### *method* `approx(self, other: Point3, epsilon: float = APPROX) -> bool`
 
 
 判断两个点是否近似相等。
 
-参数:
+**参数**:
 
 - other:   
 
 - epsilon:   
 
+**返回**:
+
+- 是否近似相等
+
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def approx(self, other: 'Point3', epsilon: float=APPROX) -> bool:
@@ -67,24 +70,12 @@ def approx(self, other: 'Point3', epsilon: float=APPROX) -> bool:
 ```
 </details>
 
-### *def* `__str__(self)`
-
-
-<details>
-<summary>源码</summary>
-
-```python
-def __str__(self):
-    return f'Point3({self.x}, {self.y}, {self.z})'
-```
-</details>
-
 ### `@overload`
-### *def* `__add__(self, other: 'Vector3') -> 'Point3'`
+### *method* `self + other: Vector3 => Point3`
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 @overload
@@ -94,11 +85,11 @@ def __add__(self, other: 'Vector3') -> 'Point3':
 </details>
 
 ### `@overload`
-### *def* `__add__(self, other: 'Point3') -> 'Point3'`
+### *method* `self + other: Point3 => Point3`
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 @overload
@@ -107,20 +98,20 @@ def __add__(self, other: 'Point3') -> 'Point3':
 ```
 </details>
 
-### *def* `__add__(self, other)`
+### *method* `self + other`
 
 
 P + V -> P
 P + P -> P
 
-参数:
+**参数**:
 
 - other:   
 
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def __add__(self, other):
@@ -135,19 +126,19 @@ def __add__(self, other):
 ```
 </details>
 
-### *def* `__eq__(self, other)`
+### *method* `__eq__(self, other)`
 
 
 判断两个点是否相等。
 
-参数:
+**参数**:
 
 - other:   
 
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def __eq__(self, other):
@@ -161,21 +152,21 @@ def __eq__(self, other):
 ```
 </details>
 
-### *def* `__sub__(self, other: 'Point3') -> 'Vector3'`
+### *method* `self - other: Point3 => Vector3`
 
 
 P - P -> V
 
 P - V -> P  已在 :class:`Vector3` 中实现
 
-参数:
+**参数**:
 
 - other:   
 
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def __sub__(self, other: 'Point3') -> 'Vector3':

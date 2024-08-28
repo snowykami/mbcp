@@ -1,24 +1,27 @@
 ---
 title: mbcp.presets.model
 ---
-### ***class*** `GeometricModels`
-
+### **class** `GeometricModels`
 ### `@staticmethod`
-### *def* `sphere(radius: float, density: float)`
+### *method* `sphere(radius: float, density: float)`
 
 
 生成球体上的点集。
 
-参数:
+**参数**:
 
 - radius:   
 
 - density:   
 
+**返回**:
+
+- List[Point3]: 球体上的点集。
+
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 @staticmethod

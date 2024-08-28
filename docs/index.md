@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: md-ex
+      link: guide/
     - theme: alt
       text: API文档
       link: api/

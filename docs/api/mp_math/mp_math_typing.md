@@ -1,37 +1,63 @@
 ---
 title: mbcp.mp_math.mp_math_typing
 ---
-### ***var*** `RealNumber: TypeAlias = int | float`
+### ***var*** `RealNumber = int | float`
 
-### ***var*** `Number: TypeAlias = RealNumber | complex`
+- **类型**: `TypeAlias`
 
-### ***var*** `SingleVar = TypeVar('SingleVar', bound=Number)`
+### ***var*** `Number = RealNumber | complex`
 
-### ***var*** `ArrayVar = TypeVar('ArrayVar', bound=Iterable[Number])`
+- **类型**: `TypeAlias`
 
-### ***var*** `Var: TypeAlias = SingleVar | ArrayVar`
+### ***var*** `Var = SingleVar | ArrayVar`
 
-### ***var*** `OneSingleVarFunc: TypeAlias = Callable[[SingleVar], SingleVar]`
+- **类型**: `TypeAlias`
 
-### ***var*** `OneArrayFunc: TypeAlias = Callable[[ArrayVar], ArrayVar]`
+### ***var*** `OneSingleVarFunc = Callable[[SingleVar], SingleVar]`
 
-### ***var*** `OneVarFunc: TypeAlias = OneSingleVarFunc | OneArrayFunc`
+- **类型**: `TypeAlias`
 
-### ***var*** `TwoSingleVarsFunc: TypeAlias = Callable[[SingleVar, SingleVar], SingleVar]`
+### ***var*** `OneArrayFunc = Callable[[ArrayVar], ArrayVar]`
 
-### ***var*** `TwoArraysFunc: TypeAlias = Callable[[ArrayVar, ArrayVar], ArrayVar]`
+- **类型**: `TypeAlias`
 
-### ***var*** `TwoVarsFunc: TypeAlias = TwoSingleVarsFunc | TwoArraysFunc`
+### ***var*** `OneVarFunc = OneSingleVarFunc | OneArrayFunc`
 
-### ***var*** `ThreeSingleVarsFunc: TypeAlias = Callable[[SingleVar, SingleVar, SingleVar], SingleVar]`
+- **类型**: `TypeAlias`
 
-### ***var*** `ThreeArraysFunc: TypeAlias = Callable[[ArrayVar, ArrayVar, ArrayVar], ArrayVar]`
+### ***var*** `TwoSingleVarsFunc = Callable[[SingleVar, SingleVar], SingleVar]`
 
-### ***var*** `ThreeVarsFunc: TypeAlias = ThreeSingleVarsFunc | ThreeArraysFunc`
+- **类型**: `TypeAlias`
 
-### ***var*** `MultiSingleVarsFunc: TypeAlias = Callable[..., SingleVar]`
+### ***var*** `TwoArraysFunc = Callable[[ArrayVar, ArrayVar], ArrayVar]`
 
-### ***var*** `MultiArraysFunc: TypeAlias = Callable[..., ArrayVar]`
+- **类型**: `TypeAlias`
 
-### ***var*** `MultiVarsFunc: TypeAlias = MultiSingleVarsFunc | MultiArraysFunc`
+### ***var*** `TwoVarsFunc = TwoSingleVarsFunc | TwoArraysFunc`
+
+- **类型**: `TypeAlias`
+
+### ***var*** `ThreeSingleVarsFunc = Callable[[SingleVar, SingleVar, SingleVar], SingleVar]`
+
+- **类型**: `TypeAlias`
+
+### ***var*** `ThreeArraysFunc = Callable[[ArrayVar, ArrayVar, ArrayVar], ArrayVar]`
+
+- **类型**: `TypeAlias`
+
+### ***var*** `ThreeVarsFunc = ThreeSingleVarsFunc | ThreeArraysFunc`
+
+- **类型**: `TypeAlias`
+
+### ***var*** `MultiSingleVarsFunc = Callable[..., SingleVar]`
+
+- **类型**: `TypeAlias`
+
+### ***var*** `MultiArraysFunc = Callable[..., ArrayVar]`
+
+- **类型**: `TypeAlias`
+
+### ***var*** `MultiVarsFunc = MultiSingleVarsFunc | MultiArraysFunc`
+
+- **类型**: `TypeAlias`
 

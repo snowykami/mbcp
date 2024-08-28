@@ -18,7 +18,7 @@ import argparse
 import os
 import sys
 
-from liteyuki_autodoc.output import generate_from_module
+from litedoc.output import generate_from_module
 
 
 def main():

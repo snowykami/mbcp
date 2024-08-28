@@ -1,12 +1,12 @@
 ---
 title: mbcp.mp_math.equation
 ---
-### *def* `get_partial_derivative_func(func: MultiVarsFunc = EPSILON) -> MultiVarsFunc`
+### *func* `get_partial_derivative_func(func: MultiVarsFunc = EPSILON) -> MultiVarsFunc`
 
 
 求N元函数一阶偏导函数。这玩意不太稳定，慎用。
 
-参数:
+**参数**:
 
 - func: 函数  
 
@@ -14,10 +14,18 @@ title: mbcp.mp_math.equation
 
 - epsilon: 偏移量  
 
+**返回**:
+
+- 偏导函数
+
+**引发**:
+
+- ValueError  无效变量类型
+
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...], epsilon: Number=EPSILON) -> MultiVarsFunc:
@@ -54,11 +62,11 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
 ```
 </details>
 
-### *def* `partial_derivative_func() -> Var`
+### *func* `partial_derivative_func() -> Var`
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def partial_derivative_func(*args: Var) -> Var:
@@ -70,11 +78,11 @@ def partial_derivative_func(*args: Var) -> Var:
 ```
 </details>
 
-### *def* `high_order_partial_derivative_func() -> Var`
+### *func* `high_order_partial_derivative_func() -> Var`
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def high_order_partial_derivative_func(*args: Var) -> Var:
@@ -85,14 +93,13 @@ def high_order_partial_derivative_func(*args: Var) -> Var:
 ```
 </details>
 
-### ***class*** `CurveEquation`
-
-### *def* `__init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc)`
+### **class** `CurveEquation`
+### *method* `__init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc)`
 
 
 曲线方程。
 
-参数:
+**参数**:
 
 - x_func: x函数  
 
@@ -103,7 +110,7 @@ def high_order_partial_derivative_func(*args: Var) -> Var:
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def __init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc):
@@ -120,12 +127,12 @@ def __init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc):
 ```
 </details>
 
-### *def* `__call__(self) -> Point3 | tuple[Point3, ...]`
+### *method* `__call__(self) -> Point3 | tuple[Point3, ...]`
 
 
 计算曲线上的点。
 
-参数:
+**参数**:
 
 - *t:   
 
@@ -134,7 +141,7 @@ def __init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc):
 
 
 <details>
-<summary>源码</summary>
+<summary> <i>源代码</i> </summary>
 
 ```python
 def __call__(self, *t: Var) -> Point3 | tuple[Point3, ...]:
@@ -152,18 +159,4 @@ def __call__(self, *t: Var) -> Point3 | tuple[Point3, ...]:
         return tuple([Point3(x, y, z) for x, y, z in zip(self.x_func(t), self.y_func(t), self.z_func(t))])
 ```
 </details>
-
-### *def* `__str__(self)`
-
-
-<details>
-<summary>源码</summary>
-
-```python
-def __str__(self):
-    return 'CurveEquation()'
-```
-</details>
-
-### ***var*** `result_func = get_partial_derivative_func(result_func, v, epsilon)`
 
