@@ -6,3 +6,9 @@
 .pdm-python
 pdm.lock
 .pdm-build/
+
+# node.js
+node_modules/
+
+docs/.vitepress/dist
+docs/.vitepress/cache
