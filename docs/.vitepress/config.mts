@@ -4,6 +4,16 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "MBCP docs",
   description: "MBCP library docs",
+  locales: {
+    root: {
+      label: '简体中文',
+      lang: 'zh-CN'
+    },
+    en: {
+        label: 'English',
+        lang: 'en-US'
+    }
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -22,7 +32,8 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/snowykami/mbcp' }
     ]
-  }
+  },
+  srcDir: '.'
 })

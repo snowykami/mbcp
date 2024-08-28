@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /guide
+      link: md-ex
     - theme: alt
-      text: API
-      link: api
+      text: API文档
+      link: api/
 
 features:
   - title: 高可用性

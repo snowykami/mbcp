@@ -301,7 +301,7 @@ def generate_docs(module_folder: str, output_dir: str, with_top: bool = False, l
     os.mkdir(output_dir)
 
     replace_data = {
-            "__init__": "indedx",
+            "__init__": "index",
             ".py"     : ".md",
     }
 
