@@ -1,4 +1,4 @@
-import {defineConfig, type DefaultTheme} from 'vitepress'
+import {defineConfig} from 'vitepress'
 
 export const common = defineConfig({
     title: "MBCP docs",
