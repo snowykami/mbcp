@@ -3,20 +3,20 @@ title: mbcp.presets.model
 ---
 ### ***class*** `GeometricModels`
 
-- #### `@staticmethod`
-- #### *def* `sphere(radius: float, density: float)`
+### `@staticmethod`
+### *def* `sphere(radius: float, density: float)`
 
 
 生成球体上的点集。
 
 参数:
 
-radius:   
+- radius:   
 
-density:   
+- density:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 

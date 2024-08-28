@@ -3,7 +3,7 @@ title: mbcp.mp_math.segment
 ---
 ### ***class*** `Segment3`
 
-- #### *def* `__init__(self, p1: 'Point3', p2: 'Point3')`
+### *def* `__init__(self, p1: 'Point3', p2: 'Point3')`
 
 
 三维空间中的线段。
@@ -11,7 +11,7 @@ title: mbcp.mp_math.segment
 :param p2:
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -33,9 +33,9 @@ def __init__(self, p1: 'Point3', p2: 'Point3'):
 ```
 </details>
 
-- #### *def* `__repr__(self)`
+### *def* `__repr__(self)`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -45,9 +45,9 @@ def __repr__(self):
 ```
 </details>
 
-- #### *def* `__str__(self)`
+### *def* `__str__(self)`
 
-- #
+
 <details>
 <summary>源码</summary>
 

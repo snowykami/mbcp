@@ -121,29 +121,29 @@ class Docstring(BaseModel):
 
         """
         PREFIX = "" * indent
-        if is_classmethod:
-            PREFIX = "  -"
         ret = ""
         ret += self.desc + "\n\n"
+        # print(self.reduction())
+        # print(self.desc, self.return_)
         if self.args:
             ret += PREFIX + f"{get_text(lang, 'docstring.args')}:\n\n"
             for arg in self.args:
-                ret += PREFIX + f"{arg.name}: {arg.type}  {arg.desc}\n\n"
+                ret += PREFIX + f"- {arg.name}: {arg.type}  {arg.desc}\n\n"
         if self.attrs:
             ret += PREFIX + f"{get_text(lang, 'docstring.attrs')}:\n\n"
             for attr in self.attrs:
-                ret += PREFIX + f"{attr.name}: {attr.type}  {attr.desc}\n\n"
-        if self.return_:
+                ret += PREFIX + f"- {attr.name}: {attr.type}  {attr.desc}\n\n"
+        if self.return_ is not None:
             ret += PREFIX + f"{get_text(lang, 'docstring.return')}:\n\n"
-            ret += PREFIX + f"{self.return_.desc}\n\n"
+            ret += PREFIX + f"- {self.return_.desc}\n\n"
         if self.raise_:
             ret += PREFIX + f"{get_text(lang, 'docstring.raises')}:\n\n"
             for exception in self.raise_:
-                ret += PREFIX + f"{exception.name}  {exception.desc}\n\n"
+                ret += PREFIX + f"- {exception.name}  {exception.desc}\n\n"
         if self.example:
             ret += PREFIX + f"{get_text(lang, 'docstring.example')}:\n\n"
             for example in self.example:
-                ret += PREFIX + f"{example.desc}\n        Input: {example.input}\n        Output: {example.output}\n\n"
+                ret += PREFIX + f"- {example.desc}\n        Input: {example.input}\n        Output: {example.output}\n\n"
         return ret
 
     def __str__(self):

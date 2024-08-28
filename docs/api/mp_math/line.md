@@ -3,19 +3,19 @@ title: mbcp.mp_math.line
 ---
 ### ***class*** `Line3`
 
-- #### *def* `__init__(self, point: 'Point3', direction: 'Vector3')`
+### *def* `__init__(self, point: 'Point3', direction: 'Vector3')`
 
 
 三维空间中的直线。由一个点和一个方向向量确定。
 
 参数:
 
-point: 直线上的一点  
+- point: 直线上的一点  
 
-direction: 直线的方向向量  
+- direction: 直线的方向向量  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -32,19 +32,19 @@ def __init__(self, point: 'Point3', direction: 'Vector3'):
 ```
 </details>
 
-- #### *def* `approx(self, other: 'Line3', epsilon: float = APPROX)`
+### *def* `approx(self, other: 'Line3', epsilon: float = APPROX) -> bool`
 
 
 判断两条直线是否近似相等。
 
 参数:
 
-other: 另一条直线  
+- other: 另一条直线  
 
-epsilon: 误差  
+- epsilon: 误差  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -62,17 +62,17 @@ def approx(self, other: 'Line3', epsilon: float=APPROX) -> bool:
 ```
 </details>
 
-- #### *def* `cal_angle(self, other: 'Line3')`
+### *def* `cal_angle(self, other: 'Line3') -> 'AnyAngle'`
 
 
 计算直线和直线之间的夹角。
 
 参数:
 
-other: 另一条直线  
+- other: 另一条直线  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -91,17 +91,17 @@ def cal_angle(self, other: 'Line3') -> 'AnyAngle':
 ```
 </details>
 
-- #### *def* `cal_distance(self, other: 'Line3 | Point3')`
+### *def* `cal_distance(self, other: 'Line3 | Point3') -> float`
 
 
 计算直线和直线或点之间的距离。
 
 参数:
 
-other: 平行直线或点  
+- other: 平行直线或点  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -133,17 +133,17 @@ def cal_distance(self, other: 'Line3 | Point3') -> float:
 ```
 </details>
 
-- #### *def* `cal_intersection(self, other: 'Line3')`
+### *def* `cal_intersection(self, other: 'Line3') -> 'Point3'`
 
 
 计算两条直线的交点。
 
 参数:
 
-other: 另一条直线  
+- other: 另一条直线  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -167,17 +167,17 @@ def cal_intersection(self, other: 'Line3') -> 'Point3':
 ```
 </details>
 
-- #### *def* `cal_perpendicular(self, point: 'Point3')`
+### *def* `cal_perpendicular(self, point: 'Point3') -> 'Line3'`
 
 
 计算直线经过指定点p的垂线。
 
 参数:
 
-point: 指定点  
+- point: 指定点  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -194,17 +194,17 @@ def cal_perpendicular(self, point: 'Point3') -> 'Line3':
 ```
 </details>
 
-- #### *def* `get_point(self, t: RealNumber)`
+### *def* `get_point(self, t: RealNumber) -> 'Point3'`
 
 
 获取直线上的点。同一条直线，但起始点和方向向量不同，则同一个t对应的点不同。
 
 参数:
 
-t: 参数t  
+- t: 参数t  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -221,17 +221,17 @@ def get_point(self, t: RealNumber) -> 'Point3':
 ```
 </details>
 
-- #### *def* `get_parametric_equations(self)`
+### *def* `get_parametric_equations(self) -> tuple[OneSingleVarFunc, OneSingleVarFunc, OneSingleVarFunc]`
 
 
 获取直线的参数方程。
 
 返回:
 
-x(t), y(t), z(t)
+- x(t), y(t), z(t)
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -246,19 +246,19 @@ def get_parametric_equations(self) -> tuple[OneSingleVarFunc, OneSingleVarFunc, 
 ```
 </details>
 
-- #### *def* `is_approx_parallel(self, other: 'Line3', epsilon: float = 1e-06)`
+### *def* `is_approx_parallel(self, other: 'Line3', epsilon: float = 1e-06) -> bool`
 
 
 判断两条直线是否近似平行。
 
 参数:
 
-other: 另一条直线  
+- other: 另一条直线  
 
-epsilon: 误差  
+- epsilon: 误差  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -276,17 +276,17 @@ def is_approx_parallel(self, other: 'Line3', epsilon: float=1e-06) -> bool:
 ```
 </details>
 
-- #### *def* `is_parallel(self, other: 'Line3')`
+### *def* `is_parallel(self, other: 'Line3') -> bool`
 
 
 判断两条直线是否平行。
 
 参数:
 
-other: 另一条直线  
+- other: 另一条直线  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -303,17 +303,17 @@ def is_parallel(self, other: 'Line3') -> bool:
 ```
 </details>
 
-- #### *def* `is_collinear(self, other: 'Line3')`
+### *def* `is_collinear(self, other: 'Line3') -> bool`
 
 
 判断两条直线是否共线。
 
 参数:
 
-other: 另一条直线  
+- other: 另一条直线  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -330,17 +330,17 @@ def is_collinear(self, other: 'Line3') -> bool:
 ```
 </details>
 
-- #### *def* `is_point_on(self, point: 'Point3')`
+### *def* `is_point_on(self, point: 'Point3') -> bool`
 
 
 判断点是否在直线上。
 
 参数:
 
-point: 点  
+- point: 点  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -357,7 +357,7 @@ def is_point_on(self, point: 'Point3') -> bool:
 ```
 </details>
 
-- #### *def* `is_coplanar(self, other: 'Line3')`
+### *def* `is_coplanar(self, other: 'Line3') -> bool`
 
 
 判断两条直线是否共面。
@@ -365,10 +365,10 @@ def is_point_on(self, point: 'Point3') -> bool:
 
 参数:
 
-other: 另一条直线  
+- other: 另一条直线  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -386,7 +386,7 @@ def is_coplanar(self, other: 'Line3') -> bool:
 ```
 </details>
 
-- #### *def* `simplify(self)`
+### *def* `simplify(self)`
 
 
 简化直线方程，等价相等。
@@ -395,7 +395,7 @@ def is_coplanar(self, other: 'Line3') -> bool:
 按照可行性一次对x y z 化 0 处理，并对向量单位化
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -417,20 +417,20 @@ def simplify(self):
 ```
 </details>
 
-- #### `@classmethod`
-- #### *def* `from_two_points(cls, p1: 'Point3', p2: 'Point3')`
+### `@classmethod`
+### *def* `from_two_points(cls, p1: 'Point3', p2: 'Point3') -> 'Line3'`
 
 
 工厂函数 由两点构造直线。
 
 参数:
 
-p1: 点1  
+- p1: 点1  
 
-p2: 点2  
+- p2: 点2  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -450,17 +450,17 @@ def from_two_points(cls, p1: 'Point3', p2: 'Point3') -> 'Line3':
 ```
 </details>
 
-- #### *def* `__and__(self, other: 'Line3')`
+### *def* `__and__(self, other: 'Line3') -> 'Line3 | Point3 | None'`
 
 
 计算两条直线点集合的交集。重合线返回自身，平行线返回None，交线返回交点。
 
 参数:
 
-other: 另一条直线  
+- other: 另一条直线  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -482,7 +482,7 @@ def __and__(self, other: 'Line3') -> 'Line3 | Point3 | None':
 ```
 </details>
 
-- #### *def* `__eq__(self, other)`
+### *def* `__eq__(self, other) -> bool`
 
 
 判断两条直线是否等价。
@@ -491,10 +491,10 @@ v1 // v2 ∧ (p1 - p2) // v1
 
 参数:
 
-other:   
+- other:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -514,13 +514,13 @@ def __eq__(self, other) -> bool:
 ```
 </details>
 
-- #### *def* `__str__(self)`
+### *def* `__str__(self)`
 
 
 
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -542,9 +542,9 @@ def __str__(self):
 ```
 </details>
 
-- #### *def* `__repr__(self)`
+### *def* `__repr__(self)`
 
-- #
+
 <details>
 <summary>源码</summary>
 

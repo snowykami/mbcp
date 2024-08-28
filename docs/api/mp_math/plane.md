@@ -1,45 +1,25 @@
 ---
 title: mbcp.mp_math.plane
 ---
-### ***var*** `k = other.a / self.a`
-
-### ***var*** `A = np.array([[self.b, self.c], [other.b, other.c]])`
-
-### ***var*** `B = np.array([-self.d, -other.d])`
-
-### ***var*** `v2 = l2.get_point(1) - l1.point`
-
-### ***var*** `k = other.b / self.b`
-
-### ***var*** `A = np.array([[self.a, self.c], [other.a, other.c]])`
-
-### ***var*** `B = np.array([-self.d, -other.d])`
-
-### ***var*** `k = other.c / self.c`
-
-### ***var*** `A = np.array([[self.a, self.b], [other.a, other.b]])`
-
-### ***var*** `B = np.array([-self.d, -other.d])`
-
 ### ***class*** `Plane3`
 
-- #### *def* `__init__(self, a: float, b: float, c: float, d: float)`
+### *def* `__init__(self, a: float, b: float, c: float, d: float)`
 
 
 平面方程：ax + by + cz + d = 0
 
 参数:
 
-a:   
+- a:   
 
-b:   
+- b:   
 
-c:   
+- c:   
 
-d:   
+- d:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -60,17 +40,17 @@ def __init__(self, a: float, b: float, c: float, d: float):
 ```
 </details>
 
-- #### *def* `approx(self, other: 'Plane3')`
+### *def* `approx(self, other: 'Plane3') -> bool`
 
 
 判断两个平面是否近似相等。
 
 参数:
 
-other:   
+- other:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -84,6 +64,7 @@ def approx(self, other: 'Plane3') -> bool:
         Returns:
             是否近似相等
         """
+    a = 3
     if self.a != 0:
         k = other.a / self.a
         return approx(other.b, self.b * k) and approx(other.c, self.c * k) and approx(other.d, self.d * k)
@@ -98,17 +79,17 @@ def approx(self, other: 'Plane3') -> bool:
 ```
 </details>
 
-- #### *def* `cal_angle(self, other: 'Line3 | Plane3')`
+### *def* `cal_angle(self, other: 'Line3 | Plane3') -> 'AnyAngle'`
 
 
 计算平面与平面之间的夹角。
 
 参数:
 
-other: 另一个平面  
+- other: 另一个平面  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -132,17 +113,17 @@ def cal_angle(self, other: 'Line3 | Plane3') -> 'AnyAngle':
 ```
 </details>
 
-- #### *def* `cal_distance(self, other: 'Plane3 | Point3')`
+### *def* `cal_distance(self, other: 'Plane3 | Point3') -> float`
 
 
 计算平面与平面或点之间的距离。
 
 参数:
 
-other: 另一个平面或点  
+- other: 另一个平面或点  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -166,17 +147,17 @@ def cal_distance(self, other: 'Plane3 | Point3') -> float:
 ```
 </details>
 
-- #### *def* `cal_intersection_line3(self, other: 'Plane3')`
+### *def* `cal_intersection_line3(self, other: 'Plane3') -> 'Line3'`
 
 
 计算两平面的交线。该方法有问题，待修复。
 
 参数:
 
-other: 另一个平面  
+- other: 另一个平面  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -210,17 +191,17 @@ def cal_intersection_line3(self, other: 'Plane3') -> 'Line3':
 ```
 </details>
 
-- #### *def* `cal_intersection_point3(self, other: 'Line3')`
+### *def* `cal_intersection_point3(self, other: 'Line3') -> 'Point3'`
 
 
 计算平面与直线的交点。
 
 参数:
 
-other: 不与平面平行或在平面上的直线  
+- other: 不与平面平行或在平面上的直线  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -243,17 +224,17 @@ def cal_intersection_point3(self, other: 'Line3') -> 'Point3':
 ```
 </details>
 
-- #### *def* `cal_parallel_plane3(self, point: 'Point3')`
+### *def* `cal_parallel_plane3(self, point: 'Point3') -> 'Plane3'`
 
 
 计算平行于该平面且过指定点的平面。
 
 参数:
 
-point: 指定点  
+- point: 指定点  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -270,17 +251,17 @@ def cal_parallel_plane3(self, point: 'Point3') -> 'Plane3':
 ```
 </details>
 
-- #### *def* `is_parallel(self, other: 'Plane3')`
+### *def* `is_parallel(self, other: 'Plane3') -> bool`
 
 
 判断两个平面是否平行。
 
 参数:
 
-other: 另一个平面  
+- other: 另一个平面  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -297,18 +278,18 @@ def is_parallel(self, other: 'Plane3') -> bool:
 ```
 </details>
 
-- #### `@property`
-- #### *def* `normal(self)`
+### `@property`
+### *def* `normal(self) -> 'Vector3'`
 
 
 平面的法向量。
 
 返回:
 
-法向量
+- 法向量
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -324,20 +305,20 @@ def normal(self) -> 'Vector3':
 ```
 </details>
 
-- #### `@classmethod`
-- #### *def* `from_point_and_normal(cls, point: 'Point3', normal: 'Vector3')`
+### `@classmethod`
+### *def* `from_point_and_normal(cls, point: 'Point3', normal: 'Vector3') -> 'Plane3'`
 
 
 工厂函数 由点和法向量构造平面(点法式构造)。
 
 参数:
 
-point: 平面上的一点  
+- point: 平面上的一点  
 
-normal: 法向量  
+- normal: 法向量  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -358,22 +339,22 @@ def from_point_and_normal(cls, point: 'Point3', normal: 'Vector3') -> 'Plane3':
 ```
 </details>
 
-- #### `@classmethod`
-- #### *def* `from_three_points(cls, p1: 'Point3', p2: 'Point3', p3: 'Point3')`
+### `@classmethod`
+### *def* `from_three_points(cls, p1: 'Point3', p2: 'Point3', p3: 'Point3') -> 'Plane3'`
 
 
 工厂函数 由三点构造平面。
 
 参数:
 
-p1: 点1  
+- p1: 点1  
 
-p2: 点2  
+- p2: 点2  
 
-p3: 点3  
+- p3: 点3  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -396,20 +377,20 @@ def from_three_points(cls, p1: 'Point3', p2: 'Point3', p3: 'Point3') -> 'Plane3'
 ```
 </details>
 
-- #### `@classmethod`
-- #### *def* `from_two_lines(cls, l1: 'Line3', l2: 'Line3')`
+### `@classmethod`
+### *def* `from_two_lines(cls, l1: 'Line3', l2: 'Line3') -> 'Plane3'`
 
 
 工厂函数 由两直线构造平面。
 
 参数:
 
-l1: 直线1  
+- l1: 直线1  
 
-l2: 直线2  
+- l2: 直线2  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -432,20 +413,20 @@ def from_two_lines(cls, l1: 'Line3', l2: 'Line3') -> 'Plane3':
 ```
 </details>
 
-- #### `@classmethod`
-- #### *def* `from_point_and_line(cls, point: 'Point3', line: 'Line3')`
+### `@classmethod`
+### *def* `from_point_and_line(cls, point: 'Point3', line: 'Line3') -> 'Plane3'`
 
 
 工厂函数 由点和直线构造平面。
 
 参数:
 
-point: 面上一点  
+- point: 面上一点  
 
-line: 面上直线，不包含点  
+- line: 面上直线，不包含点  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -464,9 +445,9 @@ def from_point_and_line(cls, point: 'Point3', line: 'Line3') -> 'Plane3':
 ```
 </details>
 
-- #### *def* `__repr__(self)`
+### *def* `__repr__(self)`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -476,9 +457,9 @@ def __repr__(self):
 ```
 </details>
 
-- #### *def* `__str__(self)`
+### *def* `__str__(self)`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -497,10 +478,10 @@ def __str__(self):
 ```
 </details>
 
-- #### `@overload`
-- #### *def* `__and__(self, other: 'Line3')`
+### `@overload`
+### *def* `__and__(self, other: 'Line3') -> 'Point3 | None'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -511,10 +492,10 @@ def __and__(self, other: 'Line3') -> 'Point3 | None':
 ```
 </details>
 
-- #### `@overload`
-- #### *def* `__and__(self, other: 'Plane3')`
+### `@overload`
+### *def* `__and__(self, other: 'Plane3') -> 'Line3 | None'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -525,17 +506,17 @@ def __and__(self, other: 'Plane3') -> 'Line3 | None':
 ```
 </details>
 
-- #### *def* `__and__(self, other)`
+### *def* `__and__(self, other)`
 
 
 取两平面的交集（人话：交线）
 
 参数:
 
-other:   
+- other:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -561,9 +542,9 @@ def __and__(self, other):
 ```
 </details>
 
-- #### *def* `__eq__(self, other)`
+### *def* `__eq__(self, other) -> bool`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -573,9 +554,9 @@ def __eq__(self, other) -> bool:
 ```
 </details>
 
-- #### *def* `__rand__(self, other: 'Line3')`
+### *def* `__rand__(self, other: 'Line3') -> 'Point3'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -584,4 +565,24 @@ def __rand__(self, other: 'Line3') -> 'Point3':
     return self.cal_intersection_point3(other)
 ```
 </details>
+
+### ***var*** `k = other.a / self.a`
+
+### ***var*** `A = np.array([[self.b, self.c], [other.b, other.c]])`
+
+### ***var*** `B = np.array([-self.d, -other.d])`
+
+### ***var*** `v2 = l2.get_point(1) - l1.point`
+
+### ***var*** `k = other.b / self.b`
+
+### ***var*** `A = np.array([[self.a, self.c], [other.a, other.c]])`
+
+### ***var*** `B = np.array([-self.d, -other.d])`
+
+### ***var*** `k = other.c / self.c`
+
+### ***var*** `A = np.array([[self.a, self.b], [other.a, other.b]])`
+
+### ***var*** `B = np.array([-self.d, -other.d])`
 

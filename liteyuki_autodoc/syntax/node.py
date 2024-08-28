@@ -119,7 +119,7 @@ class FunctionNode(BaseModel):
     kw_defaults: list[ConstantNode] = []
     defaults: list[ConstantNode] = []
 
-    return_: str = Field(TypeHint.NO_RETURN, alias="return")
+    return_: str = TypeHint.NO_RETURN
     decorators: list[str] = []
     src: str
     is_async: bool = False
@@ -153,8 +153,8 @@ class FunctionNode(BaseModel):
         """
         self.complete_default_args()
         PREFIX = "" * indent
-        if is_classmethod:
-            PREFIX = "- #"
+        # if is_classmethod:
+        #     PREFIX = "- #"
 
         md = ""
 
@@ -211,11 +211,14 @@ class FunctionNode(BaseModel):
 
         md += ", ".join(args) + ")"
 
+        if self.return_ != TypeHint.NO_RETURN:
+            md += f" -> {self.return_}"
+
         md += "`\n\n"  # code end
 
         """此处预留docstring"""
         if self.docs is not None:
-            md += f"\n{self.docs.markdown(lang, indent)}\n"
+            md += f"\n{self.docs.markdown(lang, indent, is_classmethod)}\n"
         else:
             pass
         # 源码展示

@@ -1,20 +1,18 @@
 ---
 title: mbcp.mp_math.equation
 ---
-### ***var*** `result_func = get_partial_derivative_func(result_func, v, epsilon)`
-
-### *def* `get_partial_derivative_func(func: MultiVarsFunc = EPSILON)`
+### *def* `get_partial_derivative_func(func: MultiVarsFunc = EPSILON) -> MultiVarsFunc`
 
 
 求N元函数一阶偏导函数。这玩意不太稳定，慎用。
 
 参数:
 
-func: 函数  
+- func: 函数  
 
-var: 变量位置，可为整数(一阶偏导)或整数元组(高阶偏导)  
+- var: 变量位置，可为整数(一阶偏导)或整数元组(高阶偏导)  
 
-epsilon: 偏移量  
+- epsilon: 偏移量  
 
 
 
@@ -56,7 +54,7 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
 ```
 </details>
 
-### *def* `partial_derivative_func()`
+### *def* `partial_derivative_func() -> Var`
 
 
 <details>
@@ -72,7 +70,7 @@ def partial_derivative_func(*args: Var) -> Var:
 ```
 </details>
 
-### *def* `high_order_partial_derivative_func()`
+### *def* `high_order_partial_derivative_func() -> Var`
 
 
 <details>
@@ -89,21 +87,21 @@ def high_order_partial_derivative_func(*args: Var) -> Var:
 
 ### ***class*** `CurveEquation`
 
-- #### *def* `__init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc)`
+### *def* `__init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc)`
 
 
 曲线方程。
 
 参数:
 
-x_func: x函数  
+- x_func: x函数  
 
-y_func: y函数  
+- y_func: y函数  
 
-z_func: z函数  
+- z_func: z函数  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -122,19 +120,19 @@ def __init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc):
 ```
 </details>
 
-- #### *def* `__call__(self)`
+### *def* `__call__(self) -> Point3 | tuple[Point3, ...]`
 
 
 计算曲线上的点。
 
 参数:
 
-*t:   
+- *t:   
 
-参数:   
+- 参数:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -155,9 +153,9 @@ def __call__(self, *t: Var) -> Point3 | tuple[Point3, ...]:
 ```
 </details>
 
-- #### *def* `__str__(self)`
+### *def* `__str__(self)`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -166,4 +164,6 @@ def __str__(self):
     return 'CurveEquation()'
 ```
 </details>
+
+### ***var*** `result_func = get_partial_derivative_func(result_func, v, epsilon)`
 

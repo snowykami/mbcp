@@ -139,18 +139,18 @@ class AstParser:
                             )
                             for default in node.args.defaults
                     ],
-                    return_=ast.unparse(node.returns).strip() if node.returns else TypeHint.NO_TYPEHINT,
+                    return_=ast.unparse(node.returns).strip() if node.returns else TypeHint.NO_RETURN,
                     decorators=[ast.unparse(decorator).strip() for decorator in node.decorator_list],
                     is_async=isinstance(node, ast.AsyncFunctionDef),
                     src=ast.unparse(node).strip()
                 ))
 
             elif isinstance(node, (ast.Assign, ast.AnnAssign)):
-                if not self._is_module_level_variable(node):
+                if not self._is_module_level_variable2(node):
                     # print("变量不在模块级别", ast.unparse(node))
                     continue
                 else:
-                    print("变量在模块级别", ast.unparse(node))
+                    pass
                 if isinstance(node, ast.Assign):
                     for target in node.targets:
                         if isinstance(target, ast.Name):
@@ -180,7 +180,39 @@ class AstParser:
                     return False
         return True
 
-    def _is_module_level_variable(self, node: ast.Assign):
+    def _is_module_level_variable(self, node: ast.Assign | ast.AnnAssign):
+        """在类方法或函数内部的变量不会被记录"""
+
+        # for parent in ast.walk(self.tree):
+        #     if isinstance(parent, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+        #         if node in parent.body:
+        #             return False
+        #         else:
+        #             for sub_node in parent.body:
+        #                 if isinstance(sub_node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+        #                     if node in sub_node.body:
+        #                         return False
+        # return True
+        # 递归检查
+        def _check(_node, _parent):
+            if isinstance(_parent, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+                if _node in _parent.body:
+                    return False
+                else:
+                    for sub_node in _parent.body:
+                        if isinstance(sub_node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                            return _check(_node, sub_node)
+            return True
+
+        for parent in ast.walk(self.tree):
+            if not _check(node, parent):
+                return False
+        return True
+
+    def _is_module_level_variable2(self, node: ast.Assign | ast.AnnAssign) -> bool:
+        """
+        检查变量是否在模块级别定义。
+        """
         for parent in ast.walk(self.tree):
             if isinstance(parent, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
                 if node in parent.body:

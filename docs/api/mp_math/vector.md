@@ -1,31 +1,23 @@
 ---
 title: mbcp.mp_math.vector
 ---
-### ***var*** `zero_vector3 = Vector3(0, 0, 0)`
-
-### ***var*** `x_axis = Vector3(1, 0, 0)`
-
-### ***var*** `y_axis = Vector3(0, 1, 0)`
-
-### ***var*** `z_axis = Vector3(0, 0, 1)`
-
 ### ***class*** `Vector3`
 
-- #### *def* `__init__(self, x: float, y: float, z: float)`
+### *def* `__init__(self, x: float, y: float, z: float)`
 
 
 3维向量
 
 参数:
 
-x: x轴分量  
+- x: x轴分量  
 
-y: y轴分量  
+- y: y轴分量  
 
-z: z轴分量  
+- z: z轴分量  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -44,19 +36,19 @@ def __init__(self, x: float, y: float, z: float):
 ```
 </details>
 
-- #### *def* `approx(self, other: 'Vector3', epsilon: float = APPROX)`
+### *def* `approx(self, other: 'Vector3', epsilon: float = APPROX) -> bool`
 
 
 判断两个向量是否近似相等。
 
 参数:
 
-other:   
+- other:   
 
-epsilon:   
+- epsilon:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -75,17 +67,17 @@ def approx(self, other: 'Vector3', epsilon: float=APPROX) -> bool:
 ```
 </details>
 
-- #### *def* `cal_angle(self, other: 'Vector3')`
+### *def* `cal_angle(self, other: 'Vector3') -> 'AnyAngle'`
 
 
 计算两个向量之间的夹角。
 
 参数:
 
-other: 另一个向量  
+- other: 另一个向量  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -102,7 +94,7 @@ def cal_angle(self, other: 'Vector3') -> 'AnyAngle':
 ```
 </details>
 
-- #### *def* `cross(self, other: 'Vector3')`
+### *def* `cross(self, other: 'Vector3') -> 'Vector3'`
 
 
 向量积 叉乘：v1 cross v2 -> v3
@@ -112,7 +104,7 @@ def cal_angle(self, other: 'Vector3') -> 'AnyAngle':
 
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -141,19 +133,19 @@ def cross(self, other: 'Vector3') -> 'Vector3':
 ```
 </details>
 
-- #### *def* `is_approx_parallel(self, other: 'Vector3', epsilon: float = APPROX)`
+### *def* `is_approx_parallel(self, other: 'Vector3', epsilon: float = APPROX) -> bool`
 
 
 判断两个向量是否近似平行。
 
 参数:
 
-other: 另一个向量  
+- other: 另一个向量  
 
-epsilon: 允许的误差  
+- epsilon: 允许的误差  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -171,17 +163,17 @@ def is_approx_parallel(self, other: 'Vector3', epsilon: float=APPROX) -> bool:
 ```
 </details>
 
-- #### *def* `is_parallel(self, other: 'Vector3')`
+### *def* `is_parallel(self, other: 'Vector3') -> bool`
 
 
 判断两个向量是否平行。
 
 参数:
 
-other: 另一个向量  
+- other: 另一个向量  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -198,7 +190,7 @@ def is_parallel(self, other: 'Vector3') -> bool:
 ```
 </details>
 
-- #### *def* `normalize(self)`
+### *def* `normalize(self)`
 
 
 将向量归一化。
@@ -206,7 +198,7 @@ def is_parallel(self, other: 'Vector3') -> bool:
 自体归一化，不返回值。
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -224,14 +216,14 @@ def normalize(self):
 ```
 </details>
 
-- #### `@property`
-- #### *def* `np_array(self)`
+### `@property`
+### *def* `np_array(self) -> 'np.ndarray'`
 
 
 
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -246,18 +238,18 @@ def np_array(self) -> 'np.ndarray':
 ```
 </details>
 
-- #### `@property`
-- #### *def* `length(self)`
+### `@property`
+### *def* `length(self) -> float`
 
 
 向量的模。
 
 返回:
 
-模
+- 模
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -273,18 +265,18 @@ def length(self) -> float:
 ```
 </details>
 
-- #### `@property`
-- #### *def* `unit(self)`
+### `@property`
+### *def* `unit(self) -> 'Vector3'`
 
 
 获取该向量的单位向量。
 
 返回:
 
-单位向量
+- 单位向量
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -300,9 +292,9 @@ def unit(self) -> 'Vector3':
 ```
 </details>
 
-- #### *def* `__abs__(self)`
+### *def* `__abs__(self)`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -312,10 +304,10 @@ def __abs__(self):
 ```
 </details>
 
-- #### `@overload`
-- #### *def* `__add__(self, other: 'Vector3')`
+### `@overload`
+### *def* `__add__(self, other: 'Vector3') -> 'Vector3'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -326,10 +318,10 @@ def __add__(self, other: 'Vector3') -> 'Vector3':
 ```
 </details>
 
-- #### `@overload`
-- #### *def* `__add__(self, other: 'Point3')`
+### `@overload`
+### *def* `__add__(self, other: 'Point3') -> 'Point3'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -340,7 +332,7 @@ def __add__(self, other: 'Point3') -> 'Point3':
 ```
 </details>
 
-- #### *def* `__add__(self, other)`
+### *def* `__add__(self, other)`
 
 
 V + P -> P
@@ -349,10 +341,10 @@ V + V -> V
 
 参数:
 
-other:   
+- other:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -376,17 +368,17 @@ def __add__(self, other):
 ```
 </details>
 
-- #### *def* `__eq__(self, other)`
+### *def* `__eq__(self, other)`
 
 
 判断两个向量是否相等。
 
 参数:
 
-other:   
+- other:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -403,7 +395,7 @@ def __eq__(self, other):
 ```
 </details>
 
-- #### *def* `__radd__(self, other: 'Point3')`
+### *def* `__radd__(self, other: 'Point3') -> 'Point3'`
 
 
 P + V -> P
@@ -413,7 +405,7 @@ P + V -> P
 :return:
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -430,10 +422,10 @@ def __radd__(self, other: 'Point3') -> 'Point3':
 ```
 </details>
 
-- #### `@overload`
-- #### *def* `__sub__(self, other: 'Vector3')`
+### `@overload`
+### *def* `__sub__(self, other: 'Vector3') -> 'Vector3'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -444,10 +436,10 @@ def __sub__(self, other: 'Vector3') -> 'Vector3':
 ```
 </details>
 
-- #### `@overload`
-- #### *def* `__sub__(self, other: 'Point3')`
+### `@overload`
+### *def* `__sub__(self, other: 'Point3') -> 'Point3'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -458,7 +450,7 @@ def __sub__(self, other: 'Point3') -> 'Point3':
 ```
 </details>
 
-- #### *def* `__sub__(self, other)`
+### *def* `__sub__(self, other)`
 
 
 V - P -> P
@@ -467,10 +459,10 @@ V - V -> V
 
 参数:
 
-other:   
+- other:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -493,17 +485,17 @@ def __sub__(self, other):
 ```
 </details>
 
-- #### *def* `__rsub__(self, other: 'Point3')`
+### *def* `__rsub__(self, other: 'Point3')`
 
 
 P - V -> P
 
 参数:
 
-other:   
+- other:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -523,10 +515,10 @@ def __rsub__(self, other: 'Point3'):
 ```
 </details>
 
-- #### `@overload`
-- #### *def* `__mul__(self, other: 'Vector3')`
+### `@overload`
+### *def* `__mul__(self, other: 'Vector3') -> 'Vector3'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -537,10 +529,10 @@ def __mul__(self, other: 'Vector3') -> 'Vector3':
 ```
 </details>
 
-- #### `@overload`
-- #### *def* `__mul__(self, other: RealNumber)`
+### `@overload`
+### *def* `__mul__(self, other: RealNumber) -> 'Vector3'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -551,17 +543,17 @@ def __mul__(self, other: RealNumber) -> 'Vector3':
 ```
 </details>
 
-- #### *def* `__mul__(self, other: 'int | float | Vector3')`
+### *def* `__mul__(self, other: 'int | float | Vector3') -> 'Vector3'`
 
 
 数组运算 非点乘。点乘使用@，叉乘使用cross。
 
 参数:
 
-other:   
+- other:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -583,9 +575,9 @@ def __mul__(self, other: 'int | float | Vector3') -> 'Vector3':
 ```
 </details>
 
-- #### *def* `__rmul__(self, other: 'RealNumber')`
+### *def* `__rmul__(self, other: 'RealNumber') -> 'Vector3'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -595,17 +587,17 @@ def __rmul__(self, other: 'RealNumber') -> 'Vector3':
 ```
 </details>
 
-- #### *def* `__matmul__(self, other: 'Vector3')`
+### *def* `__matmul__(self, other: 'Vector3') -> 'RealNumber'`
 
 
 点乘。
 
 参数:
 
-other:   
+- other:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -621,9 +613,9 @@ def __matmul__(self, other: 'Vector3') -> 'RealNumber':
 ```
 </details>
 
-- #### *def* `__truediv__(self, other: RealNumber)`
+### *def* `__truediv__(self, other: RealNumber) -> 'Vector3'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -633,9 +625,9 @@ def __truediv__(self, other: RealNumber) -> 'Vector3':
 ```
 </details>
 
-- #### *def* `__neg__(self)`
+### *def* `__neg__(self)`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -645,9 +637,9 @@ def __neg__(self):
 ```
 </details>
 
-- #### *def* `__repr__(self)`
+### *def* `__repr__(self)`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -657,9 +649,9 @@ def __repr__(self):
 ```
 </details>
 
-- #### *def* `__str__(self)`
+### *def* `__str__(self)`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -668,4 +660,12 @@ def __str__(self):
     return f'Vector3({self.x}, {self.y}, {self.z})'
 ```
 </details>
+
+### ***var*** `zero_vector3 = Vector3(0, 0, 0)`
+
+### ***var*** `x_axis = Vector3(1, 0, 0)`
+
+### ***var*** `y_axis = Vector3(0, 1, 0)`
+
+### ***var*** `z_axis = Vector3(0, 0, 1)`
 

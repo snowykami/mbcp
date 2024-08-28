@@ -3,21 +3,21 @@ title: mbcp.mp_math.point
 ---
 ### ***class*** `Point3`
 
-- #### *def* `__init__(self, x: float, y: float, z: float)`
+### *def* `__init__(self, x: float, y: float, z: float)`
 
 
 笛卡尔坐标系中的点。
 
 参数:
 
-x: x 坐标  
+- x: x 坐标  
 
-y: y 坐标  
+- y: y 坐标  
 
-z: z 坐标  
+- z: z 坐标  
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -36,19 +36,19 @@ def __init__(self, x: float, y: float, z: float):
 ```
 </details>
 
-- #### *def* `approx(self, other: 'Point3', epsilon: float = APPROX)`
+### *def* `approx(self, other: 'Point3', epsilon: float = APPROX) -> bool`
 
 
 判断两个点是否近似相等。
 
 参数:
 
-other:   
+- other:   
 
-epsilon:   
+- epsilon:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -67,9 +67,9 @@ def approx(self, other: 'Point3', epsilon: float=APPROX) -> bool:
 ```
 </details>
 
-- #### *def* `__str__(self)`
+### *def* `__str__(self)`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -79,10 +79,10 @@ def __str__(self):
 ```
 </details>
 
-- #### `@overload`
-- #### *def* `__add__(self, other: 'Vector3')`
+### `@overload`
+### *def* `__add__(self, other: 'Vector3') -> 'Point3'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -93,10 +93,10 @@ def __add__(self, other: 'Vector3') -> 'Point3':
 ```
 </details>
 
-- #### `@overload`
-- #### *def* `__add__(self, other: 'Point3')`
+### `@overload`
+### *def* `__add__(self, other: 'Point3') -> 'Point3'`
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -107,7 +107,7 @@ def __add__(self, other: 'Point3') -> 'Point3':
 ```
 </details>
 
-- #### *def* `__add__(self, other)`
+### *def* `__add__(self, other)`
 
 
 P + V -> P
@@ -115,10 +115,10 @@ P + P -> P
 
 参数:
 
-other:   
+- other:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -135,17 +135,17 @@ def __add__(self, other):
 ```
 </details>
 
-- #### *def* `__eq__(self, other)`
+### *def* `__eq__(self, other)`
 
 
 判断两个点是否相等。
 
 参数:
 
-other:   
+- other:   
 
 
-- #
+
 <details>
 <summary>源码</summary>
 
@@ -158,6 +158,38 @@ def __eq__(self, other):
         Returns:
         """
     return approx(self.x, other.x) and approx(self.y, other.y) and approx(self.z, other.z)
+```
+</details>
+
+### *def* `__sub__(self, other: 'Point3') -> 'Vector3'`
+
+
+P - P -> V
+
+P - V -> P  已在 :class:`Vector3` 中实现
+
+参数:
+
+- other:   
+
+
+
+<details>
+<summary>源码</summary>
+
+```python
+def __sub__(self, other: 'Point3') -> 'Vector3':
+    """
+        P - P -> V
+
+        P - V -> P  已在 :class:`Vector3` 中实现
+        Args:
+            other:
+        Returns:
+
+        """
+    from .vector import Vector3
+    return Vector3(self.x - other.x, self.y - other.y, self.z - other.z)
 ```
 </details>
 

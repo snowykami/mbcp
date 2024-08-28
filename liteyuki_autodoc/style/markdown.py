@@ -26,7 +26,6 @@ def generate(parser: AstParser, lang: str, frontmatter: Optional[dict] = None) -
     Returns:
         markdown style document
     """
-    print(parser.variables)
     if frontmatter is not None:
         md = "---\n"
         for k, v in frontmatter.items():
@@ -36,20 +35,13 @@ def generate(parser: AstParser, lang: str, frontmatter: Optional[dict] = None) -
         md = ""
 
     # var > func > class
-    for var in parser.variables:
-        if var.type == TypeHint.NO_TYPEHINT:
-            md += f"### ***var*** `{var.name} = {var.value}`\n\n"
-        else:
-            md += f"### ***var*** `{var.name}: {var.type} = {var.value}`\n\n"
 
     for func in parser.functions:
-
         md += func.markdown(lang)
 
     for cls in parser.classes:
         md += f"### ***class*** `{cls.name}`\n\n"
         for mtd in cls.methods:
-
             md += mtd.markdown(lang, 2, True)
 
         for attr in cls.attrs:
@@ -57,5 +49,11 @@ def generate(parser: AstParser, lang: str, frontmatter: Optional[dict] = None) -
                 md += f"#### ***attr*** `{attr.name} = {attr.value}`\n\n"
             else:
                 md += f"#### ***attr*** `{attr.name}: {attr.type} = {attr.value}`\n\n"
+
+    for var in parser.variables:
+        if var.type == TypeHint.NO_TYPEHINT:
+            md += f"### ***var*** `{var.name} = {var.value}`\n\n"
+        else:
+            md += f"### ***var*** `{var.name}: {var.type} = {var.value}`\n\n"
 
     return md

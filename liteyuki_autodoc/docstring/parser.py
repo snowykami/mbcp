@@ -115,17 +115,17 @@ class GoogleDocstringParser(Parser):
         在一个子解析器中，解析下一行，直到缩进小于等于当前行的缩进
         Returns:
         """
-        while self.lineno + 1 < len(self.lines):
+        while (self.lineno + 1) < len(self.lines):
             line = self.lines[self.lineno + 1]
-
             if line.startswith(" " * self.indent):
                 line = line[self.indent:]
+                self.lineno += 1
+                return line
             else:
+                self.lineno += 1
                 return None
-            if not line:
-                return None
-            self.lineno += 1
-            return line
+        self.lineno += 1
+        return None
 
     def parse(self) -> Docstring:
         """
@@ -146,7 +146,6 @@ class GoogleDocstringParser(Parser):
                 add_desc = False
 
             match token:
-
                 case "args":
                     self.parse_args()
                 case "return":

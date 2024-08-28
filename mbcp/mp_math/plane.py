@@ -41,6 +41,8 @@ class Plane3:
         Returns:
             是否近似相等
         """
+
+        a = 3   # 测试变量
         if self.a != 0:
             k = other.a / self.a
             return approx(other.b, self.b * k) and approx(other.c, self.c * k) and approx(other.d, self.d * k)
