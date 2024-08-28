@@ -32,12 +32,11 @@ class Plane3:
         self.c = c
         self.d = d
 
-    def approx(self, other: 'Plane3', epsilon: float = APPROX) -> bool:
+    def approx(self, other: 'Plane3') -> bool:
         """
         判断两个平面是否近似相等。
         Args:
             other:
-            epsilon:
 
         Returns:
             是否近似相等

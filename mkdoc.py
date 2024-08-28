@@ -323,19 +323,13 @@ def generate_docs(module_folder: str, output_dir: str, with_top: bool = False, l
 
         # 生成markdown
 
-        if "README" in abs_md_path:
+        if "index" in abs_md_path:
             front_matter = {
-                    "title"   : module_info.module_path.replace(".__init__", "").replace("_", "\\n"),
-                    "index"   : "true",
-                    "icon"    : "laptop-code",
-                    "category": "API"
+                    "title"   : module_info.module_path.replace(".__init__", ""),
             }
         else:
             front_matter = {
-                    "title"   : module_info.module_path.replace("_", "\\n"),
-                    "order"   : "1",
-                    "icon"    : "laptop-code",
-                    "category": "API"
+                    "title"   : module_info.module_path
             }
 
         md_content = generate_markdown(module_info, front_matter)

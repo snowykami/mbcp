@@ -62,15 +62,15 @@ class Point3:
         """
         return approx(self.x, other.x) and approx(self.y, other.y) and approx(self.z, other.z)
 
-    def __sub__(self, other: "Point3") -> "Vector3":
-        """
-        P - P -> V
-
-        P - V -> P  已在 :class:`Vector3` 中实现
-        Args:
-            other:
-        Returns:
-
-        """
-        from .vector import Vector3
-        return Vector3(self.x - other.x, self.y - other.y, self.z - other.z)
+    # def __sub__(self, other: "Point3") -> "Vector3":
+    #     """
+    #     P - P -> V
+    #
+    #     P - V -> P  已在 :class:`Vector3` 中实现
+    #     Args:
+    #         other:
+    #     Returns:
+    #
+    #     """
+    #     from .vector import Vector3
+    #     return Vector3(self.x - other.x, self.y - other.y, self.z - other.z)

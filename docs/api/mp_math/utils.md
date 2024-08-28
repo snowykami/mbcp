@@ -1,30 +1,23 @@
 ---
-title: mbcp.mp\nmath.utils
-order: 1
-icon: laptop-code
-category: API
+title: mbcp.mp_math.utils
 ---
+### *def* `clamp()`
 
-### ***def*** `clamp(x: float, min_: float, max_: float) -> float`
 
 区间截断函数。
 
-Args:
+参数:
 
-    x:
+x:   
 
-    min_:
+min_:   
 
-    max_:
+max_:   
 
 
-
-Returns:
-
-    限制后的值
 
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 def clamp(x: float, min_: float, max_: float) -> float:
@@ -42,26 +35,23 @@ def clamp(x: float, min_: float, max_: float) -> float:
 ```
 </details>
 
-### ***def*** `approx(x: float, y: float, epsilon: float) -> bool`
+### *def* `approx(x: float = 0.0, y: float = APPROX)`
+
 
 判断两个数是否近似相等。或包装一个实数，用于判断是否近似于0。
 
-Args:
+参数:
 
-    x:
+x:   
 
-    y:
+y:   
 
-    epsilon:
+epsilon:   
 
 
-
-Returns:
-
-    是否近似相等
 
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 def approx(x: float, y: float=0.0, epsilon: float=APPROX) -> bool:
@@ -79,22 +69,21 @@ def approx(x: float, y: float=0.0, epsilon: float=APPROX) -> bool:
 ```
 </details>
 
-### ***def*** `sign(x: float, only_neg: bool) -> str`
+### *def* `sign(x: float = False)`
+
 
 获取数的符号。
 
-Args:
+参数:
 
-    x: 数
+x: 数  
 
-    only_neg: 是否只返回负数的符号
+only_neg: 是否只返回负数的符号  
 
-Returns:
 
-    符号 + - ""
 
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 def sign(x: float, only_neg: bool=False) -> str:
@@ -114,28 +103,24 @@ def sign(x: float, only_neg: bool=False) -> str:
 ```
 </details>
 
-### ***def*** `sign_format(x: float, only_neg: bool) -> str`
+### *def* `sign_format(x: float = False)`
+
 
 格式化符号数
-
 -1 -> -1
-
 1 -> +1
-
 0 -> ""
 
-Args:
+参数:
 
-    x: 数
+x: 数  
 
-    only_neg: 是否只返回负数的符号
+only_neg: 是否只返回负数的符号  
 
-Returns:
 
-    符号 + - ""
 
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 def sign_format(x: float, only_neg: bool=False) -> str:
@@ -160,18 +145,11 @@ def sign_format(x: float, only_neg: bool=False) -> str:
 
 ### ***class*** `Approx`
 
-用于近似比较对象
+- #### *def* `__init__(self, value: RealNumber)`
 
-
-
-已实现对象 实数 Vector3 Point3 Plane3 Line3
-
-### &emsp; ***def*** `__init__(self, value: RealNumber) -> None`
-
-&emsp;
-
+- #
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 def __init__(self, value: RealNumber):
@@ -179,16 +157,48 @@ def __init__(self, value: RealNumber):
 ```
 </details>
 
-### &emsp; ***def*** `raise_type_error(self, other: Any) -> None`
+- #### *def* `__eq__(self, other)`
 
-&emsp;
-
+- #
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
+
+```python
+def __eq__(self, other):
+    if isinstance(self.value, (float, int)):
+        if isinstance(other, (float, int)):
+            return abs(self.value - other) < APPROX
+        else:
+            self.raise_type_error(other)
+    elif isinstance(self.value, Vector3):
+        if isinstance(other, (Vector3, Point3, Plane3, Line3)):
+            return all([approx(self.value.x, other.x), approx(self.value.y, other.y), approx(self.value.z, other.z)])
+        else:
+            self.raise_type_error(other)
+```
+</details>
+
+- #### *def* `raise_type_error(self, other)`
+
+- #
+<details>
+<summary>源码</summary>
 
 ```python
 def raise_type_error(self, other):
     raise TypeError(f'Unsupported type: {type(self.value)} and {type(other)}')
+```
+</details>
+
+- #### *def* `__ne__(self, other)`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __ne__(self, other):
+    return not self.__eq__(other)
 ```
 </details>
 

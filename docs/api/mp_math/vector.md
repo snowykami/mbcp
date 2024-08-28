@@ -1,28 +1,33 @@
 ---
-title: mbcp.mp\nmath.vector
-order: 1
-icon: laptop-code
-category: API
+title: mbcp.mp_math.vector
 ---
+### ***var*** `zero_vector3 = Vector3(0, 0, 0)`
+
+### ***var*** `x_axis = Vector3(1, 0, 0)`
+
+### ***var*** `y_axis = Vector3(0, 1, 0)`
+
+### ***var*** `z_axis = Vector3(0, 0, 1)`
 
 ### ***class*** `Vector3`
 
+- #### *def* `__init__(self, x: float, y: float, z: float)`
 
 
-### &emsp; ***def*** `__init__(self, x: float, y: float, z: float) -> None`
+3维向量
 
-&emsp;3维向量
+参数:
 
-Args:
+x: x轴分量  
 
-    x: x轴分量
+y: y轴分量  
 
-    y: y轴分量
+z: z轴分量  
 
-    z: z轴分量
 
+- #
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 def __init__(self, x: float, y: float, z: float):
@@ -39,24 +44,21 @@ def __init__(self, x: float, y: float, z: float):
 ```
 </details>
 
-### &emsp; ***def*** `approx(self, other: 'Vector3', epsilon: float) -> bool`
-
-&emsp;判断两个向量是否近似相等。
-
-Args:
-
-    other:
-
-    epsilon:
+- #### *def* `approx(self, other: 'Vector3', epsilon: float = APPROX)`
 
 
+判断两个向量是否近似相等。
 
-Returns:
+参数:
 
-    是否近似相等
+other:   
 
+epsilon:   
+
+
+- #
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 def approx(self, other: 'Vector3', epsilon: float=APPROX) -> bool:
@@ -73,20 +75,19 @@ def approx(self, other: 'Vector3', epsilon: float=APPROX) -> bool:
 ```
 </details>
 
-### &emsp; ***def*** `cal_angle(self, other: 'Vector3') -> 'AnyAngle'`
+- #### *def* `cal_angle(self, other: 'Vector3')`
 
-&emsp;计算两个向量之间的夹角。
 
-Args:
+计算两个向量之间的夹角。
 
-    other: 另一个向量
+参数:
 
-Returns:
+other: 另一个向量  
 
-    夹角
 
+- #
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 def cal_angle(self, other: 'Vector3') -> 'AnyAngle':
@@ -101,44 +102,19 @@ def cal_angle(self, other: 'Vector3') -> 'AnyAngle':
 ```
 </details>
 
-### &emsp; ***def*** `cross(self, other: 'Vector3') -> 'Vector3'`
-
-&emsp;向量积 叉乘：v1 cross v2 -> v3
+- #### *def* `cross(self, other: 'Vector3')`
 
 
+向量积 叉乘：v1 cross v2 -> v3
 
 叉乘为0，则两向量平行。
-
 其余结果的模为平行四边形的面积。
 
 
 
-返回如下行列式的结果：
-
-
-
-``i  j  k``
-
-
-
-``x1 y1 z1``
-
-
-
-``x2 y2 z2``
-
-
-
-Args:
-
-    other:
-
-Returns:
-
-    行列式的结果
-
+- #
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 def cross(self, other: 'Vector3') -> 'Vector3':
@@ -165,22 +141,21 @@ def cross(self, other: 'Vector3') -> 'Vector3':
 ```
 </details>
 
-### &emsp; ***def*** `is_approx_parallel(self, other: 'Vector3', epsilon: float) -> bool`
+- #### *def* `is_approx_parallel(self, other: 'Vector3', epsilon: float = APPROX)`
 
-&emsp;判断两个向量是否近似平行。
 
-Args:
+判断两个向量是否近似平行。
 
-    other: 另一个向量
+参数:
 
-    epsilon: 允许的误差
+other: 另一个向量  
 
-Returns:
+epsilon: 允许的误差  
 
-    是否近似平行
 
+- #
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 def is_approx_parallel(self, other: 'Vector3', epsilon: float=APPROX) -> bool:
@@ -196,20 +171,19 @@ def is_approx_parallel(self, other: 'Vector3', epsilon: float=APPROX) -> bool:
 ```
 </details>
 
-### &emsp; ***def*** `is_parallel(self, other: 'Vector3') -> bool`
+- #### *def* `is_parallel(self, other: 'Vector3')`
 
-&emsp;判断两个向量是否平行。
 
-Args:
+判断两个向量是否平行。
 
-    other: 另一个向量
+参数:
 
-Returns:
+other: 另一个向量  
 
-    是否平行
 
+- #
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 def is_parallel(self, other: 'Vector3') -> bool:
@@ -224,16 +198,17 @@ def is_parallel(self, other: 'Vector3') -> bool:
 ```
 </details>
 
-### &emsp; ***def*** `normalize(self) -> None`
-
-&emsp;将向量归一化。
+- #### *def* `normalize(self)`
 
 
+将向量归一化。
 
 自体归一化，不返回值。
 
+
+- #
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 def normalize(self):
@@ -249,15 +224,16 @@ def normalize(self):
 ```
 </details>
 
-### &emsp; ***@property***
-### &emsp; ***def*** `np_array(self: Any) -> 'np.ndarray'`
+- #### `@property`
+- #### *def* `np_array(self)`
 
-&emsp;返回numpy数组
 
-Returns:
 
+
+
+- #
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 @property
@@ -270,17 +246,20 @@ def np_array(self) -> 'np.ndarray':
 ```
 </details>
 
-### &emsp; ***@property***
-### &emsp; ***def*** `length(self: Any) -> float`
+- #### `@property`
+- #### *def* `length(self)`
 
-&emsp;向量的模。
 
-Returns:
+向量的模。
 
-    模
+返回:
 
+模
+
+
+- #
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 @property
@@ -294,17 +273,20 @@ def length(self) -> float:
 ```
 </details>
 
-### &emsp; ***@property***
-### &emsp; ***def*** `unit(self: Any) -> 'Vector3'`
+- #### `@property`
+- #### *def* `unit(self)`
 
-&emsp;获取该向量的单位向量。
 
-Returns:
+获取该向量的单位向量。
 
-    单位向量
+返回:
 
+单位向量
+
+
+- #
 <details>
-<summary>源代码</summary>
+<summary>源码</summary>
 
 ```python
 @property
@@ -318,23 +300,372 @@ def unit(self) -> 'Vector3':
 ```
 </details>
 
-### ***var*** `zero_vector3 = Vector3(0, 0, 0)`
+- #### *def* `__abs__(self)`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __abs__(self):
+    return self.length
+```
+</details>
+
+- #### `@overload`
+- #### *def* `__add__(self, other: 'Vector3')`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+@overload
+def __add__(self, other: 'Vector3') -> 'Vector3':
+    ...
+```
+</details>
+
+- #### `@overload`
+- #### *def* `__add__(self, other: 'Point3')`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+@overload
+def __add__(self, other: 'Point3') -> 'Point3':
+    ...
+```
+</details>
+
+- #### *def* `__add__(self, other)`
 
 
+V + P -> P
 
-### ***var*** `x_axis = Vector3(1, 0, 0)`
+V + V -> V
 
+参数:
 
-
-### ***var*** `y_axis = Vector3(0, 1, 0)`
-
-
-
-### ***var*** `z_axis = Vector3(0, 0, 1)`
+other:   
 
 
+- #
+<details>
+<summary>源码</summary>
 
-### ***var*** `length = self.length`
+```python
+def __add__(self, other):
+    """
+        V + P -> P
+
+        V + V -> V
+        Args:
+            other:
+        Returns:
+
+        """
+    if isinstance(other, Vector3):
+        return Vector3(self.x + other.x, self.y + other.y, self.z + other.z)
+    elif isinstance(other, Point3):
+        return Point3(self.x + other.x, self.y + other.y, self.z + other.z)
+    else:
+        raise TypeError(f"unsupported operand type(s) for +: 'Vector3' and '{type(other)}'")
+```
+</details>
+
+- #### *def* `__eq__(self, other)`
 
 
+判断两个向量是否相等。
+
+参数:
+
+other:   
+
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __eq__(self, other):
+    """
+        判断两个向量是否相等。
+        Args:
+            other:
+        Returns:
+            是否相等
+        """
+    return approx(self.x, other.x) and approx(self.y, other.y) and approx(self.z, other.z)
+```
+</details>
+
+- #### *def* `__radd__(self, other: 'Point3')`
+
+
+P + V -> P
+
+别去点那边实现了。
+:param other:
+:return:
+
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __radd__(self, other: 'Point3') -> 'Point3':
+    """
+        P + V -> P
+
+        别去点那边实现了。
+        :param other:
+        :return:
+        """
+    return Point3(self.x + other.x, self.y + other.y, self.z + other.z)
+```
+</details>
+
+- #### `@overload`
+- #### *def* `__sub__(self, other: 'Vector3')`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+@overload
+def __sub__(self, other: 'Vector3') -> 'Vector3':
+    ...
+```
+</details>
+
+- #### `@overload`
+- #### *def* `__sub__(self, other: 'Point3')`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+@overload
+def __sub__(self, other: 'Point3') -> 'Point3':
+    ...
+```
+</details>
+
+- #### *def* `__sub__(self, other)`
+
+
+V - P -> P
+
+V - V -> V
+
+参数:
+
+other:   
+
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __sub__(self, other):
+    """
+        V - P -> P
+
+        V - V -> V
+        Args:
+            other:
+        Returns:
+        """
+    if isinstance(other, Vector3):
+        return Vector3(self.x - other.x, self.y - other.y, self.z - other.z)
+    elif isinstance(other, Point3):
+        return Point3(self.x - other.x, self.y - other.y, self.z - other.z)
+    else:
+        raise TypeError(f'unsupported operand type(s) for -: "Vector3" and "{type(other)}"')
+```
+</details>
+
+- #### *def* `__rsub__(self, other: 'Point3')`
+
+
+P - V -> P
+
+参数:
+
+other:   
+
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __rsub__(self, other: 'Point3'):
+    """
+        P - V -> P
+        Args:
+            other:
+        Returns:
+
+        """
+    if isinstance(other, Point3):
+        return Point3(other.x - self.x, other.y - self.y, other.z - self.z)
+    else:
+        raise TypeError(f"unsupported operand type(s) for -: '{type(other)}' and 'Vector3'")
+```
+</details>
+
+- #### `@overload`
+- #### *def* `__mul__(self, other: 'Vector3')`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+@overload
+def __mul__(self, other: 'Vector3') -> 'Vector3':
+    ...
+```
+</details>
+
+- #### `@overload`
+- #### *def* `__mul__(self, other: RealNumber)`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+@overload
+def __mul__(self, other: RealNumber) -> 'Vector3':
+    ...
+```
+</details>
+
+- #### *def* `__mul__(self, other: 'int | float | Vector3')`
+
+
+数组运算 非点乘。点乘使用@，叉乘使用cross。
+
+参数:
+
+other:   
+
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __mul__(self, other: 'int | float | Vector3') -> 'Vector3':
+    """
+        数组运算 非点乘。点乘使用@，叉乘使用cross。
+        Args:
+            other:
+
+        Returns:
+        """
+    if isinstance(other, Vector3):
+        return Vector3(self.x * other.x, self.y * other.y, self.z * other.z)
+    elif isinstance(other, (float, int)):
+        return Vector3(self.x * other, self.y * other, self.z * other)
+    else:
+        raise TypeError(f"unsupported operand type(s) for *: 'Vector3' and '{type(other)}'")
+```
+</details>
+
+- #### *def* `__rmul__(self, other: 'RealNumber')`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __rmul__(self, other: 'RealNumber') -> 'Vector3':
+    return self.__mul__(other)
+```
+</details>
+
+- #### *def* `__matmul__(self, other: 'Vector3')`
+
+
+点乘。
+
+参数:
+
+other:   
+
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __matmul__(self, other: 'Vector3') -> 'RealNumber':
+    """
+        点乘。
+        Args:
+            other:
+        Returns:
+        """
+    return self.x * other.x + self.y * other.y + self.z * other.z
+```
+</details>
+
+- #### *def* `__truediv__(self, other: RealNumber)`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __truediv__(self, other: RealNumber) -> 'Vector3':
+    return Vector3(self.x / other, self.y / other, self.z / other)
+```
+</details>
+
+- #### *def* `__neg__(self)`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __neg__(self):
+    return Vector3(-self.x, -self.y, -self.z)
+```
+</details>
+
+- #### *def* `__repr__(self)`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __repr__(self):
+    return f'Vector3({self.x}, {self.y}, {self.z})'
+```
+</details>
+
+- #### *def* `__str__(self)`
+
+- #
+<details>
+<summary>源码</summary>
+
+```python
+def __str__(self):
+    return f'Vector3({self.x}, {self.y}, {self.z})'
+```
+</details>
 
