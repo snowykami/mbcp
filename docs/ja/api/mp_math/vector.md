@@ -8,7 +8,7 @@ title: mbcp.mp_math.vector
 
 3维向量
 
-参数:
+引数:
 
 - x: x轴分量  
 
@@ -19,7 +19,7 @@ title: mbcp.mp_math.vector
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __init__(self, x: float, y: float, z: float):
@@ -41,20 +41,20 @@ def __init__(self, x: float, y: float, z: float):
 
 判断两个向量是否近似相等。
 
-参数:
+引数:
 
 - other:   
 
 - epsilon:   
 
-返回:
+戻り値:
 
 - 是否近似相等
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def approx(self, other: 'Vector3', epsilon: float=APPROX) -> bool:
@@ -76,18 +76,18 @@ def approx(self, other: 'Vector3', epsilon: float=APPROX) -> bool:
 
 计算两个向量之间的夹角。
 
-参数:
+引数:
 
 - other: 另一个向量  
 
-返回:
+戻り値:
 
 - 夹角
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def cal_angle(self, other: 'Vector3') -> 'AnyAngle':
@@ -111,18 +111,18 @@ def cal_angle(self, other: 'Vector3') -> 'AnyAngle':
 其余结果的模为平行四边形的面积。
 
 
-参数:
+引数:
 
 - other:   
 
-返回:
+戻り値:
 
 - 行列式的结果
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def cross(self, other: 'Vector3') -> 'Vector3':
@@ -154,20 +154,20 @@ def cross(self, other: 'Vector3') -> 'Vector3':
 
 判断两个向量是否近似平行。
 
-参数:
+引数:
 
 - other: 另一个向量  
 
 - epsilon: 允许的误差  
 
-返回:
+戻り値:
 
 - 是否近似平行
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def is_approx_parallel(self, other: 'Vector3', epsilon: float=APPROX) -> bool:
@@ -188,18 +188,18 @@ def is_approx_parallel(self, other: 'Vector3', epsilon: float=APPROX) -> bool:
 
 判断两个向量是否平行。
 
-参数:
+引数:
 
 - other: 另一个向量  
 
-返回:
+戻り値:
 
 - 是否平行
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def is_parallel(self, other: 'Vector3') -> bool:
@@ -224,7 +224,7 @@ def is_parallel(self, other: 'Vector3') -> bool:
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def normalize(self):
@@ -249,7 +249,7 @@ def normalize(self):
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 @property
@@ -268,14 +268,14 @@ def np_array(self) -> 'np.ndarray':
 
 向量的模。
 
-返回:
+戻り値:
 
 - 模
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 @property
@@ -295,14 +295,14 @@ def length(self) -> float:
 
 获取该向量的单位向量。
 
-返回:
+戻り値:
 
 - 单位向量
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 @property
@@ -320,7 +320,7 @@ def unit(self) -> 'Vector3':
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __abs__(self):
@@ -333,7 +333,7 @@ def __abs__(self):
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 @overload
@@ -347,7 +347,7 @@ def __add__(self, other: 'Vector3') -> 'Vector3':
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 @overload
@@ -363,14 +363,14 @@ V + P -> P
 
 V + V -> V
 
-参数:
+引数:
 
 - other:   
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __add__(self, other):
@@ -397,18 +397,18 @@ def __add__(self, other):
 
 判断两个向量是否相等。
 
-参数:
+引数:
 
 - other:   
 
-返回:
+戻り値:
 
 - 是否相等
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __eq__(self, other):
@@ -435,7 +435,7 @@ P + V -> P
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __radd__(self, other: 'Point3') -> 'Point3':
@@ -455,7 +455,7 @@ def __radd__(self, other: 'Point3') -> 'Point3':
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 @overload
@@ -469,7 +469,7 @@ def __sub__(self, other: 'Vector3') -> 'Vector3':
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 @overload
@@ -485,14 +485,14 @@ V - P -> P
 
 V - V -> V
 
-参数:
+引数:
 
 - other:   
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __sub__(self, other):
@@ -518,14 +518,14 @@ def __sub__(self, other):
 
 P - V -> P
 
-参数:
+引数:
 
 - other:   
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __rsub__(self, other: 'Point3'):
@@ -548,7 +548,7 @@ def __rsub__(self, other: 'Point3'):
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 @overload
@@ -562,7 +562,7 @@ def __mul__(self, other: 'Vector3') -> 'Vector3':
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 @overload
@@ -576,14 +576,14 @@ def __mul__(self, other: RealNumber) -> 'Vector3':
 
 数组运算 非点乘。点乘使用@，叉乘使用cross。
 
-参数:
+引数:
 
 - other:   
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __mul__(self, other: 'int | float | Vector3') -> 'Vector3':
@@ -607,7 +607,7 @@ def __mul__(self, other: 'int | float | Vector3') -> 'Vector3':
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __rmul__(self, other: 'RealNumber') -> 'Vector3':
@@ -620,14 +620,14 @@ def __rmul__(self, other: 'RealNumber') -> 'Vector3':
 
 点乘。
 
-参数:
+引数:
 
 - other:   
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __matmul__(self, other: 'Vector3') -> 'RealNumber':
@@ -645,7 +645,7 @@ def __matmul__(self, other: 'Vector3') -> 'RealNumber':
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __truediv__(self, other: RealNumber) -> 'Vector3':
@@ -657,7 +657,7 @@ def __truediv__(self, other: RealNumber) -> 'Vector3':
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __neg__(self):
@@ -669,7 +669,7 @@ def __neg__(self):
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __repr__(self):
@@ -681,7 +681,7 @@ def __repr__(self):
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 def __str__(self):

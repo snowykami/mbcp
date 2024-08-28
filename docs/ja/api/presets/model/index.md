@@ -9,20 +9,20 @@ title: mbcp.presets.model
 
 生成球体上的点集。
 
-参数:
+引数:
 
 - radius:   
 
 - density:   
 
-返回:
+戻り値:
 
 - List[Point3]: 球体上的点集。
 
 
 
 <details>
-<summary>源码</summary>
+<summary>ソースコード</summary>
 
 ```python
 @staticmethod

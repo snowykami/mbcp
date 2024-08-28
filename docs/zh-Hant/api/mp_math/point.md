@@ -8,7 +8,7 @@ title: mbcp.mp_math.point
 
 笛卡尔坐标系中的点。
 
-参数:
+參數:
 
 - x: x 坐标  
 
@@ -19,7 +19,7 @@ title: mbcp.mp_math.point
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __init__(self, x: float, y: float, z: float):
@@ -41,7 +41,7 @@ def __init__(self, x: float, y: float, z: float):
 
 判断两个点是否近似相等。
 
-参数:
+參數:
 
 - other:   
 
@@ -54,7 +54,7 @@ def __init__(self, x: float, y: float, z: float):
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def approx(self, other: 'Point3', epsilon: float=APPROX) -> bool:
@@ -75,7 +75,7 @@ def approx(self, other: 'Point3', epsilon: float=APPROX) -> bool:
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __str__(self):
@@ -88,7 +88,7 @@ def __str__(self):
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 @overload
@@ -102,7 +102,7 @@ def __add__(self, other: 'Vector3') -> 'Point3':
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 @overload
@@ -117,14 +117,14 @@ def __add__(self, other: 'Point3') -> 'Point3':
 P + V -> P
 P + P -> P
 
-参数:
+參數:
 
 - other:   
 
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __add__(self, other):
@@ -144,14 +144,14 @@ def __add__(self, other):
 
 判断两个点是否相等。
 
-参数:
+參數:
 
 - other:   
 
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __eq__(self, other):
@@ -172,14 +172,14 @@ P - P -> V
 
 P - V -> P  已在 :class:`Vector3` 中实现
 
-参数:
+參數:
 
 - other:   
 
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __sub__(self, other: 'Point3') -> 'Vector3':

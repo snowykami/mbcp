@@ -6,7 +6,7 @@ title: mbcp.mp_math.equation
 
 求N元函数一阶偏导函数。这玩意不太稳定，慎用。
 
-参数:
+參數:
 
 - func: 函数  
 
@@ -18,14 +18,14 @@ title: mbcp.mp_math.equation
 
 - 偏导函数
 
-引发:
+引發:
 
 - ValueError  无效变量类型
 
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...], epsilon: Number=EPSILON) -> MultiVarsFunc:
@@ -66,7 +66,7 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def partial_derivative_func(*args: Var) -> Var:
@@ -82,7 +82,7 @@ def partial_derivative_func(*args: Var) -> Var:
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def high_order_partial_derivative_func(*args: Var) -> Var:
@@ -100,7 +100,7 @@ def high_order_partial_derivative_func(*args: Var) -> Var:
 
 曲线方程。
 
-参数:
+參數:
 
 - x_func: x函数  
 
@@ -111,7 +111,7 @@ def high_order_partial_derivative_func(*args: Var) -> Var:
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc):
@@ -133,7 +133,7 @@ def __init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc):
 
 计算曲线上的点。
 
-参数:
+參數:
 
 - *t:   
 
@@ -142,7 +142,7 @@ def __init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc):
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __call__(self, *t: Var) -> Point3 | tuple[Point3, ...]:
@@ -165,7 +165,7 @@ def __call__(self, *t: Var) -> Point3 | tuple[Point3, ...]:
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __str__(self):

@@ -6,7 +6,7 @@ title: mbcp.mp_math.utils
 
 区间截断函数。
 
-参数:
+Args:
 
 - x:   
 
@@ -14,14 +14,14 @@ title: mbcp.mp_math.utils
 
 - max_:   
 
-返回:
+Return:
 
 - 限制后的值
 
 
 
 <details>
-<summary>源码</summary>
+<summary>Source code</summary>
 
 ```python
 def clamp(x: float, min_: float, max_: float) -> float:
@@ -44,7 +44,7 @@ def clamp(x: float, min_: float, max_: float) -> float:
 
 判断两个数是否近似相等。或包装一个实数，用于判断是否近似于0。
 
-参数:
+Args:
 
 - x:   
 
@@ -52,14 +52,14 @@ def clamp(x: float, min_: float, max_: float) -> float:
 
 - epsilon:   
 
-返回:
+Return:
 
 - 是否近似相等
 
 
 
 <details>
-<summary>源码</summary>
+<summary>Source code</summary>
 
 ```python
 def approx(x: float, y: float=0.0, epsilon: float=APPROX) -> bool:
@@ -82,20 +82,20 @@ def approx(x: float, y: float=0.0, epsilon: float=APPROX) -> bool:
 
 获取数的符号。
 
-参数:
+Args:
 
 - x: 数  
 
 - only_neg: 是否只返回负数的符号  
 
-返回:
+Return:
 
 - 符号 + - ""
 
 
 
 <details>
-<summary>源码</summary>
+<summary>Source code</summary>
 
 ```python
 def sign(x: float, only_neg: bool=False) -> str:
@@ -123,20 +123,20 @@ def sign(x: float, only_neg: bool=False) -> str:
 1 -> +1
 0 -> ""
 
-参数:
+Args:
 
 - x: 数  
 
 - only_neg: 是否只返回负数的符号  
 
-返回:
+Return:
 
 - 符号 + - ""
 
 
 
 <details>
-<summary>源码</summary>
+<summary>Source code</summary>
 
 ```python
 def sign_format(x: float, only_neg: bool=False) -> str:
@@ -165,7 +165,7 @@ def sign_format(x: float, only_neg: bool=False) -> str:
 
 
 <details>
-<summary>源码</summary>
+<summary>Source code</summary>
 
 ```python
 def __init__(self, value: RealNumber):
@@ -177,7 +177,7 @@ def __init__(self, value: RealNumber):
 
 
 <details>
-<summary>源码</summary>
+<summary>Source code</summary>
 
 ```python
 def __eq__(self, other):
@@ -198,7 +198,7 @@ def __eq__(self, other):
 
 
 <details>
-<summary>源码</summary>
+<summary>Source code</summary>
 
 ```python
 def raise_type_error(self, other):
@@ -210,7 +210,7 @@ def raise_type_error(self, other):
 
 
 <details>
-<summary>源码</summary>
+<summary>Source code</summary>
 
 ```python
 def __ne__(self, other):

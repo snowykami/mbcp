@@ -9,7 +9,7 @@ title: mbcp.presets.model
 
 生成球体上的点集。
 
-参数:
+參數:
 
 - radius:   
 
@@ -22,7 +22,7 @@ title: mbcp.presets.model
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 @staticmethod

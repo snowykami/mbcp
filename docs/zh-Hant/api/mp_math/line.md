@@ -8,7 +8,7 @@ title: mbcp.mp_math.line
 
 三维空间中的直线。由一个点和一个方向向量确定。
 
-参数:
+參數:
 
 - point: 直线上的一点  
 
@@ -17,7 +17,7 @@ title: mbcp.mp_math.line
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __init__(self, point: 'Point3', direction: 'Vector3'):
@@ -37,7 +37,7 @@ def __init__(self, point: 'Point3', direction: 'Vector3'):
 
 判断两条直线是否近似相等。
 
-参数:
+參數:
 
 - other: 另一条直线  
 
@@ -50,7 +50,7 @@ def __init__(self, point: 'Point3', direction: 'Vector3'):
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def approx(self, other: 'Line3', epsilon: float=APPROX) -> bool:
@@ -71,7 +71,7 @@ def approx(self, other: 'Line3', epsilon: float=APPROX) -> bool:
 
 计算直线和直线之间的夹角。
 
-参数:
+參數:
 
 - other: 另一条直线  
 
@@ -79,14 +79,14 @@ def approx(self, other: 'Line3', epsilon: float=APPROX) -> bool:
 
 - 夹角弧度
 
-引发:
+引發:
 
 - TypeError  不支持的类型
 
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def cal_angle(self, other: 'Line3') -> 'AnyAngle':
@@ -108,7 +108,7 @@ def cal_angle(self, other: 'Line3') -> 'AnyAngle':
 
 计算直线和直线或点之间的距离。
 
-参数:
+參數:
 
 - other: 平行直线或点  
 
@@ -116,14 +116,14 @@ def cal_angle(self, other: 'Line3') -> 'AnyAngle':
 
 - 距离
 
-引发:
+引發:
 
 - TypeError  不支持的类型
 
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def cal_distance(self, other: 'Line3 | Point3') -> float:
@@ -158,7 +158,7 @@ def cal_distance(self, other: 'Line3 | Point3') -> float:
 
 计算两条直线的交点。
 
-参数:
+參數:
 
 - other: 另一条直线  
 
@@ -166,7 +166,7 @@ def cal_distance(self, other: 'Line3 | Point3') -> float:
 
 - 交点
 
-引发:
+引發:
 
 - ValueError  直线平行
 
@@ -175,7 +175,7 @@ def cal_distance(self, other: 'Line3 | Point3') -> float:
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def cal_intersection(self, other: 'Line3') -> 'Point3':
@@ -202,7 +202,7 @@ def cal_intersection(self, other: 'Line3') -> 'Point3':
 
 计算直线经过指定点p的垂线。
 
-参数:
+參數:
 
 - point: 指定点  
 
@@ -213,7 +213,7 @@ def cal_intersection(self, other: 'Line3') -> 'Point3':
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def cal_perpendicular(self, point: 'Point3') -> 'Line3':
@@ -233,7 +233,7 @@ def cal_perpendicular(self, point: 'Point3') -> 'Line3':
 
 获取直线上的点。同一条直线，但起始点和方向向量不同，则同一个t对应的点不同。
 
-参数:
+參數:
 
 - t: 参数t  
 
@@ -244,7 +244,7 @@ def cal_perpendicular(self, point: 'Point3') -> 'Line3':
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def get_point(self, t: RealNumber) -> 'Point3':
@@ -271,7 +271,7 @@ def get_point(self, t: RealNumber) -> 'Point3':
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def get_parametric_equations(self) -> tuple[OneSingleVarFunc, OneSingleVarFunc, OneSingleVarFunc]:
@@ -289,7 +289,7 @@ def get_parametric_equations(self) -> tuple[OneSingleVarFunc, OneSingleVarFunc, 
 
 判断两条直线是否近似平行。
 
-参数:
+參數:
 
 - other: 另一条直线  
 
@@ -302,7 +302,7 @@ def get_parametric_equations(self) -> tuple[OneSingleVarFunc, OneSingleVarFunc, 
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def is_approx_parallel(self, other: 'Line3', epsilon: float=1e-06) -> bool:
@@ -323,7 +323,7 @@ def is_approx_parallel(self, other: 'Line3', epsilon: float=1e-06) -> bool:
 
 判断两条直线是否平行。
 
-参数:
+參數:
 
 - other: 另一条直线  
 
@@ -334,7 +334,7 @@ def is_approx_parallel(self, other: 'Line3', epsilon: float=1e-06) -> bool:
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def is_parallel(self, other: 'Line3') -> bool:
@@ -354,7 +354,7 @@ def is_parallel(self, other: 'Line3') -> bool:
 
 判断两条直线是否共线。
 
-参数:
+參數:
 
 - other: 另一条直线  
 
@@ -365,7 +365,7 @@ def is_parallel(self, other: 'Line3') -> bool:
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def is_collinear(self, other: 'Line3') -> bool:
@@ -385,7 +385,7 @@ def is_collinear(self, other: 'Line3') -> bool:
 
 判断点是否在直线上。
 
-参数:
+參數:
 
 - point: 点  
 
@@ -396,7 +396,7 @@ def is_collinear(self, other: 'Line3') -> bool:
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def is_point_on(self, point: 'Point3') -> bool:
@@ -417,7 +417,7 @@ def is_point_on(self, point: 'Point3') -> bool:
 判断两条直线是否共面。
 充要条件：两直线方向向量的叉乘与两直线上任意一点的向量的点积为0。
 
-参数:
+參數:
 
 - other: 另一条直线  
 
@@ -428,7 +428,7 @@ def is_point_on(self, point: 'Point3') -> bool:
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def is_coplanar(self, other: 'Line3') -> bool:
@@ -455,7 +455,7 @@ def is_coplanar(self, other: 'Line3') -> bool:
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def simplify(self):
@@ -481,7 +481,7 @@ def simplify(self):
 
 工厂函数 由两点构造直线。
 
-参数:
+參數:
 
 - p1: 点1  
 
@@ -494,7 +494,7 @@ def simplify(self):
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 @classmethod
@@ -517,7 +517,7 @@ def from_two_points(cls, p1: 'Point3', p2: 'Point3') -> 'Line3':
 
 计算两条直线点集合的交集。重合线返回自身，平行线返回None，交线返回交点。
 
-参数:
+參數:
 
 - other: 另一条直线  
 
@@ -528,7 +528,7 @@ def from_two_points(cls, p1: 'Point3', p2: 'Point3') -> 'Line3':
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __and__(self, other: 'Line3') -> 'Line3 | Point3 | None':
@@ -555,14 +555,14 @@ def __and__(self, other: 'Line3') -> 'Line3 | Point3 | None':
 
 v1 // v2 ∧ (p1 - p2) // v1
 
-参数:
+參數:
 
 - other:   
 
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __eq__(self, other) -> bool:
@@ -588,7 +588,7 @@ def __eq__(self, other) -> bool:
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __str__(self):
@@ -612,7 +612,7 @@ def __str__(self):
 
 
 <details>
-<summary>源码</summary>
+<summary>源碼</summary>
 
 ```python
 def __repr__(self):
