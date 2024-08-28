@@ -39,12 +39,30 @@ jobs:
         with:
           node-version: 20
           cache: npm # 或 pnpm / yarn
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: Install dependencies
-        run: npm ci # 或 pnpm install / yarn install / bun install
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
+
+      - name: Setup API markdown
+        run: |-
+          python -m pip install pydantic
+          python docs/mkdoc.py
+
+      - name: Install node dependencies
+        run: |- 
+          cd docs
+          npm ci
+
       - name: Build with VitePress
-        run: npm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
+        run: |-
+          cd docs
+          npm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
