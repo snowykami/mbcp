@@ -42,9 +42,9 @@ jobs:
       - name: Setup API markdown
         run: |-
           python -m pip install pydantic
-          python liteyuki_autodoc mbcp -o docs/api -l zh-Hans
-          python liteyuki_autodoc mbcp -o docs/en/api -l en
-          python liteyuki_autodoc mbcp -o docs/ja/api -l ja
+          python -m liteyuki_autodoc mbcp -o docs/api -l zh-Hans
+          python -m liteyuki_autodoc mbcp -o docs/en/api -l en
+          python -m liteyuki_autodoc mbcp -o docs/ja/api -l ja
 
       - name: 安装 pnpm
         uses: pnpm/action-setup@v2
