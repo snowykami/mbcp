@@ -48,6 +48,9 @@ class CurveEquation:
 def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...], epsilon: Number = EPSILON) -> MultiVarsFunc:
     """
     求N元函数一阶偏导函数。这玩意不太稳定，慎用。
+    > [!warning]
+    > 目前数学界对于数值微分的稳定性问题还没有很好的解决方案，因此这个函数的稳定性也不是很好。
+
     Args:
         func: 函数
         var: 变量位置，可为整数(一阶偏导)或整数元组(高阶偏导)
