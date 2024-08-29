@@ -57,6 +57,7 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
     Raises:
         ValueError: 无效变量类型
     """
+    # 内部函数不注释，以防止生成文档
     if isinstance(var, int):
         def partial_derivative_func(*args: Var) -> Var:
             args_list_plus = list(args)
