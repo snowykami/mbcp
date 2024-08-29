@@ -63,14 +63,7 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
     # 内部函数不注释，以防止生成文档
     if isinstance(var, int):
         def partial_derivative_func(*args: Var) -> Var:
-            """
-            @litedoc-hide
-            Args:
-                *args:
-
-            Returns:
-
-            """
+            """@litedoc-hide"""
             args_list_plus = list(args)
             args_list_plus[var] += epsilon
             args_list_minus = list(args)
