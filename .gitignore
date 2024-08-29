@@ -14,3 +14,8 @@ docs/.vitepress/dist
 docs/.vitepress/cache
 
 litedoc/
+
+docs/api/
+docs/zht/api/
+docs/en/api/
+docs/ja/api/
