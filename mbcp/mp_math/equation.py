@@ -73,7 +73,14 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
         return partial_derivative_func
     elif isinstance(var, tuple):
         def high_order_partial_derivative_func(*args: Var) -> Var:
-            """@litedoc-hide"""
+            """
+            @litedoc-hide
+            求高阶偏导函数
+            Args:
+                *args: 参数
+            Returns:
+                高阶偏导数值
+            """
             result_func = func
             for v in var:
                 result_func = get_partial_derivative_func(result_func, v, epsilon)
