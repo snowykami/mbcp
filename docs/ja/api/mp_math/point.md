@@ -38,11 +38,11 @@ def __init__(self, x: float, y: float, z: float):
 
 **説明**: 判断两个点是否近似相等。
 
-**戻り値**: 是否近似相等
-
 **引数**:
 > - other:   
 > - epsilon:   
+
+**戻り値**: 是否近似相等
 
 
 <details>

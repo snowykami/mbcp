@@ -7,12 +7,12 @@ title: mbcp.mp_math.utils
 
 **説明**: 区间限定函数
 
-**戻り値**: 限制后的值
-
 **引数**:
 > - x: 待限定的值  
 > - min_: 最小值  
 > - max_: 最大值  
+
+**戻り値**: 限制后的值
 
 
 <details>
@@ -40,12 +40,12 @@ def clamp(x: float, min_: float, max_: float) -> float:
 
 **説明**: 判断两个数是否近似相等。或包装一个实数，用于判断是否近似于0。
 
-**戻り値**: 是否近似相等
-
 **引数**:
 > - x: 数1  
 > - y: 数2  
 > - epsilon: 误差  
+
+**戻り値**: 是否近似相等
 
 
 <details>
@@ -72,11 +72,11 @@ def approx(x: float, y: float=0.0, epsilon: float=APPROX) -> bool:
 
 **説明**: 获取数的符号。
 
-**戻り値**: 符号 + - ""
-
 **引数**:
 > - x: 数  
 > - only_neg: 是否只返回负数的符号  
+
+**戻り値**: 符号 + - ""
 
 
 <details>
@@ -109,11 +109,11 @@ def sign(x: float, only_neg: bool=False) -> str:
 1 -> +1
 0 -> ""
 
-**戻り値**: 符号 + - ""
-
 **引数**:
 > - x: 数  
 > - only_neg: 是否只返回负数的符号  
+
+**戻り値**: 符号 + - ""
 
 
 <details>

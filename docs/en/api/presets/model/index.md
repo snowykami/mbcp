@@ -9,11 +9,11 @@ title: mbcp.presets.model
 
 **Description**: 生成球体上的点集。
 
-**Return**: List[Point3]: 球体上的点集。
-
 **Arguments**:
 > - radius:   
 > - density:   
+
+**Return**: List[Point3]: 球体上的点集。
 
 
 <details>

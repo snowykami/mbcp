@@ -38,11 +38,11 @@ def __init__(self, x: float, y: float, z: float):
 
 **説明**: 判断两个向量是否近似相等。
 
-**戻り値**: 是否近似相等
-
 **引数**:
 > - other:   
 > - epsilon:   
+
+**戻り値**: 是否近似相等
 
 
 <details>
@@ -69,10 +69,10 @@ def approx(self, other: 'Vector3', epsilon: float=APPROX) -> bool:
 
 **説明**: 计算两个向量之间的夹角。
 
-**戻り値**: 夹角
-
 **引数**:
 > - other: 另一个向量  
+
+**戻り値**: 夹角
 
 
 <details>
@@ -101,10 +101,10 @@ def cal_angle(self, other: 'Vector3') -> 'AnyAngle':
 其余结果的模为平行四边形的面积。
 
 
-**戻り値**: 行列式的结果
-
 **引数**:
 > - other:   
+
+**戻り値**: 行列式的结果
 
 
 <details>
@@ -141,11 +141,11 @@ def cross(self, other: 'Vector3') -> 'Vector3':
 
 **説明**: 判断两个向量是否近似平行。
 
-**戻り値**: 是否近似平行
-
 **引数**:
 > - other: 另一个向量  
 > - epsilon: 允许的误差  
+
+**戻り値**: 是否近似平行
 
 
 <details>
@@ -171,10 +171,10 @@ def is_approx_parallel(self, other: 'Vector3', epsilon: float=APPROX) -> bool:
 
 **説明**: 判断两个向量是否平行。
 
-**戻り値**: 是否平行
-
 **引数**:
 > - other: 另一个向量  
+
+**戻り値**: 是否平行
 
 
 <details>
@@ -370,10 +370,10 @@ def __add__(self, other):
 
 **説明**: 判断两个向量是否相等。
 
-**戻り値**: 是否相等
-
 **引数**:
 > - other:   
+
+**戻り値**: 是否相等
 
 
 <details>

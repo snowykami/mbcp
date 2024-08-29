@@ -35,11 +35,11 @@ def __init__(self, point: 'Point3', direction: 'Vector3'):
 
 **Description**: 判断两条直线是否近似相等。
 
-**Return**: 是否近似相等
-
 **Arguments**:
 > - other: 另一条直线  
 > - epsilon: 误差  
+
+**Return**: 是否近似相等
 
 
 <details>
@@ -65,10 +65,10 @@ def approx(self, other: 'Line3', epsilon: float=APPROX) -> bool:
 
 **Description**: 计算直线和直线之间的夹角。
 
-**Return**: 夹角弧度
-
 **Arguments**:
 > - other: 另一条直线  
+
+**Return**: 夹角弧度
 
 **Raises**:
 > - TypeError  不支持的类型
@@ -98,10 +98,10 @@ def cal_angle(self, other: 'Line3') -> 'AnyAngle':
 
 **Description**: 计算直线和直线或点之间的距离。
 
-**Return**: 距离
-
 **Arguments**:
 > - other: 平行直线或点  
+
+**Return**: 距离
 
 **Raises**:
 > - TypeError  不支持的类型
@@ -144,10 +144,10 @@ def cal_distance(self, other: 'Line3 | Point3') -> float:
 
 **Description**: 计算两条直线的交点。
 
-**Return**: 交点
-
 **Arguments**:
 > - other: 另一条直线  
+
+**Return**: 交点
 
 **Raises**:
 > - ValueError  直线平行
@@ -183,10 +183,10 @@ def cal_intersection(self, other: 'Line3') -> 'Point3':
 
 **Description**: 计算直线经过指定点p的垂线。
 
-**Return**: 垂线
-
 **Arguments**:
 > - point: 指定点  
+
+**Return**: 垂线
 
 
 <details>
@@ -211,10 +211,10 @@ def cal_perpendicular(self, point: 'Point3') -> 'Line3':
 
 **Description**: 获取直线上的点。同一条直线，但起始点和方向向量不同，则同一个t对应的点不同。
 
-**Return**: 点
-
 **Arguments**:
 > - t: 参数t  
+
+**Return**: 点
 
 
 <details>
@@ -262,11 +262,11 @@ def get_parametric_equations(self) -> tuple[OneSingleVarFunc, OneSingleVarFunc, 
 
 **Description**: 判断两条直线是否近似平行。
 
-**Return**: 是否近似平行
-
 **Arguments**:
 > - other: 另一条直线  
 > - epsilon: 误差  
+
+**Return**: 是否近似平行
 
 
 <details>
@@ -292,10 +292,10 @@ def is_approx_parallel(self, other: 'Line3', epsilon: float=1e-06) -> bool:
 
 **Description**: 判断两条直线是否平行。
 
-**Return**: 是否平行
-
 **Arguments**:
 > - other: 另一条直线  
+
+**Return**: 是否平行
 
 
 <details>
@@ -320,10 +320,10 @@ def is_parallel(self, other: 'Line3') -> bool:
 
 **Description**: 判断两条直线是否共线。
 
-**Return**: 是否共线
-
 **Arguments**:
 > - other: 另一条直线  
+
+**Return**: 是否共线
 
 
 <details>
@@ -348,10 +348,10 @@ def is_collinear(self, other: 'Line3') -> bool:
 
 **Description**: 判断点是否在直线上。
 
-**Return**: 是否在直线上
-
 **Arguments**:
 > - point: 点  
+
+**Return**: 是否在直线上
 
 
 <details>
@@ -377,10 +377,10 @@ def is_point_on(self, point: 'Point3') -> bool:
 **Description**: 判断两条直线是否共面。
 充要条件：两直线方向向量的叉乘与两直线上任意一点的向量的点积为0。
 
-**Return**: 是否共面
-
 **Arguments**:
 > - other: 另一条直线  
+
+**Return**: 是否共面
 
 
 <details>
@@ -438,11 +438,11 @@ def simplify(self):
 
 **Description**: 工厂函数 由两点构造直线。
 
-**Return**: 直线
-
 **Arguments**:
 > - p1: 点1  
 > - p2: 点2  
+
+**Return**: 直线
 
 
 <details>
@@ -470,10 +470,10 @@ def from_two_points(cls, p1: 'Point3', p2: 'Point3') -> 'Line3':
 
 **Description**: 计算两条直线点集合的交集。重合线返回自身，平行线返回None，交线返回交点。
 
-**Return**: 交点
-
 **Arguments**:
 > - other: 另一条直线  
+
+**Return**: 交点
 
 
 <details>

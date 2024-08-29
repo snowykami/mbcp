@@ -35,11 +35,11 @@ def __init__(self, point: 'Point3', direction: 'Vector3'):
 
 **説明**: 判断两条直线是否近似相等。
 
-**戻り値**: 是否近似相等
-
 **引数**:
 > - other: 另一条直线  
 > - epsilon: 误差  
+
+**戻り値**: 是否近似相等
 
 
 <details>
@@ -65,10 +65,10 @@ def approx(self, other: 'Line3', epsilon: float=APPROX) -> bool:
 
 **説明**: 计算直线和直线之间的夹角。
 
-**戻り値**: 夹角弧度
-
 **引数**:
 > - other: 另一条直线  
+
+**戻り値**: 夹角弧度
 
 **例外**:
 > - TypeError  不支持的类型
@@ -98,10 +98,10 @@ def cal_angle(self, other: 'Line3') -> 'AnyAngle':
 
 **説明**: 计算直线和直线或点之间的距离。
 
-**戻り値**: 距离
-
 **引数**:
 > - other: 平行直线或点  
+
+**戻り値**: 距离
 
 **例外**:
 > - TypeError  不支持的类型
@@ -144,10 +144,10 @@ def cal_distance(self, other: 'Line3 | Point3') -> float:
 
 **説明**: 计算两条直线的交点。
 
-**戻り値**: 交点
-
 **引数**:
 > - other: 另一条直线  
+
+**戻り値**: 交点
 
 **例外**:
 > - ValueError  直线平行
@@ -183,10 +183,10 @@ def cal_intersection(self, other: 'Line3') -> 'Point3':
 
 **説明**: 计算直线经过指定点p的垂线。
 
-**戻り値**: 垂线
-
 **引数**:
 > - point: 指定点  
+
+**戻り値**: 垂线
 
 
 <details>
@@ -211,10 +211,10 @@ def cal_perpendicular(self, point: 'Point3') -> 'Line3':
 
 **説明**: 获取直线上的点。同一条直线，但起始点和方向向量不同，则同一个t对应的点不同。
 
-**戻り値**: 点
-
 **引数**:
 > - t: 参数t  
+
+**戻り値**: 点
 
 
 <details>
@@ -262,11 +262,11 @@ def get_parametric_equations(self) -> tuple[OneSingleVarFunc, OneSingleVarFunc, 
 
 **説明**: 判断两条直线是否近似平行。
 
-**戻り値**: 是否近似平行
-
 **引数**:
 > - other: 另一条直线  
 > - epsilon: 误差  
+
+**戻り値**: 是否近似平行
 
 
 <details>
@@ -292,10 +292,10 @@ def is_approx_parallel(self, other: 'Line3', epsilon: float=1e-06) -> bool:
 
 **説明**: 判断两条直线是否平行。
 
-**戻り値**: 是否平行
-
 **引数**:
 > - other: 另一条直线  
+
+**戻り値**: 是否平行
 
 
 <details>
@@ -320,10 +320,10 @@ def is_parallel(self, other: 'Line3') -> bool:
 
 **説明**: 判断两条直线是否共线。
 
-**戻り値**: 是否共线
-
 **引数**:
 > - other: 另一条直线  
+
+**戻り値**: 是否共线
 
 
 <details>
@@ -348,10 +348,10 @@ def is_collinear(self, other: 'Line3') -> bool:
 
 **説明**: 判断点是否在直线上。
 
-**戻り値**: 是否在直线上
-
 **引数**:
 > - point: 点  
+
+**戻り値**: 是否在直线上
 
 
 <details>
@@ -377,10 +377,10 @@ def is_point_on(self, point: 'Point3') -> bool:
 **説明**: 判断两条直线是否共面。
 充要条件：两直线方向向量的叉乘与两直线上任意一点的向量的点积为0。
 
-**戻り値**: 是否共面
-
 **引数**:
 > - other: 另一条直线  
+
+**戻り値**: 是否共面
 
 
 <details>
@@ -438,11 +438,11 @@ def simplify(self):
 
 **説明**: 工厂函数 由两点构造直线。
 
-**戻り値**: 直线
-
 **引数**:
 > - p1: 点1  
 > - p2: 点2  
+
+**戻り値**: 直线
 
 
 <details>
@@ -470,10 +470,10 @@ def from_two_points(cls, p1: 'Point3', p2: 'Point3') -> 'Line3':
 
 **説明**: 计算两条直线点集合的交集。重合线返回自身，平行线返回None，交线返回交点。
 
-**戻り値**: 交点
-
 **引数**:
 > - other: 另一条直线  
+
+**戻り値**: 交点
 
 
 <details>

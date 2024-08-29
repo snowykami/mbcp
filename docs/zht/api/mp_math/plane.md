@@ -41,10 +41,10 @@ def __init__(self, a: float, b: float, c: float, d: float):
 
 **説明**: 判断两个平面是否近似相等。
 
-**返回**: 是否近似相等
-
 **變數説明**:
 > - other: 另一个平面  
+
+**返回**: 是否近似相等
 
 
 <details>
@@ -79,10 +79,10 @@ def approx(self, other: 'Plane3') -> bool:
 
 **説明**: 计算平面与平面之间的夹角。
 
-**返回**: 夹角弧度
-
 **變數説明**:
 > - other: 另一个平面  
+
+**返回**: 夹角弧度
 
 **抛出**:
 > - TypeError  不支持的类型
@@ -117,10 +117,10 @@ def cal_angle(self, other: 'Line3 | Plane3') -> 'AnyAngle':
 
 **説明**: 计算平面与平面或点之间的距离。
 
-**返回**: 距离
-
 **變數説明**:
 > - other: 另一个平面或点  
+
+**返回**: 距离
 
 **抛出**:
 > - TypeError  不支持的类型
@@ -155,10 +155,10 @@ def cal_distance(self, other: 'Plane3 | Point3') -> float:
 
 **説明**: 计算两平面的交线。
 
-**返回**: 两平面的交线
-
 **變數説明**:
 > - other: 另一个平面  
+
+**返回**: 两平面的交线
 
 
 <details>
@@ -200,10 +200,10 @@ def cal_intersection_line3(self, other: 'Plane3') -> 'Line3':
 
 **説明**: 计算平面与直线的交点。
 
-**返回**: 交点
-
 **變數説明**:
 > - other: 不与平面平行或在平面上的直线  
+
+**返回**: 交点
 
 **抛出**:
 > - ValueError  平面与直线平行或重合
@@ -237,10 +237,10 @@ def cal_intersection_point3(self, other: 'Line3') -> 'Point3':
 
 **説明**: 计算平行于该平面且过指定点的平面。
 
-**返回**: 所求平面
-
 **變數説明**:
 > - point: 指定点  
+
+**返回**: 所求平面
 
 
 <details>
@@ -265,10 +265,10 @@ def cal_parallel_plane3(self, point: 'Point3') -> 'Plane3':
 
 **説明**: 判断两个平面是否平行。
 
-**返回**: 是否平行
-
 **變數説明**:
 > - other: 另一个平面  
+
+**返回**: 是否平行
 
 
 <details>
@@ -319,11 +319,11 @@ def normal(self) -> 'Vector3':
 
 **説明**: 工厂函数 由点和法向量构造平面(点法式构造)。
 
-**返回**: 平面
-
 **變數説明**:
 > - point: 平面上的一点  
 > - normal: 法向量  
+
+**返回**: 平面
 
 
 <details>
@@ -353,12 +353,12 @@ def from_point_and_normal(cls, point: 'Point3', normal: 'Vector3') -> 'Plane3':
 
 **説明**: 工厂函数 由三点构造平面。
 
-**返回**: 平面
-
 **變數説明**:
 > - p1: 点1  
 > - p2: 点2  
 > - p3: 点3  
+
+**返回**: 平面
 
 
 <details>
@@ -390,11 +390,11 @@ def from_three_points(cls, p1: 'Point3', p2: 'Point3', p3: 'Point3') -> 'Plane3'
 
 **説明**: 工厂函数 由两直线构造平面。
 
-**返回**: 平面
-
 **變數説明**:
 > - l1: 直线1  
 > - l2: 直线2  
+
+**返回**: 平面
 
 
 <details>
@@ -426,11 +426,11 @@ def from_two_lines(cls, l1: 'Line3', l2: 'Line3') -> 'Plane3':
 
 **説明**: 工厂函数 由点和直线构造平面。
 
-**返回**: 平面
-
 **變數説明**:
 > - point: 面上一点  
 > - line: 面上直线，不包含点  
+
+**返回**: 平面
 
 
 <details>
@@ -485,10 +485,10 @@ def __and__(self, other: 'Plane3') -> 'Line3 | None':
 
 **説明**: 取两平面的交集（人话：交线）
 
-**返回**: 不平行平面的交线，平面平行返回None
-
 **變數説明**:
 > - other:   
+
+**返回**: 不平行平面的交线，平面平行返回None
 
 
 <details>

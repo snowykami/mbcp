@@ -38,11 +38,11 @@ def __init__(self, x: float, y: float, z: float):
 
 **Description**: 判断两个点是否近似相等。
 
-**Return**: 是否近似相等
-
 **Arguments**:
 > - other:   
 > - epsilon:   
+
+**Return**: 是否近似相等
 
 
 <details>

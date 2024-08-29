@@ -26,3 +26,7 @@ distribution = true
 dev = [
     "translate>=3.6.1",
 ]
+[[tool.pdm.source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+include_packages = ["litedoc"]
