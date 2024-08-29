@@ -49,7 +49,7 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
     """
     求N元函数一阶偏导函数。这玩意不太稳定，慎用。
     > [!warning]
-    > 目前数学界对于数值微分的稳定性问题还没有很好的解决方案，因此这个函数的稳定性也不是很好。
+    > 目前数学界对于一个函数的导函数并没有通解的说法，因此该函数的稳定性有待提升
 
     Args:
         func: 函数
@@ -76,6 +76,7 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
             args_list_minus = list(args)
             args_list_minus[var] -= epsilon
             return (func(*args_list_plus) - func(*args_list_minus)) / (2 * epsilon)
+
         return partial_derivative_func
     elif isinstance(var, tuple):
         def high_order_partial_derivative_func(*args: Var) -> Var:
@@ -84,6 +85,24 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
             for v in var:
                 result_func = get_partial_derivative_func(result_func, v, epsilon)
             return result_func(*args)
+
         return high_order_partial_derivative_func
     else:
         raise ValueError("Invalid var type")
+
+
+def curry(func: MultiVarsFunc, *args: Var) -> OneVarFunc:
+    """
+    对多参数函数进行柯里化。
+    > [!tip]
+    > 有关函数柯里化，可参考[函数式编程--柯理化（Currying）](https://zhuanlan.zhihu.com/p/355859667)
+    Args:
+        func: 函数
+        *args: 参数
+    Returns:
+        柯里化后的函数
+    """
+    def curried_func(*args2: Var) -> Var:
+        """@litedoc-hide"""
+        return func(*args, *args2)
+    return curried_func
