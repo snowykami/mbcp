@@ -1,3 +1,7 @@
+"""
+本模块定义了三维空间中点的类。
+"""
+
 from typing import TYPE_CHECKING, overload
 
 from .const import APPROX

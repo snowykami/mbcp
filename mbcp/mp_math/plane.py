@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-平面模块
+本模块定义了三维空间中的平面类
 """
 import math
 from typing import TYPE_CHECKING, overload
 
 import numpy as np
 
-from .const import APPROX
-from .vector import Vector3, zero_vector3
 from .line import Line3
 from .point import Point3
 from .utils import approx, sign
+from .vector import Vector3, zero_vector3
 
 if TYPE_CHECKING:
     from .angle import AnyAngle

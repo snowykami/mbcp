@@ -1,12 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved 
-
-@Time    : 2024/8/7 上午12:42
-@Author  : snowykami
-@Email   : snowykami@outlook.com
-@File    : segment.py
-@Software: PyCharm
+本模块定义了三维空间中的线段类
 """
 
 from typing import TYPE_CHECKING

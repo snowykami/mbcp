@@ -1,12 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved 
-
-@Time    : 2024/8/26 上午6:29
-@Author  : snowykami
-@Email   : snowykami@outlook.com
-@File    : angle.py
-@Software: PyCharm
+本模块定义了角度相关的类
 """
 import math
 from typing import overload

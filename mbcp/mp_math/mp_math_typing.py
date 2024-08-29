@@ -1,12 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved 
-
-@Time    : 2024/8/9 上午11:35
-@Author  : snowykami
-@Email   : snowykami@outlook.com
-@File    : mp_math_typing.py
-@Software: PyCharm
+本模块用于内部类型提示
 """
 from typing import Callable, Iterable, TypeAlias, TypeVar
 

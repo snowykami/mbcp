@@ -1,16 +1,17 @@
+"""
+本模块定义了3维向量的类Vector3，以及一些常用的向量。
+"""
+
 import math
-from typing import overload, TYPE_CHECKING
+from typing import overload
 
 import numpy as np
 
+from .angle import AnyAngle
 from .const import APPROX
 from .mp_math_typing import RealNumber
 from .point import Point3
-from .angle import AnyAngle
 from .utils import approx
-
-# if TYPE_CHECKING:
-#
 
 
 class Vector3:

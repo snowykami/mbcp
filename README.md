@@ -12,5 +12,6 @@ A Minecraft particle production library
 
 - [【特效红石音乐】使一颗心免于哀伤 If I Can Stop One Heart From Breaking「崩坏：星穹铁道 EP」](https://www.bilibili.com/video/BV1B1421t7i3)
 
-- AA
-    - BB
+## 其他
+
+- 文档由vitepress强力驱动，API文档由[litedoc](https://github.com/LiteyukiStudio/litedoc)生成

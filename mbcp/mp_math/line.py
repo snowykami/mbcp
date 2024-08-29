@@ -1,12 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved 
-
-@Time    : 2024/8/6 下午12:57
-@Author  : snowykami
-@Email   : snowykami@outlook.com
-@File    : other.py
-@Software: PyCharm
+本模块定义了三维空间中的直线类
 """
 import math
 from typing import TYPE_CHECKING

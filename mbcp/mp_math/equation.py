@@ -1,17 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved 
-
-@Time    : 2024/8/9 上午11:32
-@Author  : snowykami
-@Email   : snowykami@outlook.com
-@File    : equation.py
-@Software: PyCharm
+本模块定义了方程相关的类和函数以及一些常用的数学函数
 """
 
-from mbcp.mp_math.mp_math_typing import OneVarFunc, Var, MultiVarsFunc, Number
-from mbcp.mp_math.point import Point3
-from mbcp.mp_math.const import EPSILON
+from .mp_math_typing import OneVarFunc, Var, MultiVarsFunc, Number
+from .point import Point3
+from .const import EPSILON
 
 
 class CurveEquation:
@@ -34,7 +28,7 @@ class CurveEquation:
             *t:
                 参数
         Returns:
-
+            目标点
         """
         if len(t) == 1:
             return Point3(self.x_func(t[0]), self.y_func(t[0]), self.z_func(t[0]))
@@ -73,7 +67,14 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
         return partial_derivative_func
     elif isinstance(var, tuple):
         def high_order_partial_derivative_func(*args: Var) -> Var:
-            """@litedoc-hide"""
+            """
+            @litedoc-hide
+            求高阶偏导函数
+            Args:
+                *args: 参数
+            Returns:
+                高阶偏导数值
+            """
             result_func = func
             for v in var:
                 result_func = get_partial_derivative_func(result_func, v, epsilon)

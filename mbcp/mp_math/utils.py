@@ -1,12 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Copyright (C) 2020-2024 LiteyukiStudio. All Rights Reserved 
-
-@Time    : 2024/8/12 下午9:16
-@Author  : snowykami
-@Email   : snowykami@outlook.com
-@File    : utils.py
-@Software: PyCharm
+本模块定义了一些常用的工具函数
 """
 from typing import overload, TYPE_CHECKING
 

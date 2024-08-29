@@ -1,28 +1,62 @@
 import {defineConfig} from 'vitepress'
+import {generateSidebar} from 'vitepress-sidebar';
+import {zh} from "./zh";
+import {en} from "./en";
+import {ja} from "./ja";
+import {zht} from "./zht";
 
-import AutoSidebarPlugin from 'vitepress-auto-sidebar-plugin'
-
+let defaultLocale = 'zh';
+const commonSidebarOptions = {
+    collapsed: true,
+    convertSameNameSubFileToGroupIndexPage: true,
+    useFolderTitleFromIndexFile: true,
+    useFolderLinkFromIndexFile: true,
+    useTitleFromFrontmatter: true,
+    useTitleFromFileHeading: true,
+    includeFolderIndexFile: true,
+}
 export const common = defineConfig({
     title: "MBCP docs",
     description: "MBCP library docs",
+    markdown: {
+        math: true
+    },
     vite: {
-        plugins: [
-            AutoSidebarPlugin({
-                // 如果不指定 `srcDir`，则默认使用 `vitepress` 的 `srcDir`
-                ignoreList: [
-                    'README.md'
-                ],
-                title: {
-                    mode: text => text.toLowerCase()
-                }
-            }),
-        ],
+        plugins: [],
+    },
+    rewrites: {
+        [`${defaultLocale}/:rest*`]: ":rest*",
     },
     themeConfig: {
-        // https://vitepress.dev/reference/default-theme-config
+        sidebar: generateSidebar(
+            [
+                ...[defaultLocale, 'en', 'ja', 'zht'].map((locale) => {
+                    if (locale === defaultLocale) {
+                        return {
+                            basePath: '/api/',
+                            scanStartPath: `${locale}/api`,
+                            resolvePath: '/api/',
+                            ...commonSidebarOptions
+                        }
+                    } else {
+                        return {
+                            basePath: `/${locale}/api/`,
+                            scanStartPath: `${locale}/api`,
+                            resolvePath: `/${locale}/api/`,
+                            ...commonSidebarOptions
+                        }
+                    }
+                })
+            ]
+        ),
         socialLinks: [
             {icon: 'github', link: 'https://github.com/snowykami/mbcp'}
-        ]
+        ],
     },
-    srcDir: '.'
+    locales: {
+        root: {label: "简体中文", ...zh},
+        en: {label: "English", ...en},
+        ja: {label: "日本語", ...ja},
+        zht: {label: "繁體中文", ...zht},
+    },
 })
