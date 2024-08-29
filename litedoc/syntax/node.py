@@ -245,7 +245,7 @@ class FunctionNode(BaseModel):
         else:
             pass
         # 源码展示
-        md += PREFIX + f"\n<details>\n<summary> <i>{get_text(lang, 'src')}</i> </summary>\n\n```python\n{self.src}\n```\n</details>\n\n"
+        md += PREFIX + f"\n<details>\n<summary> <b>{get_text(lang, 'src')}</b> </summary>\n\n```python\n{self.src}\n```\n</details>\n\n"
 
         return md
 

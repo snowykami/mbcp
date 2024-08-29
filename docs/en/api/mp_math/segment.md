@@ -5,14 +5,14 @@ title: mbcp.mp_math.segment
 ### *method* `__init__(self, p1: Point3, p2: Point3)`
 
 
-三维空间中的线段。
+
+**Description**: 三维空间中的线段。
 :param p1:
 :param p2:
 
 
-
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def __init__(self, p1: 'Point3', p2: 'Point3'):

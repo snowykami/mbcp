@@ -4,28 +4,22 @@ title: mbcp.mp_math.equation
 ### *func* `get_partial_derivative_func(func: MultiVarsFunc = EPSILON) -> MultiVarsFunc`
 
 
-求N元函数一阶偏导函数。这玩意不太稳定，慎用。
+
+**説明**: 求N元函数一阶偏导函数。这玩意不太稳定，慎用。
+
+**返回**: 偏导函数
 
 **變數説明**:
-
-- func: 函数  
-
-- var: 变量位置，可为整数(一阶偏导)或整数元组(高阶偏导)  
-
-- epsilon: 偏移量  
-
-**返回**:
-
-- 偏导函数
+> - func: 函数  
+> - var: 变量位置，可为整数(一阶偏导)或整数元组(高阶偏导)  
+> - epsilon: 偏移量  
 
 **抛出**:
-
-- ValueError  无效变量类型
-
+> - ValueError  无效变量类型
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...], epsilon: Number=EPSILON) -> MultiVarsFunc:
@@ -66,7 +60,7 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 def partial_derivative_func(*args: Var) -> Var:
@@ -82,7 +76,7 @@ def partial_derivative_func(*args: Var) -> Var:
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 def high_order_partial_derivative_func(*args: Var) -> Var:
@@ -97,20 +91,17 @@ def high_order_partial_derivative_func(*args: Var) -> Var:
 ### *method* `__init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc)`
 
 
-曲线方程。
+
+**説明**: 曲线方程。
 
 **變數説明**:
-
-- x_func: x函数  
-
-- y_func: y函数  
-
-- z_func: z函数  
-
+> - x_func: x函数  
+> - y_func: y函数  
+> - z_func: z函数  
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 def __init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc):
@@ -130,18 +121,16 @@ def __init__(self, x_func: OneVarFunc, y_func: OneVarFunc, z_func: OneVarFunc):
 ### *method* `__call__(self) -> Point3 | tuple[Point3, ...]`
 
 
-计算曲线上的点。
+
+**説明**: 计算曲线上的点。
 
 **變數説明**:
-
-- *t:   
-
-- 参数:   
-
+> - *t:   
+> - 参数:   
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 def __call__(self, *t: Var) -> Point3 | tuple[Point3, ...]:

@@ -122,28 +122,32 @@ class Docstring(BaseModel):
         """
         PREFIX = "" * indent
         ret = ""
-        ret += self.desc + "\n\n"
+        # ret += self.desc + "\n\n"
         # print(self.reduction())
         # print(self.desc, self.return_)
-        if self.args:
-            ret += PREFIX + f"**{get_text(lang, 'docstring.args')}**:\n\n"
-            for arg in self.args:
-                ret += PREFIX + f"- {arg.name}: {arg.type}  {arg.desc}\n\n"
-        if self.attrs:
-            ret += PREFIX + f"**{get_text(lang, 'docstring.attrs')}**:\n\n"
-            for attr in self.attrs:
-                ret += PREFIX + f"- {attr.name}: {attr.type}  {attr.desc}\n\n"
+        # 单数属性
+        if self.desc:
+            ret += PREFIX + f"\n**{get_text(lang, 'desc')}**: {self.desc}\n"
         if self.return_ is not None:
-            ret += PREFIX + f"**{get_text(lang, 'docstring.return')}**:\n\n"
-            ret += PREFIX + f"- {self.return_.desc}\n\n"
+            ret += PREFIX + f"\n**{get_text(lang, 'docstring.return')}**: {self.return_.desc}\n"
+
+        # 复数属性
+        if self.args:
+            ret += PREFIX + f"\n**{get_text(lang, 'docstring.args')}**:\n"
+            for arg in self.args:
+                ret += PREFIX + f"> - {arg.name}: {arg.type}  {arg.desc}\n"
+        if self.attrs:
+            ret += PREFIX + f"\n**{get_text(lang, 'docstring.attrs')}**:\n"
+            for attr in self.attrs:
+                ret += PREFIX + f"> - {attr.name}: {attr.type}  {attr.desc}\n"
         if self.raise_:
-            ret += PREFIX + f"**{get_text(lang, 'docstring.raises')}**:\n\n"
+            ret += PREFIX + f"\n**{get_text(lang, 'docstring.raises')}**:\n"
             for exception in self.raise_:
-                ret += PREFIX + f"- {exception.name}  {exception.desc}\n\n"
+                ret += PREFIX + f"> - {exception.name}  {exception.desc}\n"
         if self.example:
-            ret += PREFIX + f"**{get_text(lang, 'docstring.example')}**:\n\n"
+            ret += PREFIX + f"\n**{get_text(lang, 'docstring.example')}**:\n"
             for example in self.example:
-                ret += PREFIX + f"- {example.desc}\n        **{get_text(lang, 'docs.input')}**: {example.input}\n        **{get_text(lang, 'docs.output')}**: {example.output}\n\n"
+                ret += PREFIX + f"  - {example.desc}\n>        **{get_text(lang, 'docs.input')}**: {example.input}\n>        **{get_text(lang, 'docs.output')}**: {example.output}\n"
         return ret
 
     def __str__(self):

@@ -6,18 +6,16 @@ title: mbcp.mp_math.angle
 ### *method* `__init__(self, value: float, is_radian: bool = False)`
 
 
-任意角度。
+
+**説明**: 任意角度。
 
 **變數説明**:
-
-- value: 角度或弧度值  
-
-- is_radian: 是否为弧度，默认为否  
-
+> - value: 角度或弧度值  
+> - is_radian: 是否为弧度，默认为否  
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 def __init__(self, value: float, is_radian: bool=False):
@@ -38,16 +36,14 @@ def __init__(self, value: float, is_radian: bool=False):
 ### *method* `complementary(self) -> AnyAngle`
 
 
-余角：两角的和为90°。
 
-**返回**:
+**説明**: 余角：两角的和为90°。
 
-- 余角
-
+**返回**: 余角
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @property
@@ -65,16 +61,14 @@ def complementary(self) -> 'AnyAngle':
 ### *method* `supplementary(self) -> AnyAngle`
 
 
-补角：两角的和为180°。
 
-**返回**:
+**説明**: 补角：两角的和为180°。
 
-- 补角
-
+**返回**: 补角
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @property
@@ -92,16 +86,14 @@ def supplementary(self) -> 'AnyAngle':
 ### *method* `degree(self) -> float`
 
 
-角度。
 
-**返回**:
+**説明**: 角度。
 
-- 弧度
-
+**返回**: 弧度
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @property
@@ -119,16 +111,14 @@ def degree(self) -> float:
 ### *method* `minimum_positive(self) -> AnyAngle`
 
 
-最小正角。
 
-**返回**:
+**説明**: 最小正角。
 
-- 最小正角度
-
+**返回**: 最小正角度
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @property
@@ -146,16 +136,14 @@ def minimum_positive(self) -> 'AnyAngle':
 ### *method* `maximum_negative(self) -> AnyAngle`
 
 
-最大负角。
 
-**返回**:
+**説明**: 最大负角。
 
-- 最大负角度
-
+**返回**: 最大负角度
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @property
@@ -173,16 +161,14 @@ def maximum_negative(self) -> 'AnyAngle':
 ### *method* `sin(self) -> float`
 
 
-正弦值。
 
-**返回**:
+**説明**: 正弦值。
 
-- 正弦值
-
+**返回**: 正弦值
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @property
@@ -200,16 +186,14 @@ def sin(self) -> float:
 ### *method* `cos(self) -> float`
 
 
-余弦值。
 
-**返回**:
+**説明**: 余弦值。
 
-- 余弦值
-
+**返回**: 余弦值
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @property
@@ -227,16 +211,14 @@ def cos(self) -> float:
 ### *method* `tan(self) -> float`
 
 
-正切值。
 
-**返回**:
+**説明**: 正切值。
 
-- 正切值
-
+**返回**: 正切值
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @property
@@ -254,16 +236,14 @@ def tan(self) -> float:
 ### *method* `cot(self) -> float`
 
 
-余切值。
 
-**返回**:
+**説明**: 余切值。
 
-- 余切值
-
+**返回**: 余切值
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @property
@@ -281,16 +261,14 @@ def cot(self) -> float:
 ### *method* `sec(self) -> float`
 
 
-正割值。
 
-**返回**:
+**説明**: 正割值。
 
-- 正割值
-
+**返回**: 正割值
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @property
@@ -308,16 +286,14 @@ def sec(self) -> float:
 ### *method* `csc(self) -> float`
 
 
-余割值。
 
-**返回**:
+**説明**: 余割值。
 
-- 余割值
-
+**返回**: 余割值
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @property
@@ -335,7 +311,7 @@ def csc(self) -> float:
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 def __add__(self, other: 'AnyAngle') -> 'AnyAngle':
@@ -347,7 +323,7 @@ def __add__(self, other: 'AnyAngle') -> 'AnyAngle':
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 def __eq__(self, other):
@@ -359,7 +335,7 @@ def __eq__(self, other):
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 def __sub__(self, other: 'AnyAngle') -> 'AnyAngle':
@@ -371,7 +347,7 @@ def __sub__(self, other: 'AnyAngle') -> 'AnyAngle':
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 def __mul__(self, other: float) -> 'AnyAngle':
@@ -384,7 +360,7 @@ def __mul__(self, other: float) -> 'AnyAngle':
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @overload
@@ -398,7 +374,7 @@ def __truediv__(self, other: float) -> 'AnyAngle':
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @overload
@@ -411,7 +387,7 @@ def __truediv__(self, other: 'AnyAngle') -> float:
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 def __truediv__(self, other):

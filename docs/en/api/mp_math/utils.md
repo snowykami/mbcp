@@ -4,24 +4,19 @@ title: mbcp.mp_math.utils
 ### *func* `clamp() -> float`
 
 
-区间限定函数
+
+**Description**: 区间限定函数
+
+**Return**: 限制后的值
 
 **Arguments**:
-
-- x: 待限定的值  
-
-- min_: 最小值  
-
-- max_: 最大值  
-
-**Return**:
-
-- 限制后的值
-
+> - x: 待限定的值  
+> - min_: 最小值  
+> - max_: 最大值  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def clamp(x: float, min_: float, max_: float) -> float:
@@ -42,24 +37,19 @@ def clamp(x: float, min_: float, max_: float) -> float:
 ### *func* `approx(x: float = 0.0, y: float = APPROX) -> bool`
 
 
-判断两个数是否近似相等。或包装一个实数，用于判断是否近似于0。
+
+**Description**: 判断两个数是否近似相等。或包装一个实数，用于判断是否近似于0。
+
+**Return**: 是否近似相等
 
 **Arguments**:
-
-- x: 数1  
-
-- y: 数2  
-
-- epsilon: 误差  
-
-**Return**:
-
-- 是否近似相等
-
+> - x: 数1  
+> - y: 数2  
+> - epsilon: 误差  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def approx(x: float, y: float=0.0, epsilon: float=APPROX) -> bool:
@@ -79,22 +69,18 @@ def approx(x: float, y: float=0.0, epsilon: float=APPROX) -> bool:
 ### *func* `sign(x: float = False) -> str`
 
 
-获取数的符号。
+
+**Description**: 获取数的符号。
+
+**Return**: 符号 + - ""
 
 **Arguments**:
-
-- x: 数  
-
-- only_neg: 是否只返回负数的符号  
-
-**Return**:
-
-- 符号 + - ""
-
+> - x: 数  
+> - only_neg: 是否只返回负数的符号  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def sign(x: float, only_neg: bool=False) -> str:
@@ -117,25 +103,21 @@ def sign(x: float, only_neg: bool=False) -> str:
 ### *func* `sign_format(x: float = False) -> str`
 
 
-格式化符号数
+
+**Description**: 格式化符号数
 -1 -> -1
 1 -> +1
 0 -> ""
 
+**Return**: 符号 + - ""
+
 **Arguments**:
-
-- x: 数  
-
-- only_neg: 是否只返回负数的符号  
-
-**Return**:
-
-- 符号 + - ""
-
+> - x: 数  
+> - only_neg: 是否只返回负数的符号  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def sign_format(x: float, only_neg: bool=False) -> str:
@@ -163,7 +145,7 @@ def sign_format(x: float, only_neg: bool=False) -> str:
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def __init__(self, value: RealNumber):
@@ -175,7 +157,7 @@ def __init__(self, value: RealNumber):
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def __eq__(self, other):
@@ -196,7 +178,7 @@ def __eq__(self, other):
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def raise_type_error(self, other):
@@ -208,7 +190,7 @@ def raise_type_error(self, other):
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def __ne__(self, other):

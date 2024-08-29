@@ -6,22 +6,18 @@ title: mbcp.presets.model
 ### *method* `sphere(radius: float, density: float)`
 
 
-生成球体上的点集。
+
+**説明**: 生成球体上的点集。
+
+**返回**: List[Point3]: 球体上的点集。
 
 **變數説明**:
-
-- radius:   
-
-- density:   
-
-**返回**:
-
-- List[Point3]: 球体上的点集。
-
+> - radius:   
+> - density:   
 
 
 <details>
-<summary> <i>源碼</i> </summary>
+<summary> <b>源碼</b> </summary>
 
 ```python
 @staticmethod

@@ -5,22 +5,18 @@ title: mbcp.mp_math.plane
 ### *method* `__init__(self, a: float, b: float, c: float, d: float)`
 
 
-平面方程：ax + by + cz + d = 0
+
+**Description**: 平面方程：ax + by + cz + d = 0
 
 **Arguments**:
-
-- a: x系数  
-
-- b: y系数  
-
-- c: z系数  
-
-- d: 常数项  
-
+> - a: x系数  
+> - b: y系数  
+> - c: z系数  
+> - d: 常数项  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def __init__(self, a: float, b: float, c: float, d: float):
@@ -42,20 +38,17 @@ def __init__(self, a: float, b: float, c: float, d: float):
 ### *method* `approx(self, other: Plane3) -> bool`
 
 
-判断两个平面是否近似相等。
+
+**Description**: 判断两个平面是否近似相等。
+
+**Return**: 是否近似相等
 
 **Arguments**:
-
-- other: 另一个平面  
-
-**Return**:
-
-- 是否近似相等
-
+> - other: 另一个平面  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def approx(self, other: 'Plane3') -> bool:
@@ -83,24 +76,20 @@ def approx(self, other: 'Plane3') -> bool:
 ### *method* `cal_angle(self, other: Line3 | Plane3) -> AnyAngle`
 
 
-计算平面与平面之间的夹角。
+
+**Description**: 计算平面与平面之间的夹角。
+
+**Return**: 夹角弧度
 
 **Arguments**:
-
-- other: 另一个平面  
-
-**Return**:
-
-- 夹角弧度
+> - other: 另一个平面  
 
 **Raises**:
-
-- TypeError  不支持的类型
-
+> - TypeError  不支持的类型
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def cal_angle(self, other: 'Line3 | Plane3') -> 'AnyAngle':
@@ -125,24 +114,20 @@ def cal_angle(self, other: 'Line3 | Plane3') -> 'AnyAngle':
 ### *method* `cal_distance(self, other: Plane3 | Point3) -> float`
 
 
-计算平面与平面或点之间的距离。
+
+**Description**: 计算平面与平面或点之间的距离。
+
+**Return**: 距离
 
 **Arguments**:
-
-- other: 另一个平面或点  
-
-**Return**:
-
-- 距离
+> - other: 另一个平面或点  
 
 **Raises**:
-
-- TypeError  不支持的类型
-
+> - TypeError  不支持的类型
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def cal_distance(self, other: 'Plane3 | Point3') -> float:
@@ -167,20 +152,17 @@ def cal_distance(self, other: 'Plane3 | Point3') -> float:
 ### *method* `cal_intersection_line3(self, other: Plane3) -> Line3`
 
 
-计算两平面的交线。
+
+**Description**: 计算两平面的交线。
+
+**Return**: 两平面的交线
 
 **Arguments**:
-
-- other: 另一个平面  
-
-**Return**:
-
-- 两平面的交线
-
+> - other: 另一个平面  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def cal_intersection_line3(self, other: 'Plane3') -> 'Line3':
@@ -215,24 +197,20 @@ def cal_intersection_line3(self, other: 'Plane3') -> 'Line3':
 ### *method* `cal_intersection_point3(self, other: Line3) -> Point3`
 
 
-计算平面与直线的交点。
+
+**Description**: 计算平面与直线的交点。
+
+**Return**: 交点
 
 **Arguments**:
-
-- other: 不与平面平行或在平面上的直线  
-
-**Return**:
-
-- 交点
+> - other: 不与平面平行或在平面上的直线  
 
 **Raises**:
-
-- ValueError  平面与直线平行或重合
-
+> - ValueError  平面与直线平行或重合
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def cal_intersection_point3(self, other: 'Line3') -> 'Point3':
@@ -256,20 +234,17 @@ def cal_intersection_point3(self, other: 'Line3') -> 'Point3':
 ### *method* `cal_parallel_plane3(self, point: Point3) -> Plane3`
 
 
-计算平行于该平面且过指定点的平面。
+
+**Description**: 计算平行于该平面且过指定点的平面。
+
+**Return**: 所求平面
 
 **Arguments**:
-
-- point: 指定点  
-
-**Return**:
-
-- 所求平面
-
+> - point: 指定点  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def cal_parallel_plane3(self, point: 'Point3') -> 'Plane3':
@@ -287,20 +262,17 @@ def cal_parallel_plane3(self, point: 'Point3') -> 'Plane3':
 ### *method* `is_parallel(self, other: Plane3) -> bool`
 
 
-判断两个平面是否平行。
+
+**Description**: 判断两个平面是否平行。
+
+**Return**: 是否平行
 
 **Arguments**:
-
-- other: 另一个平面  
-
-**Return**:
-
-- 是否平行
-
+> - other: 另一个平面  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def is_parallel(self, other: 'Plane3') -> bool:
@@ -319,16 +291,14 @@ def is_parallel(self, other: 'Plane3') -> bool:
 ### *method* `normal(self) -> Vector3`
 
 
-平面的法向量。
 
-**Return**:
+**Description**: 平面的法向量。
 
-- 法向量
-
+**Return**: 法向量
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 @property
@@ -346,22 +316,18 @@ def normal(self) -> 'Vector3':
 ### *method* `from_point_and_normal(cls, point: Point3, normal: Vector3) -> Plane3`
 
 
-工厂函数 由点和法向量构造平面(点法式构造)。
+
+**Description**: 工厂函数 由点和法向量构造平面(点法式构造)。
+
+**Return**: 平面
 
 **Arguments**:
-
-- point: 平面上的一点  
-
-- normal: 法向量  
-
-**Return**:
-
-- 平面
-
+> - point: 平面上的一点  
+> - normal: 法向量  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 @classmethod
@@ -384,24 +350,19 @@ def from_point_and_normal(cls, point: 'Point3', normal: 'Vector3') -> 'Plane3':
 ### *method* `from_three_points(cls, p1: Point3, p2: Point3, p3: Point3) -> Plane3`
 
 
-工厂函数 由三点构造平面。
+
+**Description**: 工厂函数 由三点构造平面。
+
+**Return**: 平面
 
 **Arguments**:
-
-- p1: 点1  
-
-- p2: 点2  
-
-- p3: 点3  
-
-**Return**:
-
-- 平面
-
+> - p1: 点1  
+> - p2: 点2  
+> - p3: 点3  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 @classmethod
@@ -426,22 +387,18 @@ def from_three_points(cls, p1: 'Point3', p2: 'Point3', p3: 'Point3') -> 'Plane3'
 ### *method* `from_two_lines(cls, l1: Line3, l2: Line3) -> Plane3`
 
 
-工厂函数 由两直线构造平面。
+
+**Description**: 工厂函数 由两直线构造平面。
+
+**Return**: 平面
 
 **Arguments**:
-
-- l1: 直线1  
-
-- l2: 直线2  
-
-**Return**:
-
-- 平面
-
+> - l1: 直线1  
+> - l2: 直线2  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 @classmethod
@@ -466,22 +423,18 @@ def from_two_lines(cls, l1: 'Line3', l2: 'Line3') -> 'Plane3':
 ### *method* `from_point_and_line(cls, point: Point3, line: Line3) -> Plane3`
 
 
-工厂函数 由点和直线构造平面。
+
+**Description**: 工厂函数 由点和直线构造平面。
+
+**Return**: 平面
 
 **Arguments**:
-
-- point: 面上一点  
-
-- line: 面上直线，不包含点  
-
-**Return**:
-
-- 平面
-
+> - point: 面上一点  
+> - line: 面上直线，不包含点  
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 @classmethod
@@ -503,7 +456,7 @@ def from_point_and_line(cls, point: 'Point3', line: 'Line3') -> 'Plane3':
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 @overload
@@ -517,7 +470,7 @@ def __and__(self, other: 'Line3') -> 'Point3 | None':
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 @overload
@@ -529,20 +482,17 @@ def __and__(self, other: 'Plane3') -> 'Line3 | None':
 ### *method* `__and__(self, other)`
 
 
-取两平面的交集（人话：交线）
+
+**Description**: 取两平面的交集（人话：交线）
+
+**Return**: 不平行平面的交线，平面平行返回None
 
 **Arguments**:
-
-- other:   
-
-**Return**:
-
-- 不平行平面的交线，平面平行返回None
-
+> - other:   
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def __and__(self, other):
@@ -570,7 +520,7 @@ def __and__(self, other):
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def __eq__(self, other) -> bool:
@@ -582,7 +532,7 @@ def __eq__(self, other) -> bool:
 
 
 <details>
-<summary> <i>Source code</i> </summary>
+<summary> <b>Source code</b> </summary>
 
 ```python
 def __rand__(self, other: 'Line3') -> 'Point3':
