@@ -85,18 +85,4 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
         raise ValueError("Invalid var type")
 
 
-def curry(func: MultiVarsFunc, *args: Var) -> OneVarFunc:
-    """
-    对多参数函数进行柯里化。
-    > [!tip]
-    > 有关函数柯里化，可参考[函数式编程--柯理化（Currying）](https://zhuanlan.zhihu.com/p/355859667)
-    Args:
-        func: 函数
-        *args: 参数
-    Returns:
-        柯里化后的函数
-    """
-    def curried_func(*args2: Var) -> Var:
-        """@litedoc-hide"""
-        return func(*args, *args2)
-    return curried_func
+

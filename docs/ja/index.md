@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "MBCP docs"
+  name: "MBCP"
   text: "More basic change particle"
   tagline: ジオメトリ演算とパーティクル作成のためのライブラリ
   actions:
@@ -13,6 +13,9 @@ hero:
     - theme: alt
       text: API リファレンス
       link: ./api/
+  image:
+    src: /mbcp-logo.svg
+    alt: MBCP logo
 
 features:
     - title: 高可用性

@@ -1,15 +1,24 @@
 import {defineConfig} from 'vitepress'
+import {ThemeConfig} from "./utils";
 
 export const ja = defineConfig({
     lang: "ja-JP",
-    description: "Minecraftのパーティクル生成用のライブラリ",
+    title: "MBCP ドキュメント",
+    description: "MBCP ライブラリ ドキュメント",
     themeConfig: {
         nav: [
             {text: 'スタート', link: '/ja/guide/'},
             {text: 'リファレンス', link: '/ja/refer'},
-            {text: 'APIドキュメント', link: '/ja/api/'},
+            {text: 'APIリファレンス', link: '/ja/api/'},
             {text: 'インスタンス', link: '/ja/demo/'},
         ],
+        docFooter: {
+            prev: '前のページ',
+            next: '次のページ'
+        },
+        editLink: ThemeConfig.getEditLink(
+            'このページをGitHubで編集する',
+        ),
         footer: {
             message: '<a href="https://vitepress.dev/">VitePress</a> で構築されたドキュメント | <a href="https://github.com/LiteyukiStudio/litedoc">litedoc</a> によって生成されたAPIリファレンス',
             copyright: 'Copyright (C) 2020-2024 SnowyKami. All Rights Reserved'

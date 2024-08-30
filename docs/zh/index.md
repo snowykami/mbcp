@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "MBCP docs"
-  text: "More basic change particle"
-  tagline: 用于几何运算和粒子制作的库
+  name: "MBCP"
+  text: "更多基础变换粒子"
+  tagline: 用于几何运算和Minecraft粒子制作的库
   actions:
     - theme: brand
       text: 快速开始
@@ -13,6 +13,9 @@ hero:
     - theme: alt
       text: API文档
       link: ./api/
+  image:
+    src: /mbcp-logo.svg
+    alt: MBCP logo
 
 features:
   - title: 高可用性

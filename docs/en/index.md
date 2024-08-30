@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "MBCP docs"
+  name: "MBCP"
   text: "More basic change particle"
-  tagline: A Library for Python to create particle effects and geometric figures
+  tagline: A Library for Python to create Minecraft particle effects and geometric figures
   actions:
     - theme: brand
       text: Get Started
@@ -13,6 +13,9 @@ hero:
     - theme: alt
       text: API Reference
       link: ./api/
+  image:
+    src: /mbcp-logo.svg
+    alt: MBCP logo
 
 features:
   - title: Easy to use

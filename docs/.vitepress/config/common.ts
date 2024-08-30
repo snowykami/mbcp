@@ -51,8 +51,11 @@ function generateSidebarConfig(): any[] {
 console.log(generateSidebarConfig())
 
 export const common = defineConfig({
-    title: "MBCP docs",
-    description: "MBCP library docs",
+    head: [
+        [
+            'link', {rel: 'icon', type: 'image/svg+xml', href: '/mbcp-logo.svg'}
+        ]
+    ],
     markdown: {
         math: true
     },
@@ -60,6 +63,7 @@ export const common = defineConfig({
         [`${defaultLocale}/:rest*`]: ":rest*",
     },
     themeConfig: {
+        logo: '/mbcp-logo.svg',
         sidebar: generateSidebar(
             [
                 ...generateSidebarConfig()
@@ -68,9 +72,6 @@ export const common = defineConfig({
         socialLinks: [
             {icon: 'github', link: 'https://github.com/snowykami/mbcp'}
         ],
-        editLink: {
-            pattern: 'https://github.com/snowykami/mbcp/tree/main/docs/:path'
-        },
         outline: [2, 6]
     },
     sitemap: {
