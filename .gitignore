@@ -19,3 +19,7 @@ docs/zh/api/
 docs/zht/api/
 docs/en/api/
 docs/ja/api/
+
+# litedoc
+mkdoc.bat
+mkdoc_exp.bat

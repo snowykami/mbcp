@@ -6,6 +6,7 @@ export const en = defineConfig({
     themeConfig: {
         nav: [
             {text: 'Get Start', link: '/en/guide/'},
+            {text: 'Reference', link: '/en/refer'},
             {text: 'API Document', link: '/en/api/'},
             {text: 'Demo', link: '/en/demo/'},
         ],

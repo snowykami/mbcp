@@ -14,7 +14,42 @@ const commonSidebarOptions = {
     useFolderTitleFromIndexFile: true,
     useFolderLinkFromIndexFile: true,
     includeFolderIndexFile: true,
+    rootGroupText: 'MBCP',
 }
+
+/**
+ * Generate sidebar config
+ * multiple languages and sections
+ * @returns {any[]}
+ */
+function generateSidebarConfig(): any[] {
+    let sections = ["api", "refer", "guide"]
+    let languages = ['zh', 'en', 'ja', 'zht']
+    let ret = []
+    for (let language of languages) {
+        for (let section of sections) {
+            if (language === defaultLocale) {
+                ret.push({
+                    basePath: `/${section}/`,
+                    scanStartPath: `${language}/${section}`,
+                    resolvePath: `/${section}/`,
+                    ...commonSidebarOptions
+                })
+            } else {
+                ret.push({
+                    basePath: `/${language}/${section}/`,
+                    scanStartPath: `${language}/${section}`,
+                    resolvePath: `/${language}/${section}/`,
+                    ...commonSidebarOptions
+                })
+            }
+        }
+    }
+    return ret
+}
+
+console.log(generateSidebarConfig())
+
 export const common = defineConfig({
     title: "MBCP docs",
     description: "MBCP library docs",
@@ -27,23 +62,7 @@ export const common = defineConfig({
     themeConfig: {
         sidebar: generateSidebar(
             [
-                ...[defaultLocale, 'en', 'ja', 'zht'].map((locale) => {
-                    if (locale === defaultLocale) {
-                        return {
-                            basePath: '/api/',
-                            scanStartPath: `${locale}/api`,
-                            resolvePath: '/api/',
-                            ...commonSidebarOptions
-                        }
-                    } else {
-                        return {
-                            basePath: `/${locale}/api/`,
-                            scanStartPath: `${locale}/api`,
-                            resolvePath: `/${locale}/api/`,
-                            ...commonSidebarOptions
-                        }
-                    }
-                })
+                ...generateSidebarConfig()
             ]
         ),
         socialLinks: [

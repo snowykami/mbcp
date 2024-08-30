@@ -6,6 +6,7 @@ export const ja = defineConfig({
     themeConfig: {
         nav: [
             {text: 'スタート', link: '/ja/guide/'},
+            {text: 'リファレンス', link: '/ja/refer'},
             {text: 'APIドキュメント', link: '/ja/api/'},
             {text: 'インスタンス', link: '/ja/demo/'},
         ],

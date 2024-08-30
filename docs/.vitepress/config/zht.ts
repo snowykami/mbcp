@@ -7,6 +7,7 @@ export const zht = defineConfig({
     themeConfig: {
         nav: [
             {text: '指引', link: '/zht/guide/'},
+            {text: '參考', link: '/zht/refer'},
             {text: 'API文檔', link: '/zht/api/'},
             {text: '示範', link: '/zht/demo/'},
         ],

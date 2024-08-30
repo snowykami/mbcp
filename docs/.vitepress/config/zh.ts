@@ -6,6 +6,7 @@ export const zh = defineConfig({
     themeConfig: {
         nav: [
             {text: '快速开始', link: '/guide/'},
+            {text: '参考', link: '/refer'},
             {text: 'API文档', link: '/api/'},
             {text: '实例', link: '/demo/'},
         ],
