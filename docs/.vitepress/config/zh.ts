@@ -23,6 +23,6 @@ export const zh = defineConfig({
             message: '文档由 <a href="https://vitepress.dev/">VitePress</a> 构建 | API引用由 <a href="https://github.com/LiteyukiStudio/litedoc">litedoc</a> 生成',
             copyright: ThemeConfig.copyright
         },
-        outline: ThemeConfig.getOutLine("页面内容")
+        outline: ThemeConfig.getOutLine("页面内容"),
     },
 })

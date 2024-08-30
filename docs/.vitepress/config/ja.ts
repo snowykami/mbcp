@@ -23,6 +23,6 @@ export const ja = defineConfig({
             message: '<a href="https://vitepress.dev/">VitePress</a> で構築されたドキュメント | <a href="https://github.com/LiteyukiStudio/litedoc">litedoc</a> によって生成されたAPIリファレンス',
             copyright: ThemeConfig.copyright
         },
-        outline: ThemeConfig.getOutLine("ページの内容")
+        outline: ThemeConfig.getOutLine("ページの内容"),
     },
 })

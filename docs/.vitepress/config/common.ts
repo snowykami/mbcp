@@ -1,3 +1,5 @@
+// 共有配置项，导入index用
+
 import {defineConfig} from 'vitepress'
 import {generateSidebar} from 'vitepress-sidebar';
 import {zh} from "./zh";
@@ -71,11 +73,82 @@ export const common = defineConfig({
         socialLinks: [
             {icon: 'github', link: 'https://github.com/snowykami/mbcp'}
         ],
-        outline: [2, 6]
+        search: {
+            provider: 'local',
+            options: {
+                locales: {
+                    root: {
+                        translations: {
+                            button: {
+                                buttonText: '搜索文档',
+                                buttonAriaLabel: '打开搜索框',
+                            },
+                            modal: {
+                                noResultsText: '没有找到搜索结果',
+                                resetButtonTitle: '清除查询条件',
+                                footer: {
+                                    selectText: '选择',
+                                    navigateText: '切换',
+                                }
+                            }
+                        },
+                    },
+                    en: {
+                        translations: {
+                            button: {
+                                buttonText: 'Search',
+                                buttonAriaLabel: 'Search',
+                            },
+                            modal: {
+                                noResultsText: 'No results found',
+                                resetButtonTitle: 'Reset search query',
+                                footer: {
+                                    selectText: 'Select',
+                                    navigateText: 'Navigate',
+                                }
+                            }
+                        }
+                    },
+                    zht: {
+                        translations: {
+                            button: {
+                                buttonText: '搜索文檔',
+                                buttonAriaLabel: '打開搜索框',
+                            },
+                            modal: {
+                                noResultsText: '沒有找到搜索結果',
+                                resetButtonTitle: '清除查詢條件',
+                                footer: {
+                                    selectText: '選擇',
+                                    navigateText: '切換',
+                                }
+                            }
+                        }
+                    },
+                    ja: {
+                        translations: {
+                            button: {
+                                buttonText: '検索',
+                                buttonAriaLabel: '検索を開く',
+                            },
+                            modal: {
+                                noResultsText: '検索結果が見つかりません',
+                                resetButtonTitle: 'リセット',
+                                footer: {
+                                    selectText: '選択',
+                                    navigateText: '移動',
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     },
     sitemap: {
         hostname: 'https://mbcp.sfkm.me'
     },
+    lastUpdated: true,
     locales: {
         root: {label: "简体中文", ...zh},
         en: {label: "English", ...en},
