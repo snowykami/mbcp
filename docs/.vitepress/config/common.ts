@@ -52,7 +52,7 @@ export const common = defineConfig({
         editLink: {
             pattern: 'https://github.com/snowykami/mbcp/tree/main/docs/:path'
         },
-        aside: true ,
+        outline: [2, 6]
     },
     sitemap: {
         hostname: 'https://mbcp.sfkm.me'

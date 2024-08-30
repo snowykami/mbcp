@@ -12,6 +12,10 @@ export const ja = defineConfig({
         footer: {
             message: '<a href="https://vitepress.dev/">VitePress</a> で構築されたドキュメント | <a href="https://github.com/LiteyukiStudio/litedoc">litedoc</a> によって生成されたAPIリファレンス',
             copyright: 'Copyright (C) 2020-2024 SnowyKami. All Rights Reserved'
+        },
+        outline: {
+            label: "このページについて",
+            level: [2, 6]
         }
     },
 })
