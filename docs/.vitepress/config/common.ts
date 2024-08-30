@@ -9,10 +9,10 @@ let defaultLocale = 'zh';
 const commonSidebarOptions = {
     collapsed: true,
     convertSameNameSubFileToGroupIndexPage: true,
-    useFolderTitleFromIndexFile: true,
-    useFolderLinkFromIndexFile: true,
     useTitleFromFrontmatter: true,
     useTitleFromFileHeading: true,
+    useFolderTitleFromIndexFile: true,
+    useFolderLinkFromIndexFile: true,
     includeFolderIndexFile: true,
 }
 export const common = defineConfig({
@@ -20,9 +20,6 @@ export const common = defineConfig({
     description: "MBCP library docs",
     markdown: {
         math: true
-    },
-    vite: {
-        plugins: [],
     },
     rewrites: {
         [`${defaultLocale}/:rest*`]: ":rest*",
@@ -52,6 +49,13 @@ export const common = defineConfig({
         socialLinks: [
             {icon: 'github', link: 'https://github.com/snowykami/mbcp'}
         ],
+        editLink: {
+            pattern: 'https://github.com/snowykami/mbcp/tree/main/docs/:path'
+        },
+        aside: true ,
+    },
+    sitemap: {
+        hostname: 'https://mbcp.sfkm.me'
     },
     locales: {
         root: {label: "简体中文", ...zh},
