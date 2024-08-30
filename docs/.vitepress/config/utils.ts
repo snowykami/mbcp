@@ -1,3 +1,5 @@
+// 本模块储存一些工具函数和引用
+
 /**
  * GetEditLink Options
  * @param text Edit link text
@@ -19,5 +21,14 @@ export const ThemeConfig = {
             },
             text: editPageText
         };
-    }
+    },
+
+    getOutLine: (label: string): { label: string; level: [number, number]; } => {
+        return {
+            label: label,
+            level: [2, 6]
+        };
+    },
+
+    copyright: 'Copyright (C) 2020-2024 SnowyKami. All Rights Reserved'
 }

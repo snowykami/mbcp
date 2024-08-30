@@ -21,11 +21,8 @@ export const zh = defineConfig({
         ),
         footer: {
             message: '文档由 <a href="https://vitepress.dev/">VitePress</a> 构建 | API引用由 <a href="https://github.com/LiteyukiStudio/litedoc">litedoc</a> 生成',
-            copyright: 'Copyright (C) 2020-2024 SnowyKami. All Rights Reserved'
+            copyright: ThemeConfig.copyright
         },
-        outline: {
-            label: "页面内容",
-            level: [2, 6]
-        }
+        outline: ThemeConfig.getOutLine("页面内容")
     },
 })
