@@ -52,9 +52,8 @@ console.log(generateSidebarConfig())
 
 export const common = defineConfig({
     head: [
-        [
-            'link', {rel: 'icon', type: 'image/svg+xml', href: '/mbcp-logo.svg'}
-        ]
+        ['link', {rel: 'icon', type: 'image/svg+xml', href: '/mbcp-logo.svg'}],
+        ['link', {rel: 'stylesheet', href: 'https://fonts.font.im/css?family=Cousine:400,400i,700,700i|Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i'}],
     ],
     markdown: {
         math: true
