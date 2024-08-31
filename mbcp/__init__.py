@@ -3,10 +3,10 @@
 本模块是主模块，提供了一些工具
 可导入
 
-[`mbcp.mp_math`](./mp_math)：数学工具
+[`mbcp.mp_math`](./mp_math/)：数学工具
 
-[`mbcp.particle`](./particle)：粒子生成工具
+[`mbcp.particle`](./particle/)：粒子生成工具
 
-[`mbcp.presets`](./presets)：预设
+[`mbcp.presets`](./presets/)：预设
 """
 from .mp_math import *

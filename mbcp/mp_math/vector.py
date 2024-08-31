@@ -19,9 +19,9 @@ class Vector3:
         """
         3维向量
         Args:
-            x: x轴分量
-            y: y轴分量
-            z: z轴分量
+            x ([`float`](https%3A//docs.python.org/3/library/functions.html#float)): x轴分量
+            y (`float`): y轴分量
+            z (`float`): z轴分量
         """
         self.x = x
         self.y = y
@@ -31,11 +31,11 @@ class Vector3:
         """
         判断两个向量是否近似相等。
         Args:
-            other:
-            epsilon:
+            other ([`Vector3`](#class-vector3)): 另一个向量
+            epsilon ([`float`](https%3A//docs.python.org/3/library/functions.html#float)): 误差
 
         Returns:
-            是否近似相等
+            [`bool`](https%3A//docs.python.org/3/library/functions.html#bool): 是否近似相等
         """
         return all([abs(self.x - other.x) < epsilon, abs(self.y - other.y) < epsilon, abs(self.z - other.z) < epsilon])
 
