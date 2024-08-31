@@ -14,6 +14,10 @@ export const ThemeConfig = {
                     filePath = filePath.replace(regex, '')
                         .replace('index.md', '__init__.py')
                         .replace('.md', '.py');
+                    // 若文件名（不含扩展）和上级文件夹相同，返回文件夹/__init__.py
+                    if (filePath.split('/').pop().split('.')[0] === filePath.split('/').slice(-2, -1)[0]) {
+                        filePath = filePath.split('/').slice(0, -1).join('/') + '/__init__.py';
+                    }
                     return `https://github.com/snowykami/mbcp/tree/main/mbcp/${filePath}`;
                 } else {
                     return `https://github.com/snowykami/mbcp/tree/main/docs/${filePath}`;
