@@ -13,16 +13,22 @@ hero:
     - theme: alt
       text: API文檔
       link: ./api/
+    - theme: alt
+      text: 最佳實踐
+      link: ./demo/best-practice
   image:
     src: /mbcp-logo.svg
     alt: MBCP logo
 
 features:
   - title: 高度易用
+    icon: 🛠️
     details: 通過簡單的接口，實現了大部分幾何運算及粒子製作的需求
   - title: 高度集成
+    icon: 📦
     details: 對<code>numpy</code>、<code>scipy</code>及<code>sympy</code>進行了封裝和集成，使腳本編寫像使用Geogebra一樣easy
   - title: 內置預設
+    icon: 🧊
     details: 提供了大量的預設，包括常見的幾何圖形、粒子效果等，便於快速生產
 ---
 <style>
