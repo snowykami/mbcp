@@ -15,8 +15,8 @@ def cal_gradient_3vf(func: ThreeSingleVarsFunc, p: Point3, epsilon: float = EPSI
     > 已知一个函数$f(x, y, z)$，则其在点$(x_0, y_0, z_0)$处的梯度向量为:
     $\nabla f(x_0, y_0, z_0) = \left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right)$
     Args:
-        func: 三元函数
-        p: 点
+        func ([`ThreeSingleVarsFunc`](./mp_math_typing#var-threesinglevarsfunc)): 三元函数
+        p ([`Point3`](./point#class-point3)): 点
         epsilon: 偏移量
     Returns:
         梯度
@@ -33,8 +33,8 @@ def curry(func: MultiVarsFunc, *args: Var) -> OneVarFunc:
     > [!tip]
     > 有关函数柯里化，可参考[函数式编程--柯理化（Currying）](https://zhuanlan.zhihu.com/p/355859667)
     Args:
-        func: 函数
-        *args: 参数
+        func ([`MultiVarsFunc`](./mp_math_typing#var-multivarsfunc)): 函数
+        *args ([`Var`](./mp_math_typing#var-var)): 参数
     Returns:
         柯里化后的函数
     Examples:

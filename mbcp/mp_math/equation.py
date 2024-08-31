@@ -13,9 +13,9 @@ class CurveEquation:
         """
         曲线方程。
         Args:
-            x_func: x函数
-            y_func: y函数
-            z_func: z函数
+            x_func ([`OneVarFunc`](./mp_math_typing#var-onevarfunc)): x函数
+            y_func ([`OneVarFunc`](./mp_math_typing#var-onevarfunc)): y函数
+            z_func ([`OneVarFunc`](./mp_math_typing#var-onevarfunc)): z函数
         """
         self.x_func = x_func
         self.y_func = y_func
@@ -46,7 +46,7 @@ def get_partial_derivative_func(func: MultiVarsFunc, var: int | tuple[int, ...],
     > 目前数学界对于一个函数的导函数并没有通解的说法，因此该函数的稳定性有待提升
 
     Args:
-        func: 函数
+        func ([`MultiVarsFunc`](./mp_math_typing#var-multivarsfunc)): N元函数
         var: 变量位置，可为整数(一阶偏导)或整数元组(高阶偏导)
         epsilon: 偏移量
     Returns:

@@ -2,13 +2,13 @@
 """
 本包定义了一些常用的导入，可直接从`mbcp.mp_math`导入使用
 导入的类有：
-- `AnyAngle`：任意角
-- `CurveEquation`：曲线方程
-- `Line3`：三维直线
-- `Plane3`：三维平面
-- `Point3`：三维点
-- `Segment3`：三维线段
-- `Vector3`：三维向量
+- [`AnyAngle`](./angle#class-anyangle)：任意角度
+- [`CurveEquation`](./equation#class-curveequation)：曲线方程
+- [`Line3`](./line#class-line3)：三维直线
+- [`Plane3`](./plane#class-plane3)：三维平面
+- [`Point3`](./point#class-point3)：三维点
+- [`Segment3`](./segment#class-segment3)：三维线段
+- [`Vector3`](./vector#class-vector3)：三维向量
 """
 from .angle import AnyAngle
 from .const import *

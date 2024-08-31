@@ -43,9 +43,9 @@ class Vector3:
         """
         计算两个向量之间的夹角。
         Args:
-            other: 另一个向量
+            other ([`Vector3`](#class-vector3)): 另一个向量
         Returns:
-            夹角
+            [`AnyAngle`](./angle#class-anyangle): 夹角
         """
         return AnyAngle(math.acos(self @ other / (self.length * other.length)), is_radian=True)
 
@@ -65,9 +65,9 @@ class Vector3:
         ``x2 y2 z2``
 
         Args:
-            other:
+            other ([`Vector3`](#class-vector3)): 另一个向量
         Returns:
-            行列式的结果
+            [`Vector3`](#class-vector3): 叉乘结果
         """
         return Vector3(self.y * other.z - self.z * other.y,
                        self.z * other.x - self.x * other.z,
@@ -77,10 +77,10 @@ class Vector3:
         """
         判断两个向量是否近似平行。
         Args:
-            other: 另一个向量
-            epsilon: 允许的误差
+            other ([`Vector3`](#class-vector3)): 另一个向量
+            epsilon ([`float`](https%3A//docs.python.org/3/library/functions.html#float)): 误差
         Returns:
-            是否近似平行
+            [`bool`](https%3A//docs.python.org/3/library/functions.html#bool): 是否近似平行
         """
         return self.cross(other).length < epsilon
 
@@ -88,9 +88,9 @@ class Vector3:
         """
         判断两个向量是否平行。
         Args:
-            other: 另一个向量
+            other ([`Vector3`](#class-vector3)): 另一个向量
         Returns:
-            是否平行
+            [`bool`](https%3A//docs.python.org/3/library/functions.html#bool): 是否平行
         """
         return self.cross(other).approx(zero_vector3)
 
@@ -110,6 +110,7 @@ class Vector3:
         """
         返回numpy数组
         Returns:
+            [`np.ndarray`](https%3A//numpy.org/doc/stable/reference/generated/numpy.ndarray.html): numpy数组
         """
 
         return np.array([self.x, self.y, self.z])
@@ -119,7 +120,7 @@ class Vector3:
         """
         向量的模。
         Returns:
-            模
+            [`float`](https%3A//docs.python.org/3/library/functions.html#float): 模
         """
         return math.sqrt(self.x ** 2 + self.y ** 2 + self.z ** 2)
 
@@ -128,7 +129,7 @@ class Vector3:
         """
         获取该向量的单位向量。
         Returns:
-            单位向量
+            [`Vector3`](#class-vector3): 单位向量
         """
         return self / self.length
 
@@ -148,9 +149,9 @@ class Vector3:
         V + P -> P\n
         V + V -> V
         Args:
-            other:
+            other ([`Vector3`](#class-vector3) | [`Point3`](./point#class-point3)): 另一个向量或点
         Returns:
-
+            [`Vector3`](#class-vector3) | [`Point3`](./point#class-point3): 新的向量或点
         """
         if isinstance(other, Vector3):
             return Vector3(self.x + other.x, self.y + other.y, self.z + other.z)
@@ -163,9 +164,9 @@ class Vector3:
         """
         判断两个向量是否相等。
         Args:
-            other:
+            other ([`Vector3`](#class-vector3)): 另一个向量
         Returns:
-            是否相等
+            [`bool`](https%3A//docs.python.org/3/library/functions.html#bool): 是否相等
         """
         return approx(self.x, other.x) and approx(self.y, other.y) and approx(self.z, other.z)
 
@@ -173,8 +174,10 @@ class Vector3:
         """
         P + V -> P\n
         别去点那边实现了。
-        :param other:
-        :return:
+        Args:
+            other ([`Point3`](./point#class-point3)): 另一个点
+        Returns:
+            [`Point3`](./point#class-point3): 新的点
         """
         return Point3(self.x + other.x, self.y + other.y, self.z + other.z)
 
@@ -191,8 +194,9 @@ class Vector3:
         V - P -> P\n
         V - V -> V
         Args:
-            other:
+            other ([`Vector3`](#class-vector3) | [`Point3`](./point#class-point3)): 另一个向量或点
         Returns:
+            [`Vector3`](#class-vector3) | [`Point3`](./point#class-point3): 新的向量
         """
         if isinstance(other, Vector3):
             return Vector3(self.x - other.x, self.y - other.y, self.z - other.z)
@@ -205,9 +209,9 @@ class Vector3:
         """
         P - V -> P
         Args:
-            other:
+            other ([`Point3`](./point#class-point3)): 另一个点
         Returns:
-
+            [`Point3`](./point#class-point3): 新的点
         """
 
         if isinstance(other, Point3):
@@ -227,9 +231,9 @@ class Vector3:
         """
         数组运算 非点乘。点乘使用@，叉乘使用cross。
         Args:
-            other:
-
+            other ([`Vector3`](#class-vector3) | [`float`](https%3A//docs.python.org/3/library/functions.html#float)): 另一个向量或数
         Returns:
+            [`Vector3`](#class-vector): 数组运算结果
         """
 
         if isinstance(other, Vector3):
@@ -246,21 +250,37 @@ class Vector3:
         """
         点乘。
         Args:
-            other:
+            other ([`Vector3`](#class-vector3)): 另一个向量
         Returns:
+            [`float`](https%3A//docs.python.org/3/library/functions.html#float): 点乘结果
         """
         return self.x * other.x + self.y * other.y + self.z * other.z
 
     def __truediv__(self, other: RealNumber) -> 'Vector3':
         return Vector3(self.x / other, self.y / other, self.z / other)
 
-    def __neg__(self):
+    def __neg__(self) -> 'Vector3':
+        """
+        取负。
+        Returns:
+            [`Vector3`](#class-vector3): 负向量
+        """
         return Vector3(-self.x, -self.y, -self.z)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
+        """
+        向量的字符串表示(可执行)。
+        Returns:
+            [`str`](https%3A//docs.python.org/3/library/functions.html#str): 字符串
+        """
         return f"Vector3({self.x}, {self.y}, {self.z})"
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        向量的字符串表示。
+        Returns:
+            [`str`](https%3A//docs.python.org/3/library/functions.html#str): 字符串
+        """
         return f"Vector3({self.x}, {self.y}, {self.z})"
 
 

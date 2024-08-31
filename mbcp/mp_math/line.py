@@ -20,8 +20,8 @@ class Line3:
         """
         三维空间中的直线。由一个点和一个方向向量确定。
         Args:
-            point: 直线上的一点
-            direction: 直线的方向向量
+            point ([`Point3`](./point#class-point3)): 直线上的一点
+            direction ([`Vector3`](./vector#class-vector3)): 方向向量
         """
         self.point = point
         self.direction = direction
@@ -30,10 +30,10 @@ class Line3:
         """
         判断两条直线是否近似相等。
         Args:
-            other: 另一条直线
-            epsilon: 误差
+            other ([`Line3`](./line#class-line3)): 另一条直线
+            epsilon ([`float`](https://docs.python.org/3/library/functions.html#float)): 误差
         Returns:
-            是否近似相等
+            [`bool`](https://docs.python.org/3/library/functions.html#bool): 是否近似相等
         """
         return self.is_approx_parallel(other, epsilon) and (self.point - other.point).is_approx_parallel(self.direction, epsilon)
 
@@ -41,11 +41,9 @@ class Line3:
         """
         计算直线和直线之间的夹角。
         Args:
-            other: 另一条直线
+            other ([`Line3`](./line#class-line3)): 另一条直线
         Returns:
-            夹角弧度
-        Raises:
-            TypeError: 不支持的类型
+            [`AnyAngle`](./angle#class-anyangle): 夹角
         """
         return self.direction.cal_angle(other.direction)
 
@@ -53,12 +51,11 @@ class Line3:
         """
         计算直线和直线或点之间的距离。
         Args:
-            other: 平行直线或点
-
+            other ([`Line3`](./line#class-line3) | [`Point3`](./point#class-point3)): 另一条直线或点
         Returns:
-            距离
+            [`float`](https%3A//docs.python.org/3/library/functions.html#float): 距离
         Raises:
-            TypeError: 不支持的类型
+            [`TypeError`](https%3A//docs.python.org/3/library/exceptions.html#TypeError): 不支持的类型
         """
         if isinstance(other, Line3):
             # 相交/重合 = 0；平行和异面需要计算距离
@@ -84,12 +81,12 @@ class Line3:
         """
         计算两条直线的交点。
         Args:
-            other: 另一条直线
+            other ([`Line3`](./line#class-line3)): 另一条直线
         Returns:
-            交点
+            [`Point3`](./point#class-point3): 交点
         Raises:
-            ValueError: 直线平行
-            ValueError: 直线不共面
+            [`ValueError`](https%3A//docs.python.org/3/library/exceptions.html#TypeError): 直线平行
+            `ValueError`: 直线不共面
         """
         if self.is_parallel(other):
             raise ValueError("Lines are parallel and do not intersect.")
@@ -102,9 +99,9 @@ class Line3:
         """
         计算直线经过指定点p的垂线。
         Args:
-            point: 指定点
+            point ([`Point3`](./point#class-point3)): 指定点
         Returns:
-            垂线
+            [`Line3`](./line#class-line3): 垂线
         """
         return Line3(point, self.direction.cross(point - self.point))
 
@@ -112,9 +109,9 @@ class Line3:
         """
         获取直线上的点。同一条直线，但起始点和方向向量不同，则同一个t对应的点不同。
         Args:
-            t: 参数t
+            t ([`RealNumber`](./mp_math_typing#var-realnumber)): 参数t
         Returns:
-            点
+            [`Point3`](./point#class-point3): 点
         """
         return self.point + t * self.direction
 
@@ -122,7 +119,7 @@ class Line3:
         """
         获取直线的参数方程。
         Returns:
-            x(t), y(t), z(t)
+            [`tuple`](https%3A//docs.python.org/3/library/stdtypes.html#tuple)[[`OneSingleVarFunc`](./mp_math_typing#var-onesinglevarfunc), `OneSingleVarFunc`, `OneSingleVarFunc`]: 参数方程
         """
         return (lambda t: self.point.x + self.direction.x * t,
                 lambda t: self.point.y + self.direction.y * t,
@@ -132,10 +129,10 @@ class Line3:
         """
         判断两条直线是否近似平行。
         Args:
-            other: 另一条直线
-            epsilon: 误差
+            other ([`Line3`](./line#class-line3)): 另一条直线
+            epsilon ([`float`](https%3A//docs.python.org/3/library/functions.html#float)): 误差
         Returns:
-            是否近似平行
+            [`bool`](https%3A//docs.python.org/3/library/functions.html#bool): 是否近似平行
         """
         return self.direction.is_approx_parallel(other.direction, epsilon)
 
@@ -143,9 +140,9 @@ class Line3:
         """
         判断两条直线是否平行。
         Args:
-            other: 另一条直线
+            other ([`Line3`](./line#class-line3)): 另一
         Returns:
-            是否平行
+            [`bool`](https%3A//docs.python.org/3/library/functions.html#bool): 是否平行
         """
         return self.direction.is_parallel(other.direction)
 
@@ -153,9 +150,9 @@ class Line3:
         """
         判断两条直线是否共线。
         Args:
-            other: 另一条直线
+            other ([`Line3`](./line#class-line3)): 另一
         Returns:
-            是否共线
+            [`bool`](https%3A//docs.python.org/3/library/functions.html#bool): 是否共线
         """
         return self.is_parallel(other) and (self.point - other.point).is_parallel(self.direction)
 
@@ -163,9 +160,9 @@ class Line3:
         """
         判断点是否在直线上。
         Args:
-            point: 点
+            point ([`Point3`](./point#class-point3)): 点
         Returns:
-            是否在直线上
+            [`bool`](https%3A//docs.python.org/3/library/functions.html#bool): 是否在直线上
         """
         return (point - self.point).is_parallel(self.direction)
 
@@ -174,9 +171,9 @@ class Line3:
         判断两条直线是否共面。
         充要条件：两直线方向向量的叉乘与两直线上任意一点的向量的点积为0。
         Args:
-            other: 另一条直线
+            other ([`Line3`](./line#class-line3)): 另一
         Returns:
-            是否共面
+            [`bool`](https%3A//docs.python.org/3/library/functions.html#bool): 是否共面
         """
         return self.direction.cross(other.direction) @ (self.point - other.point) == 0
 
@@ -203,10 +200,10 @@ class Line3:
         """
         工厂函数 由两点构造直线。
         Args:
-            p1: 点1
-            p2: 点2
+            p1 ([`Point3`](./point#class-point3)): 点1
+            p2 ([`Point3`](./point#class-point3)): 点2
         Returns:
-            直线
+            [`Line3`](./line#class-line3): 直线
         """
         direction = p2 - p1
         return cls(p1, direction)
@@ -215,9 +212,9 @@ class Line3:
         """
         计算两条直线点集合的交集。重合线返回自身，平行线返回None，交线返回交点。
         Args:
-            other: 另一条直线
+            other ([`Line3`](./line#class-line3)): 另一条直线
         Returns:
-            交点
+            [`Line3`](./line#class-line3) | [`Point3`](./point#class-point3) | [`None`](https://docs.python.org/3/library/constants.html#None): 交集
         """
         if self.is_collinear(other):
             return self
@@ -232,10 +229,9 @@ class Line3:
 
         v1 // v2 ∧ (p1 - p2) // v1
         Args:
-            other:
-
+            other ([`Line3`](./line#class-line3)): 另一条直线
         Returns:
-
+            [`bool`](https%3A//docs.python.org/3/library/functions.html#bool): 是否等价
         """
         return self.direction.is_parallel(other.direction) and (self.point - other.point).is_parallel(self.direction)
 
@@ -243,7 +239,7 @@ class Line3:
         """
         返回点向式（x-x0）
         Returns:
-
+            [`str`](https%3A//docs.python.org/3/library/functions.html#str): 点向式
         """
         s = "Line3: "
         if self.direction.x != 0:
@@ -255,4 +251,9 @@ class Line3:
         return s
 
     def __repr__(self):
+        """
+        返回直线的字符串表示。
+        Returns:
+            [`str`](https%3A//docs.python.org/3/library/functions.html#str) 字符串表示
+        """
         return f"Line3({self.point}, {self.direction})"

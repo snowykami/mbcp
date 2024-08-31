@@ -21,10 +21,10 @@ class Plane3:
         """
         平面方程：ax + by + cz + d = 0
         Args:
-            a: x系数
-            b: y系数
-            c: z系数
-            d: 常数项
+            a ([`float`](https%3A//docs.python.org/3/library/functions.html#float)): x系数
+            b (`float`): y系数
+            c (`float`): z系数
+            d (`float`): 常数项
         """
         self.a = a
         self.b = b
@@ -35,9 +35,9 @@ class Plane3:
         """
         判断两个平面是否近似相等。
         Args:
-            other: 另一个平面
+            other ([`Plane3`](./plane#class-plane3)): 另一个平面
         Returns:
-            是否近似相等
+            [`bool`](https://docs.python.org/3/library/functions.html#bool): 是否近似相等
         """
         if self.a != 0:
             k = other.a / self.a
@@ -55,11 +55,11 @@ class Plane3:
         """
         计算平面与平面之间的夹角。
         Args:
-            other: 另一个平面
+            other ([`Line3`](./line#class-line3) | [`Plane3`](./plane#class-plane3)): 另一个平面或直线
         Returns:
-            夹角弧度
+            [`AnyAngle`](./angle#class-anyangle): 夹角
         Raises:
-            TypeError: 不支持的类型
+            [`TypeError`](https%3A//docs.python.org/3/library/exceptions.html#TypeError): 不支持的类型
         """
         if isinstance(other, Line3):
             return self.normal.cal_angle(other.direction).complementary
@@ -72,11 +72,11 @@ class Plane3:
         """
         计算平面与平面或点之间的距离。
         Args:
-            other: 另一个平面或点
+            other ([`Plane3`](./plane#class-plane3) | [`Point3`](./point#class-point3)): 另一个平面或点
         Returns:
-            距离
+            [`float`](https%3A//docs.python.org/3/library/functions.html#float): 距离
         Raises:
-            TypeError: 不支持的类型
+            [`TypeError`](https%3A//docs.python.org/3/library/exceptions.html#TypeError): 不支持的类型
         """
         if isinstance(other, Plane3):
             return 0
@@ -89,10 +89,11 @@ class Plane3:
         """
         计算两平面的交线。
         Args:
-            other: 另一个平面
+            other ([`Plane3`](./plane#class-plane3)): 另一个平面
         Returns:
-            两平面的交线
+            [`Line3`](./line#class-line3): 交线
         Raises:
+            [`ValueError`](https%3A//docs.python.org/3/library/exceptions.html#ValueError): 平面平行且无交线
         """
         if self.normal.is_parallel(other.normal):
             raise ValueError("Planes are parallel and have no intersection.")
@@ -121,11 +122,11 @@ class Plane3:
         """
         计算平面与直线的交点。
         Args:
-            other: 不与平面平行或在平面上的直线
+            other ([`Line3`](./line#class-line3)): 直线
         Returns:
-            交点
+            [`Point3`](./point#class-point3): 交点
         Raises:
-            ValueError: 平面与直线平行或重合
+            [`ValueError`](https%3A//docs.python.org/3/library/exceptions.html#ValueError): 平面与直线平行或重合
         """
         # 若平面的法向量与直线方向向量垂直，则直线与平面平行或重合
         if self.normal @ other.direction == 0:
@@ -141,9 +142,9 @@ class Plane3:
         """
         计算平行于该平面且过指定点的平面。
         Args:
-            point: 指定点
+            point ([`Point3`](./point#class-point3)): 指定点
         Returns:
-            所求平面
+            [`Plane3`](./plane#class-plane3): 平面
         """
         return Plane3.from_point_and_normal(point, self.normal)
 
@@ -151,9 +152,9 @@ class Plane3:
         """
         判断两个平面是否平行。
         Args:
-            other: 另一个平面
+            other ([`Plane3`](./plane#class-plane3)): 另一个平面
         Returns:
-            是否平行
+            [`bool`](https%3A//docs.python.org/3/library/functions.html#bool): 是否平行
         """
         return self.normal.is_parallel(other.normal)
 
@@ -162,7 +163,7 @@ class Plane3:
         """
         平面的法向量。
         Returns:
-            法向量
+            [`Vector3`](./vector#class-vector3): 法向量
         """
         return Vector3(self.a, self.b, self.c)
 
@@ -171,10 +172,10 @@ class Plane3:
         """
         工厂函数 由点和法向量构造平面(点法式构造)。
         Args:
-            point: 平面上的一点
-            normal: 法向量
+            point ([`Point3`](./point#class-point3)): 平面上一点
+            normal ([`Vector3`](./vector#class-vector3)): 法向量
         Returns:
-            平面
+            [`Plane3`](./plane#class-plane3): 平面
         """
         a, b, c = normal.x, normal.y, normal.z
         d = -a * point.x - b * point.y - c * point.z  # d = -ax - by - cz
@@ -185,9 +186,9 @@ class Plane3:
         """
         工厂函数 由三点构造平面。
         Args:
-            p1: 点1
-            p2: 点2
-            p3: 点3
+            p1 ([`Point3`](./point#class-point3)): 点1
+            p2 (`Point3`): 点2
+            p3 (`Point3`): 点3
         Returns:
             平面
         """
@@ -203,8 +204,8 @@ class Plane3:
         """
         工厂函数 由两直线构造平面。
         Args:
-            l1: 直线1
-            l2: 直线2
+            l1 ([`Line3`](./line#class-line3)): 直线
+            l2 (`Line3`): 直线
         Returns:
             平面
         """
@@ -219,17 +220,27 @@ class Plane3:
         """
         工厂函数 由点和直线构造平面。
         Args:
-            point: 面上一点
-            line: 面上直线，不包含点
+            point ([`Point3`](./point#class-point3)): 平面上一点
+            line ([`Line3`](./line#class-line3)): 直线
         Returns:
             平面
         """
         return cls.from_point_and_normal(point, line.direction)
 
     def __repr__(self):
+        """
+        返回平面的字符串表示。
+        Returns:
+            [`str`](https%3A//docs.python.org/3/library/functions.html#str): 字符串表示
+        """
         return f"Plane3({self.a}, {self.b}, {self.c}, {self.d})"
 
     def __str__(self):
+        """
+        返回平面的字符串表示。
+        Returns:
+            [`str`](https%3A//docs.python.org/3/library/functions.html#str): 字符串表示
+        """
         s = "Plane3: "
         if self.a != 0:
             s += f"{sign(self.a, only_neg=True)}{abs(self.a)}x"
@@ -253,9 +264,11 @@ class Plane3:
         """
         取两平面的交集（人话：交线）
         Args:
-            other:
+            other ([`Line3`](./line#class-line3) | [`Plane3`](./plane#class-plane3)): 另一个平面或直线
         Returns:
-            不平行平面的交线，平面平行返回None
+            [`Line3`](./line#class-line3) | [`Point3`](./point#class-point3) | [`None`](https%3A//docs.python.org/3/library/constants.html#None): 交集
+        Raises:
+            [`TypeError`](https%3A//docs.python.org/3/library/exceptions.html#TypeError): 不支持的类型
         """
         if isinstance(other, Plane3):
             if self.normal.is_parallel(other.normal):
@@ -269,6 +282,13 @@ class Plane3:
             raise TypeError(f"unsupported operand type(s) for &: 'Plane3' and '{type(other)}'")
 
     def __eq__(self, other) -> bool:
+        """
+        判断两个平面是否等价。
+        Args:
+            other ([`Plane3`](./plane#class-plane3)): 另一个平面
+        Returns:
+            [`bool`](https%3A//docs.python.org/3/library/functions.html#bool): 是否等价
+        """
         return self.approx(other)
 
     def __rand__(self, other: 'Line3') -> 'Point3':
