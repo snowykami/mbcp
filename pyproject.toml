@@ -6,7 +6,6 @@ authors = [
     {name = "snowykami", email = "snowykami@outlook.com"},
 ]
 dependencies = [
-    "pytest~=8.3.2",
     "numpy~=2.0.1",
     "liteyukibot>=6.3.9",
 ]
@@ -25,6 +24,7 @@ distribution = true
 [tool.pdm.dev-dependencies]
 dev = [
     "translate>=3.6.1",
+    "pytest>=8.3.2",
 ]
 [[tool.pdm.source]]
 name = "pypi"
