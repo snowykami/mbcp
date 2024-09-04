@@ -12,6 +12,7 @@ const commonSidebarOptions = {
     collapsed: true,
     convertSameNameSubFileToGroupIndexPage: true,
     useTitleFromFrontmatter: true,
+
     useFolderTitleFromIndexFile: true,
     useFolderLinkFromIndexFile: true,
     includeFolderIndexFile: true,
