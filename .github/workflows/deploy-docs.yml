@@ -40,7 +40,7 @@ jobs:
       - name: Setup API markdown
         run: |-
           python -m pip install litedoc
-          litedoc mbcp -o docs/zh/api -l zh-Hans  -cd class -fd func -md method -vd var -bu https://github.com/snowykami/mbcp/tree/main/mbcp/ -f lastUpdated=false
+          litedoc mbcp -o docs/zh/api -l zh-Hans  -cd class -fd func -md method -vd var -bu https://github.com/snowykami/mbcp/tree/main/mbcp/ -f lastUpdated=false 
           litedoc mbcp -o docs/en/api -l en       -cd class -fd func -md method -vd var -bu https://github.com/snowykami/mbcp/tree/main/mbcp/ -f lastUpdated=false
           litedoc mbcp -o docs/ja/api -l ja       -cd class -fd func -md method -vd var -bu https://github.com/snowykami/mbcp/tree/main/mbcp/ -f lastUpdated=false
           litedoc mbcp -o docs/zht/api -l zh-Hant -cd class -fd func -md method -vd var -bu https://github.com/snowykami/mbcp/tree/main/mbcp/ -f lastUpdated=false
