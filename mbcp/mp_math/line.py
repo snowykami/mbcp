@@ -48,8 +48,20 @@ class Line3:
         return self.direction.cal_angle(other.direction)
 
     def cal_distance(self, other: 'Line3 | Point3') -> float:
-        """
+        r"""
         计算直线和直线或点之间的距离。
+        :::tip
+        直线和直线之间的距离计算公式:
+        - 平行/重合 = 0
+        - 平行/异面 = $\frac{|\vec{P_1P_2} \times \vec{v}|}{|\vec{v}|}$
+        - 相交 = 0
+        其中，$P_1$和$P_2$分别为两条直线上的点，$\vec{v}$为直线的方向向量。
+        :::
+        :::tip
+        直线和点之间的距离计算公式:
+        $$\frac{|\vec{P_1P} \times \vec{v}|}{|\vec{v}|}$$
+        其中，$P_1$为直线上的点，$P$为点，$\vec{v}$为直线的方向向量。
+        :::
         Args:
             other ([`Line3`](./line#class-line3) | [`Point3`](./point#class-point3)): 另一条直线或点
         Returns:

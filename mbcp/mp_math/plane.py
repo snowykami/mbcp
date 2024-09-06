@@ -79,8 +79,21 @@ class Plane3:
             raise TypeError(f"Unsupported type: {type(other)}")
 
     def cal_distance(self, other: 'Plane3 | Point3') -> float:
-        """
+        r"""
         计算平面与平面或点之间的距离。
+        :::tip
+        平面和平面之间的距离计算公式:
+        暂未实现
+        - 平行 = 0
+        - 相交 = 0
+        - 不平行 = $\frac{|\vec{P_1P_2} \cdot \vec{n}|}{|\vec{n}|}$
+        其中，$P_1$和$P_2$分别为两个平面上的点，$\vec{n}$为平面的法向量。
+        :::
+        :::tip
+        平面和点之间的距离计算公式:
+        $$\frac{|\vec{P_1P} \cdot \vec{n}|}{|\vec{n}|}$$
+        其中，$P_1$为平面上的点，$P$为点，$\vec{n}$为平面的法向量。
+        :::
         Args:
             other ([`Plane3`](./plane#class-plane3) | [`Point3`](./point#class-point3)): 另一个平面或点
         Returns:
@@ -89,7 +102,7 @@ class Plane3:
             [`TypeError`](https%3A//docs.python.org/3/library/exceptions.html#TypeError): 不支持的类型
         """
         if isinstance(other, Plane3):
-            return 0
+            raise NotImplementedError("Not implemented yet.")
         elif isinstance(other, Point3):
             return abs(self.a * other.x + self.b * other.y + self.c * other.z + self.d) / (self.a ** 2 + self.b ** 2 + self.c ** 2) ** 0.5
         else:
@@ -142,6 +155,12 @@ class Plane3:
     def cal_intersection_point3(self, other: 'Line3') -> 'Point3':
         """
         计算平面与直线的交点。
+        :::tip
+        计算平面与直线交点的一般步骤:
+        1. 求直线的参数方程
+        2. 代入平面方程，解出t
+        3. 代入直线参数方程，求出交点
+        :::
         Args:
             other ([`Line3`](./line#class-line3)): 直线
         Returns:
