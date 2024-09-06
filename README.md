@@ -1,5 +1,5 @@
 # More Basic Change Particle - 更多基础变换粒子
-A Minecraft particle production library
+A Minecraft particle production and math library
 
 ## 介绍
 该库用于一些Minecraft粒子特效的计算和制作，集成了常用的numpy，sympy，scipy等科学计算库
