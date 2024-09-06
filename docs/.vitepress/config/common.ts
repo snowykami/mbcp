@@ -1,7 +1,7 @@
 // 共有配置项，导入index用
-
 import {defineConfig} from 'vitepress'
 import {generateSidebar} from 'vitepress-sidebar';
+import {useData} from "vitepress";
 import {zh} from "./zh";
 import {en} from "./en";
 import {ja} from "./ja";

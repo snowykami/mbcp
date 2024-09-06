@@ -40,8 +40,12 @@ class Vector3:
         return all([abs(self.x - other.x) < epsilon, abs(self.y - other.y) < epsilon, abs(self.z - other.z) < epsilon])
 
     def cal_angle(self, other: 'Vector3') -> 'AnyAngle':
-        """
+        r"""
         计算两个向量之间的夹角。
+        :::tip
+        向量夹角计算公式:
+        $$\theta = \arccos(\frac{v1 \cdot v2}{|v1| \cdot |v2|})$$
+        :::
         Args:
             other ([`Vector3`](#class-vector3)): 另一个向量
         Returns:
@@ -50,20 +54,15 @@ class Vector3:
         return AnyAngle(math.acos(self @ other / (self.length * other.length)), is_radian=True)
 
     def cross(self, other: 'Vector3') -> 'Vector3':
-        """
-        向量积 叉乘：v1 cross v2 -> v3
+        r"""
+        向量积 叉乘：v1 x v2 -> v3
 
-        叉乘为0，则两向量平行。
-        其余结果的模为平行四边形的面积。
-
-        返回如下行列式的结果：
-
-        ``i  j  k``
-
-        ``x1 y1 z1``
-
-        ``x2 y2 z2``
-
+        :::tip
+        叉乘运算法则为:
+        $$ v1 \times v2 = (v1_y \cdot v2_z - v1_z \cdot v2_y, v1_z \cdot v2_x - v1_x \cdot v2_z, v1_x \cdot v2_y - v1_y \cdot v2_x) $$
+        转换为行列式形式:
+        $$ v1 \times v2 = \begin{vmatrix} i & j & k \\ v1_x & v1_y & v1_z \\ v2_x & v2_y & v2_z \end{vmatrix} $$
+        :::
         Args:
             other ([`Vector3`](#class-vector3)): 另一个向量
         Returns:

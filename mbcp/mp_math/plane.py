@@ -52,8 +52,18 @@ class Plane3:
             return False
 
     def cal_angle(self, other: 'Line3 | Plane3') -> 'AnyAngle':
-        """
+        r"""
         计算平面与平面之间的夹角。
+        :::tip
+        平面间夹角计算公式:
+        $$\theta = \arccos(\frac{n1 \cdot n2}{|n1| \cdot |n2|})$$
+        其中 $n1$ 和 $n2$ 分别为两个平面的法向量
+        :::
+        :::tip
+        平面与直线夹角计算公式:
+        $$\theta = \arccos(\frac{n \cdot d}{|n| \cdot |d|})$$
+        其中 $n$ 为平面的法向量，$d$ 为直线的方向向量
+        :::
         Args:
             other ([`Line3`](./line#class-line3) | [`Plane3`](./plane#class-plane3)): 另一个平面或直线
         Returns:
@@ -86,8 +96,19 @@ class Plane3:
             raise TypeError(f"Unsupported type: {type(other)}")
 
     def cal_intersection_line3(self, other: 'Plane3') -> 'Line3':
-        """
+        r"""
         计算两平面的交线。
+        :::tip {{ $t('tip') }}
+        计算两平面交线的一般步骤:
+        1. 求两平面的法向量的叉乘得到方向向量
+        $$ d = n1 \times n2 $$
+        2. 寻找直线上的一点，依次假设$x=0$, $y=0$, $z=0$，并代入两平面方程求出合适的点
+        直线最终可用参数方程或点向式表示
+        $$ \begin{cases} x = x_0 + dt \\ y = y_0 + dt \\ z = z_0 + dt \end{cases} $$
+        或
+        $$ \frac{x - x_0}{m} = \frac{y - y_0}{n} = \frac{z - z_0}{p} $$
+        :::
+
         Args:
             other ([`Plane3`](./plane#class-plane3)): 另一个平面
         Returns:
