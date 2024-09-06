@@ -106,9 +106,9 @@ class Vector3:
 
     def project(self, other: 'Vector3') -> 'Vector3':
         r"""
-        返回自向量在另一个向量上的投影向量。
+        计算自向量在另一个向量上的投影向量。
         :::tip
-        投影向量计算公式:
+        投影向量计算公式，$proj_v(u)$表示向量$u$在向量$v$上的投影向量:
         $$ \text{proj}_v(u) = \frac{u \cdot v}{|v|^2} \cdot v $$
         :::
         Args:
