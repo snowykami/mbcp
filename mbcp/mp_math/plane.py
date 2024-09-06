@@ -98,7 +98,7 @@ class Plane3:
     def cal_intersection_line3(self, other: 'Plane3') -> 'Line3':
         r"""
         计算两平面的交线。
-        :::tip {{ $t('tip') }}
+        :::tip
         计算两平面交线的一般步骤:
         1. 求两平面的法向量的叉乘得到方向向量
         $$ d = n1 \times n2 $$
