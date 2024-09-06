@@ -104,6 +104,20 @@ class Vector3:
         self.y /= length
         self.z /= length
 
+    def project(self, other: 'Vector3') -> 'Vector3':
+        r"""
+        返回自向量在另一个向量上的投影向量。
+        :::tip
+        投影向量计算公式:
+        $$ \text{proj}_v(u) = \frac{u \cdot v}{|v|^2} \cdot v $$
+        :::
+        Args:
+            other ([`Vector3`](#class-vector3)): 另一个向量
+        Returns:
+            [`Vector3`](#class-vector3): 投影向量
+        """
+        return (self @ other / other.length) * other.unit
+
     @property
     def np_array(self) -> 'np.ndarray':
         """
